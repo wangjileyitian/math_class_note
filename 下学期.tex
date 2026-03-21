@@ -1,0 +1,545 @@
+\documentclass[lang=cn,12pt]{elegantbook}
+
+\title{数分高代习题课讲义}
+\subtitle{大一年级下学期 }
+
+\author{忘记了一天}
+\institute{XTU\_data\_2}
+\date{march 20, 2026}
+% \version{4.3}
+% \bioinfo{自定义}{信息}
+
+\extrainfo{世界上只有一种真正的英雄主义，那就是在认清生活真相之后依然热爱生活。}
+
+\setcounter{tocdepth}{3}
+
+\logo{XTU_logo_1.jpg}
+\cover{100.jpg}
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+\definecolor{customcolor}{RGB}{154, 206, 246}
+\colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+% \chapter*{综述}
+% \markboth{Introduction}{Introduction}
+
+
+\chapter{第一次习题课}
+
+\section{线性映射相关知识}
+\begin{definition}{线性映射}
+    设 \(V\) 和 \(U\) 是数域 \(K\) 上的线性空间，\(\varphi\) 是 \(V\) 到 \(U\) 的映射，如果对任意 \(\alpha, \beta \in V\) 和任意数 \(k\)，都有
+    \[
+    \varphi(\alpha + \beta) = \varphi(\alpha) + \varphi(\beta), \quad \varphi(k\alpha) = k\varphi(\alpha),
+    \]
+    则称 \(\varphi\) 是 \(V\) 到 \(U\) 的线性映射。
+\end{definition}
+
+\begin{definition}{线性变换}
+    设 \(V\) 是数域 \(K\) 上的线性空间，\(\varphi\) 是 \(V\) 到 \(V\) 的映射，如果 \(\varphi\) 是 \(V\) 到 \(V\) 的线性映射，则称 \(\varphi\) 是 \(V\) 上的线性变换。
+\end{definition}
+
+\begin{definition}{像空间}
+    设 \(\varphi\) 是线性空间 \(V\) 到 \(U\) 的线性映射，\(\varphi(V) = \{\varphi(\alpha): \alpha \in V\}\)，称 \(\varphi(V)\) 是线性映射 \(\varphi\) 的像空间，记作 \(Im\varphi\)。
+\end{definition}
+
+\begin{definition}{核空间}
+    设 \(\varphi\) 是线性空间 \(V\) 到 \(U\) 的线性映射，\(Ker\varphi = \{\alpha \in V: \varphi(\alpha) = 0\}\)，称 \(Ker\varphi\) 是线性映射 \(\varphi\) 的核空间，记作 \(Ker\varphi\)。
+\end{definition}
+
+\begin{theorem}
+    设 \(\varphi\) 是数域 \(\mathbb{F}\) 上向量空间 \(V\) 到 \(U\) 的线性映射，\(A\) 是 \(\varphi\) 在任意给定基下的表示矩阵，则 \(\varphi\) 的秩等于 \(A\) 的秩，\(\varphi\) 的零度等于 \(V\) 的维数减去 \(A\) 的秩。即有
+\[
+\dim \operatorname{Im} \varphi + \dim \operatorname{Ker} \varphi = \dim V.
+\]
+\end{theorem}
+
+\begin{definition}{不变子空间}
+    设 \(\varphi\) 是线性空间 \(V\) 上的线性变换，如果 \(V\) 的子空间 \(W\) 满足 \(\varphi(W) \subseteq W\)，则称 \(W\) 是线性变换 \(\varphi\) 的不变子空间。
+\end{definition}
+
+\begin{theorem}
+    设 \(\varphi\) 是数域 \(\mathbb{F}\) 上向量空间 \(V\) 上的线性变换，\(W\) 是 \(\varphi\) 的不变子空间。若取 \(W\) 的一组基 \(\{e_1, \cdots, e_r\}\)，再扩张为 \(V\) 的一组基 \(\{e_1, \cdots, e_r, e_{r+1}, \cdots, e_n\}\)，则 \(\varphi\) 在这组基下的表示矩阵具有下列分块上三角矩阵的形状：
+\[
+\begin{pmatrix}
+A_{11} & A_{12} \\
+O & A_{22}
+\end{pmatrix},
+\]
+其中 \(A_{11}\) 是一个 \(r\) 阶矩阵。
+\end{theorem}
+
+
+\section{习题讲解}
+
+\begin{example}\label{ex4.8}
+    设 \(\varphi\) 是 \(n\) 维线性空间 \(V\) 上的线性变换，\(\alpha \in V\)。若 \(\varphi^{m-1}(\alpha) \neq 0\)，而  
+    \(\varphi^m(\alpha) = 0\)，求证：\(\alpha, \varphi(\alpha), \varphi^2(\alpha), \cdots, \varphi^{m-1}(\alpha)\) 线性无关。
+\end{example}
+    
+\begin{proof}
+    设有 \(m\) 个数 \(a_0, a_1, \cdots, a_{m-1}\)，使得  
+    \[
+    a_0\alpha + a_1\varphi(\alpha) + \cdots + a_{m-1}\varphi^{m-1}(\alpha) = 0.
+    \]
+    
+    上式两边同时作用 \(\varphi^{m-1}\)，则有  
+    \[
+    a_0\varphi^{m-1}(\alpha) = 0,
+    \]
+    由于 \(\varphi^{m-1}(\alpha) \neq 0\)，故 \(a_0 = 0\)。上式两边同时作用 \(\varphi^{m-2}\)，则有  
+    \[
+    a_1\varphi^{m-1}(\alpha) = 0,
+    \]
+    由于 \(\varphi^{m-1}(\alpha) \neq 0\)，故 \(a_1 = 0\)。不断这样做下去，最后可得  
+    \[
+    a_0 = a_1 = \cdots = a_{m-1} = 0,
+    \]
+    于是 \(\alpha, \varphi(\alpha), \varphi^2(\alpha), \cdots, \varphi^{m-1}(\alpha)\) 线性无关。
+\end{proof}
+
+\begin{example}
+    设 \( V \) 是数域 \( K \) 上的 \( n \) 维线性空间，\( \varphi \) 是 \( V \) 上的幂零线性变换，满足  
+    \( r(\varphi) = n - 1 \)。求证：存在 \( V \) 的一组基，使得 \( \varphi \) 在这组基下的表示矩阵为  
+    \[
+    A = 
+    \begin{pmatrix}
+    0 & 0 & \cdots & 0 \\
+    1 & 0 & \cdots & 0 \\
+    0 & 1 & \cdots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \cdots & 1
+    \end{pmatrix}.
+    \]
+\end{example}
+    
+\begin{proof}
+    由假设存在正整数 \( m \)，使得 \( \varphi^m = 0, \varphi^{m-1} \neq 0 \)，从而存在 \( \alpha \in V \)，使得  
+    \[
+    \varphi^m(\alpha) = 0, \quad \varphi^{m-1}(\alpha) \neq 0。
+    \]  
+    由例\ref{ex4.8}可知，\( \alpha, \varphi(\alpha), \cdots, \varphi^{m-1}(\alpha) \) 线性无关，于是  
+    \[
+    m \leq \dim V = n。
+    \]  
+    另一方面，由 Sylvester 不等式$r(AB) \geq r(A) + r(B) -n $以及  
+    \[
+    r(\varphi) = n - 1
+    \]  
+    可知，
+    \[
+    r(\varphi^2) \geq 2r(\varphi) - n = n - 2。
+    \]  
+    不断这样讨论下去，最终可得  
+    \[
+    0 = r(\varphi^m) \geq n - m,
+    \]  
+    即有  
+    \[
+    m \geq n,
+    \]  
+    从而  
+    \[
+    m = n。
+    \]  
+    于是 \( \alpha, \varphi(\alpha), \cdots, \varphi^{n-1}(\alpha) \) 是 \( V \) 的一组基，\( \varphi \) 在这组基下的表示矩阵为 \( A \)。
+\end{proof}
+
+\begin{example}
+    设 \(\varphi\) 是 \(n\) 维线性空间 \(V\) 上的线性变换，证明：\(\varphi\) 是可逆变换的充要条件是 \(\varphi\) 将 \(V\) 的基变为基。
+\end{example}
+    
+\begin{proof}
+若 \(\varphi\) 是可逆变换，则显然 \(\varphi\) 将 \(V\) 的基变为基。反之，若 \(e_1, e_2, \cdots, e_n\) 和 \(f_1, f_2, \cdots, f_n\) 是 \(V\) 的两组基，使得 \(\varphi(e_i) = f_i \ (1 \leq i \leq n)\)，则对任意 \(\alpha \in V\)，
+\[
+\alpha = \lambda_1 f_1 + \lambda_2 f_2 + \cdots + \lambda_n f_n,
+\]
+有 \(\varphi(\lambda_1 e_1 + \lambda_2 e_2 + \cdots + \lambda_n e_n) = \alpha\)，即 \(\varphi\) 是满映射，从而是自同构。我们也可以证明 \(\varphi\) 是单映射，从而是自同构（留给读者完成）。另外还可以这样讨论，设从基 \(e_1, e_2, \cdots, e_n\) 到基 \(f_1, f_2, \cdots, f_n\) 的过渡矩阵为 \(P\)，则 \(\varphi\) 在基 \(e_1, e_2, \cdots, e_n\) 下的表示矩阵就是 \(P\)，这是一个可逆矩阵，从而 \(\varphi\) 是可逆变换。
+\end{proof}
+
+\begin{example}\label{ex4.21}
+    设 \(\varphi\) 是线性空间 \(V\) 到 \(U\) 的线性映射，\(\{e_1, e_2, \cdots, e_n\}\) 和 \(\{f_1, f_2, \cdots, f_n\}\) 是 \(V\) 的两组基，\(\{e_1, e_2, \cdots, e_n\}\) 到 \(\{f_1, f_2, \cdots, f_n\}\) 的过渡矩阵为 \(P\)。\(\{g_1, g_2, \cdots, g_m\}\) 和 \(\{h_1, h_2, \cdots, h_m\}\) 是 \(U\) 的两组基，\(\{g_1, g_2, \cdots, g_m\}\) 到 \(\{h_1, h_2, \cdots, h_m\}\) 的过渡矩阵为 \(Q\)。又设 \(\varphi\) 在基 \(\{e_1, e_2, \cdots, e_n\}\) 和基 \(\{g_1, g_2, \cdots, g_m\}\) 下的表示矩阵为 \(A\)，在基 \(\{f_1, f_2, \cdots, f_n\}\) 和基 \(\{h_1, h_2, \cdots, h_m\}\) 下的表示矩阵为 \(B\)。求证：
+    \[
+    B = Q^{-1}AP.
+    \]
+\end{example}
+    
+\begin{proof}
+    任取 \(v \in V\)，设它在基 \(\{e_1, e_2, \cdots, e_n\}\) 下的坐标向量为 \((x_1, x_2, \cdots, x_n)'\)，则它在基 \(\{f_1, f_2, \cdots, f_n\}\) 下的坐标向量为 \(P^{-1}(x_1, x_2, \cdots, x_n)'\)。\(\varphi(v)\) 在基 \(\{g_1, g_2, \cdots, g_m\}\) 下的坐标向量为 \(A(x_1, x_2, \cdots, x_n)'\)，在基 \(\{h_1, h_2, \cdots, h_m\}\) 下的坐标向量为 \(BP^{-1}(x_1, x_2, \cdots, x_n)'\)。由于从 \(\{g_1, g_2, \cdots, g_m\}\) 到 \(\{h_1, h_2, \cdots, h_m\}\) 的过渡矩阵
+    为 \(Q\)，故 \(A(x_1, x_2, \cdots, x_n)' = QBP^{-1}(x_1, x_2, \cdots, x_n)'\)。因为 \((x_1, x_2, \cdots, x_n)'\) 是任意的，故 \(A = QBP^{-1}\)，即 \(B = Q^{-1}AP\)。
+\end{proof}
+
+
+\begin{example}\label{ex4.22}
+    设 \(\varphi\) 是有限维线性空间 \(V\) 到 \(U\) 的线性映射，求证：必存在 \(V\) 和 \(U\) 的两组基，使线性映射 \(\varphi\) 在两组基下的表示矩阵为  
+    \[
+    \begin{pmatrix} 
+    I_r & O \\ 
+    O & O 
+    \end{pmatrix}.
+    \]
+\end{example}
+    
+\begin{proof}
+    设 \(\{e_1, e_2, \cdots, e_n\}\) 是 \(V\) 的一组基，\(\{g_1, g_2, \cdots, g_m\}\) 是 \(U\) 的一组基，\(\varphi\) 在这两组基下的表示矩阵为 \(A\)。由相抵标准型理论可知，存在 \(m\) 阶非异阵 \(Q, n\) 阶非异阵 \(P\)，使得  
+    \[
+    Q^{-1}AP = 
+    \begin{pmatrix} 
+    I_r & O \\ 
+    O & O 
+    \end{pmatrix}.
+    \]  
+    设 \(\{f_1, f_2, \cdots, f_n\}\) 是 \(V\) 的一组新基，使得从 \(\{e_1, e_2, \cdots, e_n\}\) 到 \(\{f_1, f_2, \cdots, f_n\}\) 的过渡矩阵为 \(P\)；设 \(\{h_1, h_2, \cdots, h_m\}\) 是 \(U\) 的一组新基，使得从 \(\{g_1, g_2, \cdots, g_m\}\) 到 \(\{h_1, h_2, \cdots, h_m\}\) 的过渡矩阵为 \(Q\)，则由例 \ref{ex4.21} 可知，\(\varphi\) 在两组新基下的表示矩阵为  
+    \[
+    Q^{-1}AP = 
+    \begin{pmatrix} 
+    I_r & O \\ 
+    O & O 
+    \end{pmatrix}.
+    \]
+\end{proof}
+
+\begin{example}
+    设 \(\varphi\) 是有限维线性空间 \(V\) 到 \(U\) 的线性映射，求证：必存在 \(U\) 到 \(V\) 的线性映射 \(\psi\)，使得 \(\varphi\psi\varphi = \varphi\)。
+\end{example}
+    
+\begin{proof}[证法 1（几何方法）]
+    设 \(V\) 和 \(U\) 的维数分别是 \(n\) 和 \(m\)。由例 \ref{ex4.22} 可知，存在 \(V\) 和 \(U\) 的基 \(\{e_1, e_2, \cdots, e_n\}, \{f_1, f_2, \cdots, f_m\}\)，使得 \(\varphi\) 在这两组基下的表示矩阵为
+    \[
+    \begin{pmatrix}
+    I_r & O \\
+    O & O
+    \end{pmatrix}.
+    \]
+    这就是 \(\varphi(e_i) = f_i, 1 \leq i \leq r; \varphi(e_j) = 0, r+1 \leq j \leq m\)。定义 \(\psi\) 是 \(U\) 到 \(V\) 的线性映射，它在基上的作用为
+    \[
+    \psi(f_i) = e_i, 1 \leq i \leq r; \quad \psi(f_j) = 0, r+1 \leq j \leq m,
+    \]
+    则在 \(V\) 的基上，有
+    \[
+    \varphi\psi\varphi(e_i) = \varphi\psi(f_i) = \varphi(e_i), \quad 1 \leq i \leq r;
+    \]
+    \[
+    \varphi\psi\varphi(e_j) = \varphi\psi(0) = 0 = \varphi(e_j), \quad r+1 \leq j \leq m.
+    \]
+    于是 \(\varphi\psi\varphi = \varphi\)。
+\end{proof}
+
+\begin{example}
+    设 \(\varphi\) 是线性空间 \(V\) 上的线性变换，若它在 \(V\) 的任一组基下的表示矩阵都相同，求证：\(\varphi\) 是纯量变换，即存在常数 \(k\)，使得 \(\varphi(\alpha) = k\alpha\) 对一切 \(\alpha \in V\) 都成立。
+\end{example}
+    
+\begin{proof}
+    取定 \(V\) 的一组基，设 \(\varphi\) 在这组基下的表示矩阵是 \(A\)。由已知条件可知，对任意一个同阶可逆矩阵 \(P\)，\(A = P^{-1}AP\)，即 \(PA = AP\)。因此矩阵 \(A\) 和任意一个可逆矩阵乘法可交换，于是 \(A = kI_n\)，由此即知 \(\varphi\) 是纯量变换。
+\end{proof}
+
+\begin{example}\label{ex3.93}
+    设 \( A \) 为 \( m \times n \) 矩阵，证明：存在 \( n \times m \) 矩阵 \( B \)，使得 \( ABA = A \)。
+\end{example}
+    
+\begin{proof}[证法 1]
+    设 \( PAQ = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} \)，其中 \( P \) 是 \( m \) 阶非异阵，\( Q \) 是 \( n \) 阶非异阵。注意到问题的条件和结论在相抵变换：\( A \mapsto PAQ \)，\( B \mapsto Q^{-1}BP^{-1} \) 下保持不变，故不妨从一开始就假设 \( A = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} \) 是相抵标准型。设 \( B = \begin{pmatrix} B_1 & B_2 \\ B_3 & B_4 \end{pmatrix} \) 为对应的分块，由 \( ABA = A \) 可得 \( B_1 = I_r \)，其余分块取法任意。
+\end{proof}
+
+\begin{example}
+    设 \(\varphi\) 是有限维线性空间 \(V\) 到 \(U\) 的线性映射，求证：必存在 \(U\) 到 \(V\) 的线性映射 \(\psi\)，使得 \(\varphi\psi\varphi = \varphi\)。
+\end{example}
+    
+\begin{proof}[证法 2（代数方法）] \par
+    取定 \(V\) 和 \(U\) 的两组基，设 \(\varphi\) 在这两组基下的表示矩阵为 \(m \times n\) 矩阵 \(A\)，则由例\ref{ex3.93}可知，存在 \(n \times m\) 矩阵 \(B\)，使得 \(ABA = A\)。由矩阵 \(B\) 可定义从 \(U\) 到 \(V\) 的线性映射 \(\psi\)，它适合 \(\varphi\psi\varphi = \varphi\)。
+\end{proof}
+
+\begin{example}
+    设 \( V_1, V_2 \) 是 \( V \) 上线性变换 \( \varphi \) 的不变子空间，求证：\( V_1 \cap V_2, V_1 + V_2 \) 也是 \( \varphi \) 的不变子空间。
+\end{example}
+    
+\begin{proof}
+    任取 \( v \in V_1 \cap V_2 \)，则由 \( v \in V_i \) 可得 \( \varphi(v) \in V_i \; (i = 1, 2) \)，于是 \( \varphi(v) \in V_1 \cap V_2 \)，从而 \( V_1 \cap V_2 \) 是 \( \varphi \) 的不变子空间。
+    
+    任取 \( v \in V_1 + V_2 \)，则 \( v = v_1 + v_2 \)，其中 \( v_i \in V_i \)，故 \( \varphi(v_i) \in V_i \; (i = 1, 2) \)，于是
+    \[
+    \varphi(v) = \varphi(v_1) + \varphi(v_2) \in V_1 + V_2,
+    \]
+    从而 \( V_1 + V_2 \) 是 \( \varphi \) 的不变子空间。
+\end{proof}
+
+\begin{example}
+    若$\lambda_1,\lambda_2,\cdots,\lambda_k$是线性变换$\mathcal{A}$的k个互不相同的特征值，而$\{\xi_{i1},\xi_{i2},\cdots,\xi_{ir_i}\} (i = 1 ,2,\cdots,k)$是属于特征值$\lambda_i$的线性无关的特征向量组。求证：向量组$\{\xi_{11},\xi_{12},\cdots,\xi_{1r_1},\cdots,\xi_{k1},\xi_{k2},\cdots,\xi_{kr_k}\}$也线性无关。
+\end{example}
+
+\begin{proof}
+    数学归纳法：当$k = 1$时，结论显然成立。假设当$k = m-1$时结论成立，现讨论$k = m$的情况。设有数$a_{ij} (1 \leq i \leq m, 1 \leq j \leq r_i)$使得
+\[a_{11}\xi_{11} + a_{12}\xi_{12} + \cdots + a_{1r_1}\xi_{1r_1} + \cdots + a_{m1}\xi_{m1} + a_{m2}\xi_{m2} + \cdots + a_{mr_m}\xi_{mr_m} = 0\]
+
+    上式两边同时作用$\mathcal{A}$，则有
+\[
+a_{11}\lambda_1\xi_{11} + a_{12}\lambda_1\xi_{12} + \cdots + a_{1r_1}\lambda_1\xi_{1r_1} + \cdots + a_{m1}\lambda_m\xi_{m1} + a_{m2}\lambda_m\xi_{m2} + \cdots + a_{mr_m}\lambda_m\xi_{mr_m} = 0
+\]
+
+    上式两边同时乘以$\lambda_m$，则有
+\[
+a_{11}\lambda_m\xi_{11} + a_{12}\lambda_m\xi_{12} + \cdots + a_{1r_1}\lambda_m\xi_{1r_1} + \cdots + a_{m1}\lambda_m\xi_{m1} + a_{m2}\lambda_m\xi_{m2} + \cdots + a_{mr_m}\lambda_m\xi_{mr_m} = 0
+\]
+    上式两边相减，得到
+
+\(
+a_{11}(\lambda_1 - \lambda_m)\xi_{11} + a_{12}(\lambda_1 - \lambda_m)\xi_{12} + \cdots + a_{1r_1}(\lambda_1 - \lambda_m)\xi_{1r_1} + \cdots + a_{m-1,1}(\lambda_{m-1} - \lambda_m)\xi_{m-1,1} +  a_{m-1,2}(\lambda_{m-1} - \lambda_m)\xi_{m-1,2} + \cdots + a_{m-1,r_{m-1}}(\lambda_{m-1} - \lambda_m)\xi_{m-1,r_{m-1}} = 0
+\)
+
+    由归纳假设可知，$a_{ij}(\lambda_i - \lambda_m) = 0$，由于$\lambda_i \neq \lambda_m$，故$a_{ij} = 0$，从而$a_{m1}\xi_{m1} + a_{m2}\xi_{m2} + \cdots + a_{mr_m}\xi_{mr_m} = 0$，又由于$\{\xi_{m1},\xi_{m2},\cdots,\xi_{mr_m}\}$线性无关，所以$a_{m1} = a_{m2} = \cdots = a_{mr_m} = 0$。
+    
+    因此$a_{ij} = 0(1 \leq i \leq m, 1 \leq j \leq r_i)$，结论成立。
+\end{proof}
+
+
+
+\begin{example}
+    用几何方法证明 Cayley-Hamilton定理：已知$\mathcal{A}  $是有限维线性空间V中的线性变换，\(f(\lambda)\) 是变换 \(\mathcal{A}\) 的特征多项式，则 \(f(\mathcal{A}) = 0\)。
+\end{example}
+
+\begin{proof}
+    要证明 \(f(\mathcal{A}) = 0\)，只要证明 \(f(\mathcal{A}) \xi = 0\) 对任意 \(\xi \in V\) 都成立即可。 \par
+    任取 $\xi  \in V$ 若$\xi = 0$ ，则$f(\mathcal{A}) \xi = 0$ 显然成立。 \par
+    若$\xi \neq 0$ ，考虑$\mathcal{A}\xi$,若$\xi$与$\mathcal{A}\xi$ 线性相关，则停止，令$W = L(\xi)$，否则继续考虑$\mathcal{A}^2\xi$，若$\{\xi,\mathcal{A}\xi,\mathcal{A}^2\xi\}$ 线性相关，则停止，令$W = L(\xi,\mathcal{A}\xi)$，否则继续讨论下去。由于V是有限维线性空间，$dim V = n < \infty$，V中$k >n$个向量必定线性相关，上述讨论过程一定可以停止，所以不妨设存在正整数$m$使得$\{\xi,\mathcal{A}\xi,\cdots,\mathcal{A}^{m-1}\xi\}$ 线性无关，而$\{\xi,\mathcal{A}\xi,\cdots,\mathcal{A}^m\xi\}$ 线性相关。 \par
+    所以$\mathcal{A}^m\xi$可由线性无关的向量组$\{\xi,\mathcal{A}\xi,\cdots,\mathcal{A}^{m-1}\xi\}$ 线性表示，即存在数 $a_0, a_1, \cdots, a_{m-1}$ 使得
+\[
+\mathcal{A}^m\xi = a_0 \xi + a_1 \mathcal{A} \xi + \cdots + a_{m-1} \mathcal{A}^{m-1} \xi.
+\]
+    令$W = L(\xi,\mathcal{A}\xi,\cdots,\mathcal{A}^{m-1}\xi)$，则W为不变子空间。将W中的一组基$\{\xi,\mathcal{A}\xi,\cdots,\mathcal{A}^{m-1}\xi\}$，扩张成V中的一组基$\{\xi,\mathcal{A}\xi,\cdots,\mathcal{A}^{m-1}\xi,v_{m+1},\cdots,v_{n}\}$则$\mathcal{A}$在这组基下的表示矩阵为
+\[
+\begin{pmatrix}
+A_{11} & A_{12} \\
+O & A_{22}
+\end{pmatrix}
+\]
+其中$A_{11}$为线性变换$\mathcal{A}$限制在W上的表示矩阵。且
+\[
+A_{11} = \begin{pmatrix}
+0 & 0 & \cdots & 0 & a_0 \\
+1 & 0 & \cdots & 0 & a_1 \\
+0 & 1 & \cdots & 0 & a_2 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \cdots & 1 & a_{m-1}
+\end{pmatrix}
+\]
+
+\[
+f(\lambda) = \begin{vmatrix}
+\lambda I_n - \begin{pmatrix}
+A_{11} & A_{12} \\
+O & A_{22}
+\end{pmatrix}
+\end{vmatrix} = \begin{vmatrix}
+\lambda I_m - A_{11} & -A_{12} \\
+O & \lambda I_{n-m} - A_{22}
+\end{vmatrix} = \begin{vmatrix}
+\lambda I_m - A_{11}
+\end{vmatrix} \begin{vmatrix}
+\lambda I_{n-m} - A_{22}
+\end{vmatrix}
+\]
+令$g(\lambda) = \begin{vmatrix}
+    \lambda I_m - A_{11}
+    \end{vmatrix}$，
+$h(\lambda) =  \begin{vmatrix}
+    \lambda I_{n-m} - A_{22}
+    \end{vmatrix}$
+
+\[
+g(\lambda) = \begin{vmatrix}
+\lambda & 0 & \cdots & 0 & -a_0 \\
+-1 & \lambda & \cdots & 0 & -a_1 \\
+0 & -1 & \cdots & 0 & -a_2 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \cdots & -1 & \lambda-a_{m-1}
+\end{vmatrix} = \lambda^m - a_{m-1} \lambda^{m-1} - \cdots - a_1 \lambda - a_0
+\]
+
+   从而$g(\mathcal{A}) \xi = \mathcal{A}^m\xi - a_{m-1} \mathcal{A}^{m-1}\xi - \cdots - a_1 \mathcal{A}\xi - a_0 \xi = 0 $ (利用的是$\mathcal{A}^m\xi$的线性表示)
+
+   由于同一变换的多项式具有可交换性，故
+\[
+f(\mathcal{A}) \xi = g(\mathcal{A}) h(\mathcal{A}) \xi = h(\mathcal{A}) g(\mathcal{A}) \xi  = h(\mathcal{A})0 = 0.
+\]
+    因此 $f(\mathcal{A}) = 0$。
+
+\end{proof}
+
+\begin{example}\label{ex6.1.2}
+    设 \( A \) 是 \( n \) 阶复方阵，证明：存在 \( n \) 阶非异阵 \( P \)，使得 \( P^{-1}AP \) 是一个上三角阵。
+\end{example}
+
+\begin{proof}
+    设 \( A \) 是 \( n \) 阶复方阵，现对 \( n \) 用数学归纳法。当 \( n = 1 \) 时结论显然成立。假设对 \( n - 1 \) 阶矩阵结论成立，现对 \( n \) 阶矩阵 \( A \) 来证明。设 \( \lambda_1 \) 是 \( A \) 的一个特征值，则存在非零列向量 \( \alpha_1 \)，使
+    \[
+    A\alpha_1 = \lambda_1 \alpha_1.
+    \]
+    将 \( \alpha_1 \) 作为 \( \mathbb{C}^n \) 的一个基向量，并扩展为 \( \mathbb{C}^n \) 的一组基 \( \{ \alpha_1, \alpha_2, \cdots, \alpha_n \} \)。将这些基向量按照列分块方式拼成矩阵 \( P = (\alpha_1, \alpha_2, \cdots, \alpha_n) \)，则 \( P \) 为 \( n \) 阶非异阵，且
+    \[
+    AP = A(\alpha_1, \alpha_2, \cdots, \alpha_n) = (A\alpha_1, A\alpha_2, \cdots, A\alpha_n)
+    = (\alpha_1, \alpha_2, \cdots, \alpha_n)
+    \begin{pmatrix}
+    \lambda_1 & * \\
+    0 & A_1
+    \end{pmatrix},
+    \]
+    其中 \( A_1 \) 是一个 \( n - 1 \) 阶方阵。注意到 \( P = (\alpha_1, \alpha_2, \cdots, \alpha_n) \) 非异，上式即为
+    \[
+    P^{-1}AP = 
+    \begin{pmatrix}
+    \lambda_1 & * \\
+    0 & A_1
+    \end{pmatrix}.
+    \]
+    因为 \( A_1 \) 是一个 \( n - 1 \) 阶方阵，所以由归纳假设可知，存在 \( n - 1 \) 阶非异阵 \( Q \)，使 \( Q^{-1}A_1Q \) 是一个上三角阵。令
+    \[
+    R = 
+    \begin{pmatrix}
+    1 & O \\
+    O & Q
+    \end{pmatrix},
+    \]
+    则 \( R \) 是 \( n \) 阶非异阵，且
+    \[
+    \begin{aligned}
+    R^{-1}P^{-1}APR &=
+    \begin{pmatrix}
+    1 & O \\
+    O & Q
+    \end{pmatrix}^{-1}
+    \begin{pmatrix}
+    \lambda_1 & * \\
+    0 & A_1
+    \end{pmatrix}
+    \begin{pmatrix}
+    1 & O \\
+    O & Q
+    \end{pmatrix} \\
+    &=
+    \begin{pmatrix}
+    1 & O \\
+    O & Q^{-1}
+    \end{pmatrix}
+    \begin{pmatrix}
+    \lambda_1 & * \\
+    0 & A_1
+    \end{pmatrix}
+    \begin{pmatrix}
+    1 & O \\
+    O & Q
+    \end{pmatrix} \\
+    &=
+    \begin{pmatrix}
+    \lambda_1 & * \\
+    O & Q^{-1}A_1Q
+    \end{pmatrix}.
+    \end{aligned}
+    \]
+    这是一个上三角阵，它与 \( A \) 相似。
+\end{proof}
+
+\begin{example}
+    用相似变换代数方法证明Cayley-Hamilton 定理：设 \( A \) 是数域 \( K \) 上的 \( n \) 阶矩阵，\( f(x) \) 是 \( A \) 的特征多项式，证明：\( f(A) = O \)。
+\end{example}
+
+\begin{proof}
+    由例 \ref{ex6.1.2} 知 \( A \) 复相似于一个上三角阵，也就是说存在可逆阵 \( P \)，使
+    \[
+    P^{-1}AP = B
+    \]
+    是一个上三角阵，其中 \( P \) 与 \( B \) 都是复矩阵，但 \( A \) 与 \( B \) 有相同的特征多项式 \( f(x) \)。记
+    \[
+    f(x) = x^n + a_1x^{n-1} + \cdots + a_n,
+    \]
+    则 \( f(B) = O \)。而
+    \[
+\begin{aligned}
+    f(A) &= A^n + a_1A^{n-1} + \cdots + a_nI_n \\
+    &= (PBP^{-1})^n + a_1(PBP^{-1})^{n-1} + \cdots + a_nI_n \\
+    &= PB^nP^{-1} + a_1PB^{n-1}P^{-1} + \cdots + a_nI_n \\
+    &= P(B^n + a_1B^{n-1} + \cdots + a_nI_n)P^{-1} \\
+    &= Pf(B)P^{-1} = O.
+\end{aligned}
+    \]
+\end{proof}
+
+\begin{example}\label{ex6.7}
+    设 \( n \) 阶矩阵 \( A \) 的全体特征值为 \( \lambda_1, \lambda_2, \cdots, \lambda_n \)，\( f(x) \) 是一个多项式，求证：\( f(A) \) 的全体特征值为 \( f(\lambda_1), f(\lambda_2), \cdots, f(\lambda_n) \)。
+\end{example}
+    
+\begin{proof}
+    因为任一 \( n \) 阶矩阵均复相似于上三角矩阵，故可设
+    \[
+    P^{-1}AP = 
+    \begin{pmatrix}
+    \lambda_1 & * & * \\
+    0 & \lambda_2 & * \\
+    \vdots & \vdots & \ddots \\
+    0 & 0 & \cdots & \lambda_n
+    \end{pmatrix}.
+    \]
+    注意到上三角矩阵的和、数乘及乘方仍是上三角矩阵，经计算可得
+    \[
+    P^{-1}f(A)P = f(P^{-1}AP) =
+    \begin{pmatrix}
+    f(\lambda_1) & * & * \\
+    0 & f(\lambda_2) & * \\
+    \vdots & \vdots & \ddots \\
+    0 & 0 & \cdots & f(\lambda_n)
+    \end{pmatrix},
+    \]
+    因此 \( f(A) \) 的全体特征值为 \( f(\lambda_1), f(\lambda_2), \cdots, f(\lambda_n) \)。
+\end{proof}
+    
+\begin{remark}
+    例 \ref{ex6.7} 告诉我们：如果能将一个复杂矩阵写成一个简单矩阵的多项式，那么就可由简单矩阵的特征值得到复杂矩阵的特征值。
+\end{remark}
+
+\begin{example}
+    设 \( n \) 阶矩阵 \( A \) 适合一个多项式 \( g(x) \)，即 \( g(A) = O \)。求证：\( A \) 的特征值 \( \lambda_0 \) 也适合 \( g(x) \)，即 \( g(\lambda_0) = 0 \)。
+\end{example}
+    
+\begin{proof}
+    由例 \ref{ex6.7}可知，\( g(\lambda_0) \) 是 \( g(A) = O \) 的特征值，从而 \( g(\lambda_0) = 0 \)。
+\end{proof}
+
+
+\begin{example}
+    
+\end{example}
+
+\begin{proof}
+    
+\end{proof}
+
+
+
+% \nocite{*}
+% \printbibliography[heading=bibintoc, title=\ebibname]
+% \appendix
+% \chapter{基本数学工具}
+% 本附录包括了计量经济学中用到的一些基本数学，我们扼要论述了求和算子的各种性质，研究了线性和某些非线性方程的性质，并复习了比例和百分数。我们还介绍了一些在应用计量经济学中常见的特殊函数，包括二次函数和自然对数，前 4 节只要求基本的代数技巧，第 5 节则对微分学进行了简要回顾；虽然要理解本书的大部分内容，微积分并非必需，但在一些章末附录和第 3 篇某些高深专题中，我们还是用到了微积分。
+
+% \section{求和算子与描述统计量}
+
+% \textbf{求和算子} 是用以表达多个数求和运算的一个缩略符号，它在统计学和计量经济学分析中扮演着重要作用。如果 $\{x_i: i=1, 2, \ldots, n\}$ 表示 $n$ 个数的一个序列，那么我们就把这 $n$ 个数的和写为：
+
+% \begin{equation}
+% \sum_{i=1}^n x_i \equiv x_1 + x_2 +\cdots + x_n
+% \end{equation}
+
+\end{document}

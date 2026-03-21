@@ -1,0 +1,2641 @@
+\documentclass[lang=cn,12pt]{elegantbook}
+
+\title{数分高代习题课讲义}
+\subtitle{大一年级上学期}
+
+\author{忘记了一天}
+\institute{XTU\_data\_2}
+\date{match 19, 2026}
+% \version{4.3}
+% \bioinfo{自定义}{信息}
+
+\extrainfo{世界上只有一种真正的英雄主义，那就是在认清生活真相之后依然热爱生活。}
+
+\setcounter{tocdepth}{3}
+
+\logo{XTU_logo_1.jpg}
+\cover{101.jpg}
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+\definecolor{customcolor}{RGB}{90, 143, 132}
+\colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+% \chapter*{综述}
+% \markboth{Introduction}{Introduction}
+
+
+\chapter{第一次习题课}
+
+\section{集合}
+集合的势的讲解，集合的上极限和下极限，可数交集合与可数并集合的意义
+
+\section{数列极限的定义}
+数列$\{a_n\}$收敛于$a$的课本定义如下
+\begin{definition}
+   \[ \forall \varepsilon>0,\;\exists N\in N_+ ,\; \text{当}n>N \text{时}, \;\text{成立}|a_n-a| < \varepsilon\]
+   \begin{center}
+       记为$lim_{n \to \infty} a_n = a$
+   \end{center}
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+    \item $\forall \text{和} \exists $位置不能有任何颠倒，因为$N$是和$\varepsilon$有关的.    \item 以上其实证明了$\{a_n-a\}$是一个无穷小量，常记为$o(1)$，比如$\frac{1}{n}=o(1)$.    \item 数列$\{a_n\}$以$a$为极限的几何意义：对$a$的每个领域，在$\{a_n\}$中最多只有有限项落在这个领域之外，其余项均落在这个领域内.
+    \item 数列可以看成是已正整数集$N_+$为定义域的函数.数列的极限是自变量$n$趋于无穷大时因变量值的一种趋势.
+    \end{enumerate}
+\end{remark}
+由对偶法则，我们容易得出数列不收敛于$a$的定义
+\begin{definition}
+   \[ \exists \varepsilon_0>0,\;\forall N\in N_+ ,\; \exists n>N \text{时}, \;\text{成立}|a_n-a| \geq \varepsilon_0\]
+   \begin{center}
+       记为$lim_{n \to \infty} a_n \neq a$
+   \end{center}
+\end{definition}
+% \begin{equation}
+%     \forall \epsilon >0, \;\text{存在正整数}N,\;\text{使得对满足条件}n>N \text{的每个正整数}n,\; \text{成立}|a_n-a| < \epsilon
+% \end{equation}
+\begin{note}
+    此外，数列极限定义还有如下几种等价的表达方式：
+\begin{enumerate}
+    \item 数列$\{a_n\}$收敛于$a$$\Longleftrightarrow \forall \varepsilon>0,\;\exists N\in N_+ ,\; \text{当}n\geq N \text{时}, \;\text{成立}|a_n-a| < \varepsilon$
+    \item 数列$\{a_n\}$收敛于$a$$\Longleftrightarrow \forall m \in N_+,\;\exists N\in N_+ ,\; \text{当}n> N \text{时}, \;\text{成立}|a_n-a| < \frac{1}{m}$
+    \item 数列$\{a_n\}$收敛于$a$$\Longleftrightarrow \forall \varepsilon>0,\;\exists N\in N_+ ,\; \text{当}n> N \text{时}, \;\text{成立}|a_n-a| < K\varepsilon$ ，其中$K$是一个与$\varepsilon$和$n$无关的正常数.
+\end{enumerate}
+\end{note}
+
+\section{补充定理和命题}
+
+\begin{theorem}{Cauchy不等式}{label}
+    设$a_1,a_2,\cdots,a_n,b_1,b_2,\cdots,b_n$为两组实数,则
+    \[
+    \left\lvert \sum_{i = 1}^na_ib_i\right\rvert \leq \sqrt{\sum_{i = 1}^n a_i^2} \sqrt{\sum_{i = 1}^n b_i^2}
+    \]
+    当且仅当以下条件成立时取等：
+    \[
+    \frac{a_1}{b_1} = \frac{a_2}{b_2} = \cdots = \frac{a_n}{b_n}
+    \]
+\end{theorem}
+
+\begin{theorem}{单调有界收敛定理}{label}
+    单调有界数列必定收敛。
+\end{theorem}
+
+\begin{definition}{闭区间套}
+设有一列闭区间 $\{[a_n, b_n]\}_{n=1}^{\infty}$ 满足：
+\begin{enumerate}
+    \item $[a_{n+1}, b_{n+1}] \subset [a_n, b_n], \quad n=1,2,3,\ldots$（即后一个区间包含于前一个区间）
+    \item $\lim_{n \to \infty} (b_n - a_n) = 0$（即区间长度趋于零）
+\end{enumerate}
+则称这列闭区间形成一个闭区间套序列。
+\end{definition}
+
+\begin{theorem}{闭区间套定理}{label}
+设$\{[a_n, b_n]\}_{n=1}^{\infty}$ 是一个闭区间套序列，则存在唯一的实数 $\xi$，使得
+\[
+\xi \in \bigcap_{n=1}^{\infty} [a_n, b_n],
+\]
+即 $\xi$ 属于所有闭区间 $[a_n, b_n]$，且
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \xi.
+\]
+\end{theorem}
+
+\section{习题讲解}
+
+\begin{example}
+    证明：任意无限集必定包含一个可列子集.
+\end{example}
+\begin{proof}
+    用数学归纳法证明，依次取出一个可列集即可.
+\end{proof}
+
+\begin{example}
+    证明：闭区间套定理.
+\end{example}
+
+\begin{proof}
+    先证单调有界收敛定理，再证明闭区间套定理.
+\end{proof}
+
+\begin{example}
+    证明：实数集$\mathbf{R} $是一个不可列集.
+\end{example}
+\begin{proof}
+    由 $(0,1) \subset [0,1] \subset \mathbb{R}$ 且 $(0,1) \sim \mathbb{R}$，只需证明 $[0,1]$ 是不可数集合。反证法：$[0,1]$ 是可数集合，则 $[0,1]$ 上的全体点排成一列：
+
+\[x_1, x_2, \ldots, x_n, \ldots (\ast)\]
+
+将 $[0,1]$ 三等分，则显然 $[0,1/3]$ 与 $[2/3,1]$ 中至少有一个不含有 $x_1$ 的闭区间，记为 $I_1$，则 $x_1 \notin I_1$；再将 $I_1$ 三等分，则它的左右两个闭区间中至少有一个不含有 $x_2$，记为 $I_2$，则 $x_2 \notin I_2$。依次类推，得到闭区间序列 $\{I_n\}_{n=1}^\infty$ 满足条件：
+
+\begin{enumerate}
+    \item[(1)] $I_1 \supset I_2 \supset \cdots \supset I_n \supset \cdots$
+    \item[(2)] $|I_n| = \frac{1}{3^n},\ x_n \notin I_n,\ (n = 1, 2, \ldots)$
+\end{enumerate}
+
+由区间套定理，存在唯一点 $\xi \in I_n$，$n = 1, 2, \cdots$。
+由 $x_n \notin I_n$ 对任意的 $n$ 成立，故 $\xi$ 不可能是某一 $x_n$。
+（若 $\xi$ 是某一 $x_n$，则 $x_n \in I_n$ 且 $x_n \notin I_n$，矛盾。）
+而 $\xi \in [0, 1]$，这与 $(\ast)$ 是 $[0, 1]$ 上全体点排列矛盾。
+所以 $[0, 1]$ 不是可数集。从而实数集$\mathbf{R} $是一个不可列集。
+\end{proof}
+
+\begin{example}
+    证明：有界数集的上、下确界惟一.
+\end{example}
+\begin{proof}
+    设$sup S$ 既等于 $A$，又等于$B$ ，且 $A < B$。取 $\varepsilon = \frac{B-A}{2}>0$，因为$B $为集合$S $的上确界，所以存在$ x \in S$ ，使得$ x > B - \varepsilon > A$，这与 A为集合的上确界矛盾，所以$ A = B$ ，即有界数集的上确界唯一。同理可证有界数集的下确界唯一。
+\end{proof}
+
+\begin{example}
+    证明：$$\lim_{n \to \infty}   0.\underbrace{999\cdots9}_n = 1$$
+\end{example}
+\begin{proof}
+    用极限定义，取$N = \lfloor\ln{\frac{1}{\varepsilon}} \rfloor $
+\end{proof}
+
+\begin{example}
+    证明：$$\lim_{n \to \infty}   \sqrt[n]{n} = 1$$
+\end{example}
+\begin{proof}
+    法1：基本不等式
+    
+    法2：二项式展开
+\end{proof}
+
+\begin{example}
+    证明：$$\lim_{n \to \infty} \frac{n^5}{2^n} = 0$$
+\end{example}
+
+\begin{proof}
+    利用$2^n = (1 + 1)^n = 1 + \binom{n}{1} + \binom{n}{2} + \cdots + \binom{n}{n}$,在$n > 6$时有 \par
+    \(2^n > \binom{n}{6}\)，因此可以放大如下：
+
+\[
+\frac{n^5}{2^n} < \frac{n^5 \cdot 6!}{n(n-1)(n-2)(n-3)(n-4)(n-5)} < \frac{n^4 \cdot 6!}{(n-5)^5}
+\]
+
+然后在 \( n > 10 \) 时，将上述右端表达式中的分母 \((n-5)^5\) 用较小的 \((n/2)^5\) 代替，进一步放大为
+
+\[
+\frac{n^5}{2^n} < \frac{n^4 \cdot 6! \cdot 2^5}{n^5} < \frac{10^5}{n}
+\]
+
+可以看出，为了使最后一个表达式小于 \(\varepsilon\)，只要取 \(N = \max\{10, \lceil 10^5/\varepsilon \rceil\}\)。
+\end{proof}
+
+\begin{example}
+    证明：$$\lim_{n \to \infty} \frac{n!}{n^n} = 0$$
+\end{example}
+\begin{proof}
+    记 \(\frac{n}{2}\) 的整数部分为 \(m\)，则有  
+\[
+\frac{n!}{n^n} < \left( \frac{1}{2} \right)^m 。\quad \forall \varepsilon (0 < \varepsilon < 1)，
+\]
+
+取  
+\[
+N = 2 \left\lfloor \frac{\lg \varepsilon}{\lg \frac{1}{2}} \right\rfloor + 4，
+\]
+当 \(n > N\) 时，有  
+\[
+m > \frac{N}{2} - 1 > \frac{\lg \varepsilon}{\lg \frac{1}{2}}，
+\]
+于是成立  
+
+\[
+0 < \frac{n!}{n^n} < \left( \frac{1}{2} \right)^m < \varepsilon 。
+\]
+\end{proof}
+
+
+\begin{example}
+    用极限定义证明：\[
+    \lim_{n \to \infty} (1+n)^{\frac{1}{n}} = 1
+\]
+\end{example}
+\begin{proof}
+    取$\sqrt[n]{2n}$ 和$\frac{1}{n}$
+\end{proof}
+
+
+\begin{example}
+    设$\{a_n\}$单调增加，$\{b_n\}$单调减少，且有$\lim_{n \to \infty} (a_n-b_n)= 0$. 证明：数列$\{a_n\}$和$\{b_n\}$都收敛，且极限相同.
+\end{example}
+
+\begin{proof}
+    用闭区间套定理即得
+\end{proof}
+
+\begin{example}
+    用极限夹逼定理求数列$\{a_n\}$的极限，其中\[
+    a_n = \frac{1!+ 2! +\cdots+ n!}{n!},n\in N_+
+    \]
+\end{example}
+\begin{solution}
+    将分子(设$n > 2$)中的前$n-2$项适当放大，就有如下估计
+    \[
+    1!+2!+\cdots+n! \leq (n-2)(n-2)! + (n-1)! + n! < 2(n-1)! + n!
+    \]
+    因此在$n > 2$时，有
+    \[
+    1 < \frac{1!+2!+\cdots+n!}{n!} < \frac{2}{n} + 1
+    \]
+\end{solution}
+
+\begin{example}
+    证明：$\{a_n\}$收敛的充分必要条件是$\{a_{2k}\}$和$\{a_{2k-1}\}$收敛于同一极限.
+\end{example}
+\begin{proof}
+    用极限定义，分别取$N_1$和$N_2$，对$a_n$数列取两者的较大者即可.
+\end{proof}
+
+\begin{example}
+    证明：Cauchy命题.
+\end{example}
+\begin{note}
+    分$ \lim_{n \to \infty}a_n = l,\,+\infty,\,-\infty $三种情况证明.
+\end{note}
+\begin{proof}
+    对极限为$l$的情况，根据条件 \(\lim_{n \to \infty} x_n = l\)，可以对给定的 \(\varepsilon > 0\) 取定 \(N\)，使得当 \(n > N\) 时成立 \(|x_n - l| < \varepsilon\)。然后可估计如下（其中 \(n > N\)）：
+
+\[
+\left| \frac{x_1 + x_2 + \cdots + x_n}{n} - l \right| = \left| \frac{(x_1 - l) + (x_2 - l) + \cdots + (x_n - l)}{n} \right| 
+\]
+\[
+\leq \left| \frac{(x_1 - l) + \cdots + (x_N - l)}{n} \right| + \left| \frac{(x_{N+1} - l) + \cdots + (x_n - l)}{n} \right|
+\]
+\[
+\leq \frac{|x_1 - l| + \cdots + |x_N - l|}{n} + \frac{|x_{N+1} - l| + \cdots + |x_n - l|}{n}
+< \frac{M}{n} + \frac{n - N}{n} \varepsilon,
+\]
+
+这里的 \(M = |x_1 - l| + \cdots + |x_N - l|\) 是一个确定的数。由此可见，只要取
+
+\[
+N_1 = \max \left\{ N, \left\lfloor \frac{M}{\varepsilon} \right\rfloor \right\},
+\]
+
+就保证当 \(n > N_1\) 时成立不等式
+
+\[
+\left| \frac{x_1 + x_2 + \cdots + x_n}{n} - l \right| < 2 \varepsilon.
+\]
+\end{proof}
+
+\begin{example}
+    设$\{a_n\}$为正数列，且收敛于$A$，证明：$ \lim_{n \to \infty}(a_1a_2\cdots a_n)^{\frac{1}{n}} = A$
+\end{example}
+
+\begin{proof}
+     若 \( A = 0 \)，则有
+\[
+0 \leq (a_1 a_2 \cdots a_n)^{1/n} \leq \frac{a_1 + a_2 + \cdots + a_n}{n}
+\]
+已知
+\[
+\lim_{n \to \infty} \frac{a_1 + a_2 + \cdots + a_n}{n} = \lim_{n \to \infty} a_n = A
+\]
+所以由夹逼定理，有
+\[
+\lim_{n \to \infty} (a_1 a_2 \cdots a_n)^{1/n} = 0 = A.
+\]
+若 \( A \neq 0 \)，则对任意 \( 0 < \varepsilon < A \)，存在 \( N \in \mathbb{N}^* \)，使凡是 \( n > N \)，都有
+\[
+A - \frac{\varepsilon}{2} < a_n < A + \frac{\varepsilon}{2}
+\]
+则对 \((a_1 a_2 \cdots a_n)^{1/n}\) 进行放缩，有
+\[
+(a_1 a_2 \cdots a_N)^{1/n} \left( A - \frac{\varepsilon}{2} \right)^{(n-N)/n} \leq (a_1 a_2 \cdots a_n)^{1/n} \leq \frac{a_1 + a_2 + \cdots + a_n}{n}
+\]
+可知左侧极限为 \( A - \varepsilon / 2 \)，右侧极限为 \( A \)，故存在 \( N_0 \in \mathbb{N}^* \)，使得当 \( n > N_0 \) 时
+\[
+(a_1 a_2 \cdots a_N)^{1/n} \left( A - \frac{\varepsilon}{2} \right)^{(n-N)/n} > A - \frac{\varepsilon}{2} - \frac{\varepsilon}{2} = A - \varepsilon
+\]
+\[
+\frac{a_1 + a_2 + \cdots + a_n}{n} < A + \varepsilon
+\]
+故取 \( N' = \max(N, N_0) \)，则当 \( n > N' \) 时，有
+\[
+A - \varepsilon < (a_1 a_2 \cdots a_n)^{1/n} < A + \varepsilon
+\]
+这就说明了 \((a_1 a_2 \cdots a_n)^{1/n} \to A(n \to \infty)\).
+\end{proof}
+
+\begin{example}
+    证明：若$a_n>0\;(n= 1,2,\cdots)$，且$\lim_{n \to \infty}\frac{a_{n+1}}{a_n} = a$，则$\lim_{n \to \infty} \sqrt[n]{a_n} = a$
+\end{example}
+
+\begin{proof}
+    令 \( a_0 = 1 \)，记 \( b_n = a_n / a_{n-1} (n = 1, 2, 3, \ldots) \)，则有
+\[
+\lim_{n \to \infty} b_n = a,
+\]
+则
+\[
+\lim_{n \to \infty} \sqrt[n]{a_n} = \lim_{n \to \infty} (b_1 b_2 \cdots b_n)^{1/n} = \lim_{n \to \infty} b_n = a.
+\]
+\end{proof}
+
+\begin{example}
+    证明：Stolz定理.
+\end{example}
+\begin{note}
+    分为$\frac{0}{0}$和$\frac{*}{\infty}$两个情况证明.
+\end{note}
+\begin{proof}
+    只对有限的 \( l \) 作证明。根据条件对 \(\varepsilon > 0\) 存在 \( N \)，使得当 \( n > N \) 时成立
+\[
+\left| \frac{b_n - b_{n+1}}{a_n - a_{n+1}} - l \right| < \varepsilon.
+\]
+由于对每个 \( n \) 都有 \( a_n > a_{n+1} \)，这样就有
+\[
+(l - \varepsilon)(a_n - a_{n+1}) < b_n - b_{n+1} < (l + \varepsilon)(a_n - a_{n+1}).
+\]
+任取 \( m > n \)，并且将上述不等式中的 \( n \) 换成 \( n + 1, \cdots \)，直到 \( m - 1 \)，然后将所有这些不等式相加，就得到
+\[
+(l - \varepsilon)(a_n - a_m) < b_n - b_m < (l + \varepsilon)(a_n - a_m),
+\]
+即
+\[
+\left| \frac{b_n - b_m}{a_n - a_m} - l \right| < \varepsilon.
+\]
+令 \( m \to \infty \)，并利用条件 
+\[
+\lim_{m \to \infty} a_m = \lim_{m \to \infty} b_m = 0,
+\]
+就知道当 \( n > N \) 时成立
+\[
+\left| \frac{b_n}{a_n} - l \right| \leq \varepsilon.
+\]
+\end{proof}
+
+\begin{remark}
+     严格限制Stolz定理使用,使用时检查是否符合使用条件，举出Stolz定理失效的几种情况.
+\end{remark}
+
+\begin{example}
+    若$lim_{n \to \infty} (a_n-a_{n-1})= d$,证明：\[
+    lim_{n \to \infty} \frac{a_n}{n} = d.
+    \]
+\end{example}
+\begin{proof}
+    用Stolz定理.
+\end{proof}
+
+\begin{example}
+    使用Stolz定理重新做例题2.
+\end{example}
+
+\begin{example}
+    证明：\[
+    \lim_{n \to \infty} \frac{n}{\sqrt[n]{n!}} = e
+    \]
+\end{example}
+\begin{proof}
+    法一: 将 \(\frac{n}{\sqrt[n]{n!}}\) 取对数，则只需证明其极限等于1。经整理后得到
+\[
+\ln \frac{n}{\sqrt[n]{n!}} = \frac{n \ln n - (\ln 2 + \ln 3 + \cdots + \ln n)}{n} = \frac{b_n}{n}
+\]
+用 Cauchy 命题即知（也就是 2.4.3 小节的题 4）：
+\[
+\lim_{n \to \infty} (b_{n+1} - b_n) = l \implies \lim_{n \to \infty} \frac{b_n}{n} = l,
+\]
+计算得到 \(b_{n+1} - b_n = n \ln \left( 1 + \frac{1}{n} \right) = \ln \left( 1 + \frac{1}{n} \right)^n\)，可见极限为 1。
+
+\bigskip
+
+法二： 将 \(\frac{n}{\sqrt[n]{n!}}\) 改写为 \(\sqrt[n]{\frac{n^n}{n!}}\)，就可以用 例题2.15 中的方法来做。这时记 \(a_n = \frac{n^n}{n!}\)，因此只需计算后项与前项之比的极限：
+\[
+\lim_{n \to \infty} \frac{a_{n+1}}{a_n} = \lim_{n \to \infty} \frac{(n+1)^{n+1}}{(n+1)!} \cdot \frac{n!}{n^n} = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n = e.
+\]
+\end{proof}
+
+\begin{example}
+    已知$\lim_{n \to \infty} a_n = a$，$\lim_{n \to \infty} b_n = b$，证明：
+\[
+\lim_{n \to \infty} \frac{a_1b_n + a_2b_{n-1}+ \cdots + a_nb_1}{n} = ab
+\]
+\end{example}
+
+\begin{proof}
+    先对要求的式子做一下处理：
+
+\[
+0 \leq \left| \frac{a_1b_n + a_2b_{n-1} + \cdots + a_nb_1}{n} - ab \right|
+\]
+
+\[
+\leq \left| \frac{a_1b_n + a_2b_{n-1} + \cdots + a_nb_1}{n} - a \cdot \frac{b_1 + b_2 + \cdots + b_n}{n} \right|
++ \left| a \cdot \frac{b_1 + b_2 + \cdots + b_n}{n} - ab \right| \tag{*}
+\]
+
+我们知道 \(\lim_{n \to \infty} \left( \frac{b_1 + b_2 + \cdots + b_n}{n} - b \right) = 0\)，则
+
+\[
+\lim_{n \to \infty} \left| a \cdot \frac{b_1 + b_2 + \cdots + b_n}{n} - ab \right| = 0
+\]
+
+再考虑不等式 (*) 最后一部分加号前的一项，记为 \( c_n \)，因为数列 \(\{b_n\}\) 收敛，故 \(\{b_n\}\) 有界，即存在 \( M \geq 0 \)，使得 \( |b_n| \leq M \)，则
+
+\[
+c_n = \frac{|b_1(a_n - a) + b_2(a_{n-1} - a) + \cdots + b_n(a_1 - a)|}{n}
+\]
+
+\[
+\leq M \cdot \frac{|a_n - a| + |a_{n-1} - a| + \cdots + |a_1 - a|}{n}
+\]
+
+因为 \(\{a_n - a\}\) 为无穷小，则可知 \(\{|a_n - a|\}\) 为无穷小，即
+
+\[
+\lim_{n \to \infty} \frac{|a_n - a| + |a_{n-1} - a| + \cdots + |a_1 - a|}{n} = 0
+\]
+
+若 \( b_n \to 0 \) (当 \( n \to \infty \)), 则对不等式 (*) 使用夹逼定理可知$\left| \frac{a_1b_n + a_2b_{n-1} + \cdots + a_nb_1}{n} - ab \right|$是无穷小, 得证。
+
+
+
+\end{proof}
+
+\begin{example}
+    设数列$\{a_n\}$满足\[\lim_{n \to \infty}\frac{a_1+a_2+\cdots +a_n}{n}=a(-\infty<a<\infty)\] \par 证明：\[\lim_{n \to \infty}\frac{a_n}{n}=0\]
+\end{example}
+\begin{proof}
+     由  
+\[
+\frac{a_n}{n} = \frac{a_1 + \cdots + a_n}{n} - \frac{n-1}{n} \cdot \frac{a_1 + \cdots + a_{n-1}}{n-1}
+\]  
+
+可得  
+\[
+\lim_{n \to +\infty} \frac{a_n}{n} = \lim_{n \to \infty} \frac{a_1 + \cdots + a_n}{n} - \lim_{n \to +\infty} \frac{a_1 + \cdots + a_{n-1}}{n-1} = 0
+\]
+
+\end{proof}
+
+\begin{example}
+    将多项式$x^n-1$在复数范围内因式分解
+\end{example}
+
+\begin{solution}
+    使用复数表示
+\end{solution}
+\chapter{第二次习题课}
+
+\section{习题讲解}
+
+\begin{example}
+设 \( f(x)=x^3+(1+k)x^2+2x+2l \) 与 \( g(x)=x^3+kx^2+l \) 的最大公因式是一个二次多项式，求 \( k,l \) 的值。
+\end{example}
+
+\begin{proof}
+（方法1）令 \( d(x)=(f(x),g(x)) \)，\( h(x)=f(x)-g(x)=x^2+2x+l \)，则 \( \deg d(x)=\deg h(x)=2 \)，且 \( d(x)\mid h(x) \)。注意到 \( d(x),h(x) \) 都是首1多项式，所以 \( d(x)=h(x) \)。
+
+现在令 \( g(x)=(x-c)h(x) \)，并将右端展开，比较系数即可解得
+\[\begin{cases}
+k=3, \\
+l=-2
+\end{cases}\]
+或
+\[\begin{cases}
+k=2, \\
+l=0
+\end{cases}\]
+将这两组解分别代入 \( f(x),g(x) \) 的表达式，经验证明两组解都满足条件。
+
+（方法2）用待定系数法。设 \( (f(x),g(x))=x^2+ax+b \)，则
+\[f(x)=(x-p)(x^2+ax+b),\]
+\[g(x)=(x-q)(x^2+ax+b).\]
+
+将上述二式的右端展开，并分别比较系数，得
+\[\begin{cases}
+a-p=1+k, \\
+b-ap=2, \\
+-bp=2l,
+\end{cases}
+\quad \begin{cases}
+a-q=k, \\
+b-aq=0, \\
+-bq=l.
+\end{cases}\]
+
+解得 \( (k,l,a,b)=(3,-2,2,-2) \) 或 \( (2,0,2,0) \)。相应地有
+\[(f(x),g(x))=x^2+2x-2 \text{ 或 } x^2+2x.\]
+\end{proof}
+
+\begin{example}
+求 \( a \) 和 \( b \) 的值,使得 \( f(x) = x^3 - 5x^2 + 7x + a \) 和 \( g(x) = x^3 - 8x + b \) 有两个公共根。
+\end{example}
+
+\begin{proof}
+设 \(\gamma, \delta\) 是 \( f(x) \) 和 \( g(x) \) 的两个公共根,则 \( f(x) \) 和 \( g(x) \) 在复数域上可分解为
+\[f(x) = (x - \alpha)(x - \gamma)(x - \delta) = (x - \alpha)h(x),\]
+\[g(x) = (x - \beta)(x - \gamma)(x - \delta) = (x - \beta)h(x),\]
+其中 \( h(x) = (x - \gamma)(x - \delta) \)。将上述二式相减,得
+\[5x^2 - 15x - a + b = (\alpha - \beta)h(x).\]
+比较上述两边,得 \(\alpha - \beta = 5\),且 \( h(x) = x^2 - 3x + \frac{1}{5}(b - a) \)。
+
+进一步,由 \((x - \alpha)h(x) = f(x)\) 可得
+\[(2 - \alpha)h(x) = f(x) - (x - 2)h(x) = \frac{1}{5}[(a - b + 5)x + (3a + 2b)],\]
+这就意味着只能有 \(\alpha = 2, a - b + 5 = 0, 3a + 2b = 0\)。由此解得 \( a = -2, b = 3 \)。
+\end{proof}
+
+\begin{example}
+设 \(1, \omega_1, \omega_2, \cdots, \omega_{n-1}\) 是 \(x^n - 1\) 的所有不同的复数根。求证：  
+\[(1 - \omega_1)(1 - \omega_2) \cdots (1 - \omega_{n-1}) = n.\]
+\end{example}
+
+\begin{proof}
+据题设，\(1, \omega_1, \omega_2, \cdots, \omega_{n-1}\) 是 \(x^n - 1\) 的 \(n\) 个根，所以  
+\[x^n - 1 = (x - 1)(x - \omega_1)(x - \omega_2) \cdots (x - \omega_{n-1}).\]
+
+另一方面，有  
+\[x^n - 1 = (x - 1)(x^{n-1} + x^{n-2} + \cdots + x + 1),\]
+
+所以  
+\[(x - \omega_1)(x - \omega_2) \cdots (x - \omega_{n-1}) = x^{n-1} + x^{n-2} + \cdots + x + 1.\]
+
+取 \(x = 1\) 代入上式，得 \((1 - \omega_1)(1 - \omega_2) \cdots (1 - \omega_{n-1}) = n\)。
+\end{proof}
+
+\begin{example}
+    设$f_1(x),\cdots,f_m(x),g_1(x),\cdots,g_n(x)$都是多项式，而且
+    \[
+    (f_i(x),g_i(x))= 1 \quad (i = 1,2,\cdots,m;j=1,2,\cdots,n),
+    \]\par
+    求证：$(f_1(x)f_2(x)\cdots f_m(x),g_1(x)g_2(x)\cdots g_n(x)) = 1$.
+\end{example}
+
+\begin{proof}
+    证明 用反证法. 如果 \( d(x) = (f_1(x) f_2(x) \cdots f_m(x), g_1(x) g_2(x) \cdots g_n(x)) \neq 1 \)，则 \( d(x) \) 有一个不可约因式，设为 \( p(x) \). 于是 \( p(x) \mid f_1(x) f_2(x) \cdots f_m(x) \). 根据不可约多项式的性质，\( p(x) \) 能整除 \( f_1(x), f_2(x), \cdots, f_m(x) \) 中的一个. 设为 \( f_s(x) (1 \leq s \leq m) \). 同理 \( p(x) \) 整除 \( g_1(x), \cdots, g_n(x) \) 中的一个，设为 \( g_t(x) (1 \leq t \leq n) \). 因此 \( p(x) \mid (f_s(x), g_t(x)) \). 与假设矛盾. 所以 \[ (f_1(x) f_2(x) \cdots f_m(x), g_1(x) g_2(x) \cdots g_n(x)) = 1 \].
+\end{proof}
+
+\begin{example}
+设 \( d(x) = (f(x), g(x)), f(x) \mid h(x) \)，且 \( g(x) \mid h(x) \)，证明：\( f(x)g(x) \mid d(x)h(x) \)。
+\end{example}
+
+\begin{proof}
+首先，由 \( d(x) = (f(x), g(x)) \)，有 \( f(x) = u(x)d(x), g(x) = v(x)d(x) \)，且 \( (u(x), v(x)) = 1 \)。又由 \( f(x) \mid h(x) \)，可设 \( h(x) = f(x)p(x) = u(x)p(x)d(x) \)。因为 \( g(x) \mid h(x) \)，所以 \( v(x)d(x) \mid u(x)p(x)d(x) \)。再由 \( (u(x), v(x)) = 1 \) 可知 \( v(x) \mid p(x) \)。设 \( p(x) = q(x)v(x) \)，则
+\[ d(x)h(x) = d(x)f(x)p(x) = d(x)f(x)q(x)v(x) = f(x)g(x)q(x), \]
+因此，\( f(x)g(x) \mid d(x)h(x) \)。
+\end{proof}
+
+\begin{example}
+    设$f(x),g(x)$是数域$F$上的多项式.证明：$(f(x),g(x)) = 1$，当且仅当$(f(x)g(x),f(x)+g(x)) = 1$.
+\end{example}
+
+\begin{proof}
+    \textbf{充分性。}设\( (f(x)g(x),f(x)+g(x))=1 \)，并设\( d(x)=(f(x),g(x)) \)，则\( d(x) \)是\( f(x)g(x),f(x)+g(x) \)的一个公因式，于是\( d(x) \mid 1 \)，从而\( d(x)=1 \)，即\( (f(x),g(x))=1 \)。
+
+\textbf{必要性。}(方法1) 设\( (f(x),g(x))=1 \)，则存在多项式\( u(x),v(x) \)，使得
+\[u(x)f(x)+v(x)g(x)=1.\]
+由此可得
+\[\begin{cases}
+[u(x)-v(x)]f(x)+v(x)[f(x)+g(x)]=1,\\
+[v(x)-u(x)]g(x)+u(x)[f(x)+g(x)]=1.
+\end{cases}\]
+将上述二式相乘，得
+\[p(x)f(x)g(x)+q(x)[f(x)+g(x)]=1,\]
+其中
+\[p(x)=-\left[ u(x)-v(x)\right]^2, \quad q(x)=f(x)\left[ u(x)\right]^2+g(x)\left[ v(x)\right]^2.\]
+因此
+\[(f(x)g(x),f(x)+g(x))=1.\]
+
+(方法2) 设\( (f(x),g(x),f(x)+g(x))=d(x) \)，则
+\[d(x)\mid f(x)g(x),\quad d(x)\mid f(x)+g(x),\]
+从而
+\[d(x)\mid \left[\left(f(x)+g(x)\right)g(x)-f(x)g(x)\right],\]
+即\( d(x)\mid \left[g(x)\right]^2 \)。同理\( d(x)\mid \left[ f(x)\right]^2 \)。
+
+根据题设，\( (f(x),g(x))=1 \)，有\( \left(\left[ f(x)\right]^2,\left[ g(x)\right]^2\right)=1 \)。因此\( d(x)=1 \)。
+
+(方法3) 用反证法。假设\( (f(x),g(x),f(x)+g(x))=d(x) \)，且\( \deg d(x)\geq 1 \)。取\( d(x) \)的一个不可约因式\( p(x) \)，则\( p(x)\mid f(x)g(x) \),
+
+若\( p(x)\mid f(x) \)，则由①式有\( p(x)\mid g(x) \)，故\( p(x)\mid (f(x),g(x)) \)，与\( (f(x),g(x))=1 \)矛盾。同理，若\( p(x)\mid g(x) \)，则\( p(x)\mid f(x) \)，从而\( p(x)\mid (f(x),g(x)) \)，此与\( (f(x),g(x))=1 \)矛盾。
+
+因此\( (f(x),g(x),f(x)+g(x))=1 \)。
+\end{proof}
+
+\begin{example}
+    证明：如果$(x-1)\mid f(x^n)$，那么$x^n-1 \mid f(x^n)$.
+\end{example}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{example}
+    证明：如果$(x^2+x+1)|f_1(x^3)+xf_2(x^3)$，那么
+    \[
+    (x-1)|f_1(x),\quad(x-1)|f_2(x)
+    \]
+\end{example}
+
+\begin{proof}
+     \( x^2 + x + 1 = (x - \omega_1)(x - \omega_2) \)，其中 \(\omega_1, \omega_2\) 是不等于1的两个3次单位根。由题设有  
+\[ f_1(x^3) + xf_2(x^3) = (x^2 + x + 1)h(x), \]  
+因此有  
+\[ f_1(1) + \omega_1 f_2(1) = 0, \]  
+\[ f_1(1) + \omega_2 f_2(1) = 0, \]  
+由此得  
+\[ f_1(1) = f_2(1) = 0, \]  
+即  
+\[ (x - 1)\mid f_1(x),\quad (x - 1)\mid f_2(x). \]
+\end{proof}
+
+\begin{example}
+证明: \( (x^d-1) \mid (x^n-1) \) 的充分必要条件是 \( d \mid n \) (这里,记号 \( d \mid n \) 表示正整数 \( d \) 整除正整数 \( n \))。
+\end{example}
+
+\begin{proof}
+设 \( n = md + r \), 其中 \( 0 \leq r < d \), 则
+\[ x^n - 1 = x^{md+r} - 1 = x^r [(x^d)^m - 1] + (x^r - 1). \]
+因为 \( (x^d-1) \mid [(x^d)^m-1] \), 所以 \( (x^d-1) \mid (x^n-1) \iff (x^d-1) \mid (x^r-1) \iff r=0 \iff d \mid n \)。
+\end{proof}
+
+\begin{example}
+证明: \( (x^m-1,x^n-1)=x^d-1 \) 当且仅当 \( (m,n)=d \)。
+\end{example}
+
+\begin{proof}
+设 \( (m,n)=d \), 则存在 \( u,v \in \mathbb{Z} \), 使 \( d = mu + nv \)。显然, \( uv<0 \), 不妨设 \( u>0,v<0 \)。又根据上一题可知, \( (x^d-1) \mid (x^m-1) \), 且 \( (x^d-1) \mid (x^n-1) \)。故 \( (x^d-1) \mid h(x) = (x^m-1,x^n-1) \)。因为 \( x^{mu}-1=x^{dm-1}=x^{-m}(x^d-1)+(x^{-m}-1) \), 且 \( h(x) \mid (x^{mu}-1),h(x) \mid (x^{-m}-1) \), 所以 \( h(x) \mid x^{-m}(x^d-1) \)。而 \( (h(x),x^{-m})=1 \), 故 \( h(x) \mid (x^d-1) \)。于是 \( h(x) = c(x^d-1) \), 其中 \( c \neq 0 \)。注意到 \( h(x) \) 与 \( x^d-1 \) 都是首项系数为1的多项式, 所以 \( c=1 \)。因此,有
+\[ (x^m-1,x^n-1)=h(x)=x^d-1. \]
+
+反之,设 \( (x^m-1,x^n-1)=x^d-1 \), 下证 \( (m,n)=d \)。为此,令 \( (m,n)=e \), 则由已证得的事实,有 \( (x^m-1,x^n-1)=x^e-1 \), 所以 \( x^d-1=x^e-1,d=e \)。故 \( (m,n)=d \)。
+\end{proof}
+
+\begin{example}
+设 \( m,n \) 是两个大于1的正整数,多项式
+\[ f(x) = x^{m-1} + x^{m-2} + \cdots + x + 1, \]
+\[ g(x) = x^{n-1} + x^{n-2} + \cdots + x + 1. \]
+证明: \( (f(x),g(x))=1 \) 当且仅当 \( (m,n)=1 \)。
+\end{example}
+
+\begin{proof}
+(方法1) 利用结论: \( (x^m-1,x^n-1)=x^d-1 \iff (m,n)=d \)。取 \( d=1 \), 则
+\[ (f(x),g(x))=1 \iff (x^m-1,x^n-1)=x-1 \iff (m,n)=1. \]
+
+(方法2) 充分性。设 \( \omega \) 是一个 \( n \) 次本原单位根, 则 \( \omega, \omega^2, \cdots, \omega^{n-1} \) 是 \( g(x) \) 的全部根。对于 \( 1 \leq k \leq n-1 \), 若 \( f(\omega^k)=0 \), 则由 \( x^m-1=(x-1)f(x) \) 可知 \( (\omega^k)^m=1 \), 从而 \( n \mid km \)。但 \( (m,n)=1 \), 所以 \( n \mid k \)。矛盾。说明 \( g(x) \) 的根都不是 \( f(x) \) 的根, 因此 \( (f(x),g(x))=1 \)。
+
+必要性。设 \( (m,n)=d>1 \), 且 \( m=n_1d,n=n_1d \), 其中 \( 1 \leq n_1<n \)。因为
+\[ (\omega^n)^m=(\omega^n)^{m_1}=1, \]
+而 \( \omega^n \neq 1 \), 所以 \( \omega^n \) 又是 \( f(x) \) 的根。此与 \( (f(x),g(x))=1 \) 矛盾。故 \( (m,n)=1 \)。
+\end{proof}
+
+\begin{example}
+设 \(a_1, a_2, \cdots, a_n\) 为互不相同的整数，令 
+\[ f(x) = (x - a_1)(x - a_2)\cdots(x - a_n) - 1. \]
+求证 \(f(x)\) 在有理数域 \(\mathbb{Q}\) 上不可约.
+\end{example}
+
+\begin{proof}
+用反证法。设 \(f(x)\) 在 \(\mathbb{Q}\) 上可约，则 \(f(x)\) 可分解成次数小于 \(n\) 的整系数多项式 \(u(x)\) 与 \(v(x)\) 之积，即 \(f(x) = u(x)v(x)\)。由已知，\(f(a_j) = -1\)，有 
+\[ u(a_j)v(a_j) = -1, \] 
+从而 \(u(a_j) = 1, v(a_j) = -1\)，或 \(u(a_j) = -1, v(a_j) = 1\)。因此 
+\[ u(a_j) + v(a_j) = 0, \quad j = 1, 2, \cdots, n. \] 
+这就是说，次数小于 \(n\) 的多项式 \(u(x) + v(x)\) 有 \(n\) 个不同的根，故 \(u(x) + v(x) = 0\)，因此 
+\[ f(x) = -(u(x))^2. \] 
+但 \(f(x)\) 是首一多项式，而 \(-(u(x))^2\) 的首项系数为负数，二者不可能相等。故假设不成立。
+\end{proof}
+
+\chapter{第三次习题课}
+\section{月考试卷讲解}
+\subsection{填空题}
+
+\begin{example}
+    设 \( f = 3x^6 - 4x^5 + 7x^4 - 11x^3 + 6x - 11 \)，则 \( x - 5 \) 除 \( f \) 的商式与余式分别为：
+    \[
+    3x^5 + 11x^4 + 62x^3 + 299x^2 + 1495x + 7481,\quad 37394.
+    \]
+\end{example}
+
+\begin{example}
+    若 \( x^3 + kx + 1 \in \mathbb{Z}[x] \) 在 \( \mathbb{Q}[x] \) 中不可约，则 \( k \) 的取值范围为：
+    \[
+    k \neq 0, -2.
+    \]
+\end{example}
+
+\begin{example}
+    若 \( (x-1)^2(x+1) \mid ax^4 + bx^2 + cx + 1 \)，则 \( a, b, c \) 的值分别为：
+    \[
+    a = 1,\quad b = -2,\quad c = 0.
+    \]
+\end{example}
+
+\begin{example}
+    设 \( f = x^3 + (1+t)x^2 + 2x + 2u,\ g = x^3 + tx^2 + u \) 的最大公因式是一个二次多项式，则 \( t, u \) 的值分别为：
+    \[
+    t = 2,\ u = 0 \quad \text{或} \quad t = 3,\ u = -2.
+    \]
+\end{example}
+     
+\begin{example}
+    设 \( f \in \mathbb{Q}[x],\ \deg f = n \)，且 \( f(k) = \frac{k}{k+1},\ k = 0, 1, \cdots, n \)，则
+    \[
+    f(n+1) = \frac{n+1+(-1)^{n+1}}{n+2}.
+    \]
+\end{example}
+
+\begin{solution}
+令 \( g(x) = (x+1)f(x) - x \)，则 \( 0,1,\cdots,n \) 是 \( g(x) \) 的根，因此
+\[
+g(x) = cx(x-1)(x-2)\cdots(x-n),
+\]
+即
+\[
+(x+1)f(x) - x = cx(x-1)(x-2)\cdots(x-n),
+\]
+其中 \( c \) 是一个常数。
+
+令 \( x = -1 \)，可求出：
+\[
+(-1+1)f(-1) - (-1) = c(-1)(-2)(-3)\cdots(-n-1)
+\]
+\[
+1 = c(-1)^{n+1}(n+1)!
+\]
+\[
+c = \frac{(-1)^{n+1}}{(n+1)!}
+\]
+
+从而
+\[
+f(x) = \frac{1}{x+1}\left(\frac{(-1)^{n+1}x(x-1)\cdots(x-n)}{(n+1)!}+x\right),
+\]
+
+故
+\[
+f(n+1) = \frac{1}{n+2}\left((-1)^{n+1}+n+1\right).
+\]
+
+\end{solution}
+
+\subsection{判断说理题}
+
+\begin{example}
+    设 \( t \in \mathbb{C} \)，令 \( S = \{a + bt \mid a, b \in \mathbb{Q} \} \)。\\
+    (1) \( S \) 是否一定是数域？\\
+    (2) 给出 \( S \) 为数域时满足的条件。
+\end{example} 
+\begin{solution}
+    (1) 不一定。例如，取 \( t = \sqrt[3]{3} \)。\\
+    (2) \( t^2 \in S \)。
+\end{solution} 
+
+\begin{example}
+    设 \( f, g \in \mathbb{Q}[x],\ (f, g) = 1 \)，问是否一定有 \( (fg, f + g) = 1 \)？
+\end{example}
+\begin{solution}
+    一定有。\\
+    证法一：若 \( (fg, f + g) \neq 1 \)，则存在 \( \mathbb{Q} \) 上不可约多项式 \( p \)，使得 \( p \mid (fg, f + g) \)，于是 \( p \mid f \) 或 \( p \mid g \)。不妨设 \( p \mid f \)，从而 \( p \mid f + g \)，故 \( p \mid g \)，这与 \( (f, g) = 1 \) 矛盾。\\
+    证法二：若 \( (fg, f + g) \neq 1 \)，取 \( (fg, f + g) \) 的一个复根 \( c \)，则 \( f(c)g(c) = 0 = f(c) + g(c) \)，于是 \( f(c) = g(c) = 0 \)。故 \( (f, g) \neq 1 \)，矛盾。
+\end{solution} 
+
+\begin{example}
+    给定有理数域 \( \mathbb{Q} \) 上两两不同的 \( n \) 个数 \( a_1, a_2, \cdots, a_n \) 和任意 \( n \) 个数 \( b_1, \cdots, b_n \)，问：\\
+    (1) 是否存在唯一的 \( n-1 \) 次多项式 \( L \in \mathbb{Q}[x] \)，使得对任意的 \( i = 1, \cdots, n \)，有 \( L(a_i) = b_i \)？\\
+    (2) 如果 (1) 不成立，如何修改结论使其成立？
+\end{example}
+
+\begin{solution}
+    (1) 由 Lagrange 插值公式知 \( n = 1 \) 时结论成立。\( n \geq 2 \) 时结论不成立。例如 \( L = 1,\ b_i = 1,\ i = 1, \cdots, n \)。\\
+    (2) 由 Lagrange 插值公式，只要把 (1) 改为：存在唯一的次数小于 \( n \) 的多项式 \( L \in \mathbb{Q}[x] \)，使得对任意的 \( i = 1, \cdots, n \)，有 \( L(a_i) = b_i \)。
+\end{solution}
+
+\begin{example}
+    \( f \) 是本原多项式，\( g \in \mathbb{Q}[x] \)，若 \( fg \in \mathbb{Z}[x] \)，问是否一定有 \( g \in \mathbb{Z}[x] \)？
+\end{example}
+
+\begin{solution}
+   一定有。  设 \( g = \frac{p}{q}h,\ p, q \in \mathbb{Z},\ (p, q) = 1,\ h \) 是本原多项式，则 \( fg = \frac{p}{q}fh,\ qfg = p fh \)。由于 \( fh \) 是本原多项式，于是 \( |q|c(fg)| = |p| \)，其中 \( c(fg) \) 是 \( fg \) 的密度，从而 \( \frac{p}{q} = \pm c(fg) \in \mathbb{Z} \)，因此 \( g = \frac{p}{q}h \in \mathbb{Z}[x] \)。
+\end{solution}
+
+\begin{example}
+    \( \alpha \in \mathbb{C} \) 称为代数数，如果 \( \alpha \) 是非零整数系数多项式的根，问 \( \sin 1^\circ \) 是否为代数数？
+\end{example} 
+
+\begin{solution}
+    法一： \par
+     \( \sin 1^\circ \) 是代数数。由棣莫弗公式知：
+    \[
+    (\cos 1^\circ + i\sin 1^\circ)^{360} = 1.
+    \]
+    由二项式展开知
+    \[
+    1 = \sum_{n=0}^{360} \binom{360}{n} (\cos 1^\circ)^n (\sin 1^\circ)^{360-n} i^{360-n}.
+    \]
+    考虑上述的实部，有
+    \[
+    1 = \sum_{k=0}^{180} \binom{360}{2k} (\cos 1^\circ)^{2k} (\sin 1^\circ)^{360-2k} i^{360-2k}.
+    \]
+    即
+    \[
+    1 = \sum_{k=0}^{180} \binom{360}{2k} (1 - \sin^2 1^\circ)^k (\sin 1^\circ)^{360-2k} (-1)^{180-k}.
+    \]
+    因此 \( \sin 1^\circ \) 是多项式
+    \[
+    f(x) = \sum_{k=0}^{180} \binom{360}{2k} (1 - x^2)^k x^{360-2k} (-1)^{180-k} - 1
+    \]
+    的根。又根据
+    \[
+    (\cos 0.5^\circ + i\sin 0.5^\circ)^{360} = -1,
+    \]
+    可知 \( f(0.5^\circ) = -2,\ f(x) \neq 0 \)。因此 \( \sin 1^\circ \) 是代数数。 \par
+    法二：三倍角公式 \par
+    先证明 $\sin 3^\circ$ 是代数数。首先，我们证明 $\sin 18^\circ$ 和 $\sin 15^\circ$ 是代数数。
+
+    由三角恒等式，有
+    \[
+    \sin 36^\circ = \cos 54^\circ.
+    \]
+    利用倍角公式：
+    \[
+    \sin 36^\circ = 2 \sin 18^\circ \cos 18^\circ, \quad \cos 54^\circ = 4 \cos^3 18^\circ - 3 \cos 18^\circ.
+    \]
+    代入得：
+    \[
+    2 \sin 18^\circ \cos 18^\circ = 4 \cos^3 18^\circ - 3 \cos 18^\circ.
+    \]
+    除以 $\cos 18^\circ$（非零）：
+    \[
+    2 \sin 18^\circ = 4 \cos^2 18^\circ - 3 = 4(1 - \sin^2 18^\circ) - 3 = 1 - 4 \sin^2 18^\circ.
+    \]
+    整理得：
+    \[
+    4 \sin^2 18^\circ + 2 \sin 18^\circ - 1 = 0.
+    \]
+    这是一个整系数二次方程，故 $\sin 18^\circ$ 是代数数。
+    
+    证明 $\sin 15^\circ$ 是代数数：
+    利用差角公式：
+    \[
+    \sin 15^\circ = \sin(45^\circ - 30^\circ) = \sin 45^\circ \cos 30^\circ - \cos 45^\circ \sin 30^\circ = \frac{\sqrt{2}}{2} \cdot \frac{\sqrt{3}}{2} - \frac{\sqrt{2}}{2} \cdot \frac{1}{2} = \frac{\sqrt{2}(\sqrt{3} - 1)}{4}.
+    \]
+    显然 $\sin 15^\circ$ 是代数数。
+    
+    证明 $\sin 3^\circ$ 是代数数：
+    利用差角公式：
+    \[
+    \sin 3^\circ = \sin(18^\circ - 15^\circ) = \sin 18^\circ \cos 15^\circ - \cos 18^\circ \sin 15^\circ.
+    \]
+    由于 $\sin 18^\circ$、$\cos 18^\circ$、$\sin 15^\circ$、$\cos 15^\circ$ 均为代数数，且代数数的四则运算结果仍为代数数，故 $\sin 3^\circ$ 是代数数。
+    
+    三倍角公式为：
+    \[
+    \sin 3\theta = 3 \sin \theta - 4 \sin^3 \theta.
+    \]
+    令 $\theta = 1^\circ$，则：
+    \[
+    \sin 3^\circ = 3 \sin 1^\circ - 4 \sin^3 1^\circ.
+    \]
+    整理得：
+    \[
+    4 \sin^3 1^\circ - 3 \sin 1^\circ + \sin 3^\circ = 0.
+    \]
+    
+    这是一个关于 $\sin 1^\circ$ 的三次方程，其系数为代数数（因为 $\sin 3^\circ$ 是代数数）。因此，$\sin 1^\circ$ 是该方程的根，故为代数数。
+\end{solution}
+
+\subsection{计算题}
+
+\begin{example}
+设 \( p_1(x), p_2(x), \cdots, p_n(x) \in K[x] \) 是 \( n \) 个两两互素的多项式，\( g_1(x), g_2(x), \cdots, g_n(x) \in K[x] \) 是任意 \( n \) 个多项式，则存在 \( f(x) \in K[x] \) 使得
+\[
+\begin{cases}
+f(x) \equiv g_1(x) \pmod{p_1(x)}, \\
+f(x) \equiv g_2(x) \pmod{p_2(x)}, \\
+\vdots \\
+f(x) \equiv g_n(x) \pmod{p_n(x)}.
+\end{cases}
+\]
+\end{example}
+
+\begin{proof}
+先证对每个 \( 1 \leq i \leq n \)，存在 \( f_i(x) \in K[x] \) 使得 \( f_i(x) \) 可被 \( p_j(x) \ (j \neq i) \) 整除但被 \( p_i(x) \) 除的余数为 1，即
+\[
+\begin{cases}
+f_i(x) \equiv 0 \pmod{p_j(x)}, \\
+f_i(x) \equiv 1 \pmod{p_i(x)}.
+\end{cases}
+\]
+
+为此，记 \( \varphi_i(x) = \prod\limits_{1 \leq j \leq n, j \neq i} p_j(x) \)，由于 \( p_i(x) \) 与每个 \( p_j(x) \ (j \neq i) \) 都互素，所以 \( p_i(x) \) 与它们的乘积 \( \varphi_i(x) \) 也互素。故存在 \( u_i(x) \in K[x] \) 使得
+\[
+u_i(x) \varphi_i(x) \equiv 1 \pmod{p_i(x)}.
+\]
+
+令 \( f_i(x) = u_i(x) \varphi_i(x) \)，则 \( f_i(x) \) 满足上述条件。
+
+现在，取 \( f(x) = \sum\limits_{i=1}^n g_i(x) f_i(x) \)，则对每个 \( 1 \leq i \leq n \)，有
+\[
+f(x) \equiv g_i(x) \pmod{p_i(x)}.
+\]
+
+\textbf{注：} 同理可证：设 \( a_1, a_2, \cdots, a_n \) 是 \( n \) 个两两互异的实数，\( b_1, b_2, \cdots, b_n \) 是 \( n \) 个任意实数，则使得 \( f(a_i) = b_i \ (1 \leq i \leq n) \) 且次数不超过 \( n-1 \) 的唯一的多项式 \( f(x) \in \mathbb{R}[x] \) 为
+\[
+f(x) = \sum_{i=1}^n b_i \prod_{\substack{1 \leq j \leq n \\ j \neq i}} \frac{x - a_j}{a_i - a_j}.
+\]
+这个多项式称为 Lagrange 插值多项式。
+\end{proof}
+
+\begin{example}
+    设 \( f = x^2 + 1,\ g = x^3 + x + 1 \)。\\
+    (1) 用辗转相除法求 \( f \) 与 \( g \) 的最大公因式 \( (f, g) \)，并找出多项式 \( u, v \)，使得 \( uf + vg = (f, g) \)。\\
+    (2) 求满足 \( x^2 + 1 \mid h - x,\ x^3 + x^2 + 1 \mid h - 1 \) 的所有多项式 \( h \)。
+\end{example}
+
+\begin{solution}
+    (1) 由辗转相除法得：
+    \[
+    -x(x^2 + 1) + x^3 + x + 1 = 1.
+    \]
+    (2) 由中国剩余定理得：
+    \[
+    h = x \cdot x(x^3 + x^2 + 1) + (1 - x^2 - x)(x^2 + 1) + (x^3 + x^2 + 1)(x^2 + 1)k(x),\quad \forall k(x) \in \mathbb{Q}[x].
+    \]
+    即
+    \[
+    h = x^5 - x^3 + x^2 - x + 1 + (x^3 + x^2 + 1)(x^2 + 1)k(x),\quad \forall k(x) \in \mathbb{Q}[x].
+    \]
+\end{solution}
+
+\begin{example}
+     给出 \( f = x^6 + 4x^5 + 8x^4 + 10x^3 + 8x^2 + 4x + 1 \in \mathbb{Q}[x] \) 的标准分解。
+\end{example}
+
+\begin{solution}
+    由综合除法知 \(-1\) 是 \( f \) 的二重根，由带余除法得：
+    \[
+    f = (x+1)^2 \left( x^4 + 2x^3 + 3x^2 + 2x + 1 \right).
+    \]
+    令 \( g = x^4 + 2x^3 + 3x^2 + 2x + 1 \)，则 \( (g, g') = x^2 + x + 1 \)，于是 \( g = (x^2 + x + 1)^2 \)。故
+    \[
+    f = (x + 1)^2 (x^2 + x + 1)^2.
+    \]
+\end{solution}
+
+ \begin{example}
+     求满足 \( f(x^2) = f(x)f(x+1) \) 的多项式 \( f \)。
+ \end{example}
+
+ \begin{solution}
+     若 \( \deg f = -\infty \)，则 \( f = 0 \)。\\
+    若 \( \deg f = 0 \)，则由题设条件知 \( f = f^2 \)，故 \( f = 1 \)。\\
+    下面考虑 \( \deg f \geq 1 \) 的情形。\\
+    设 \( \alpha \) 是 \( f \) 的根，则
+    \[
+    f(\alpha^2) = f(\alpha)f(\alpha + 1) = 0,\quad f(\alpha^4) = f(\alpha^2)f(\alpha^2 + 1) = 0,\ \cdots
+    \]
+    这表明 \( \alpha^2, \alpha^4, \alpha^8, \cdots \) 都是 \( f \) 的根。于是，存在正整数 \( j,k\ (j \neq k) \) 使得 \( \alpha^{2j} = \alpha^{2k} \)，所以 \( \alpha = 0 \) 或 \( |\alpha| = 1 \)，即 \( \alpha \) 是单位根。另一方面，因为
+    \[
+    f\left((\alpha - 1)^2\right) = f(\alpha - 1)f(\alpha),
+    \]
+    所以 \( (\alpha - 1)^2, (\alpha - 1)^4, \cdots \) 也都是 \( f \) 的根。同理可知 \( |\alpha - 1| = 0 \) 或 \( 1 \)。\\
+    如果 \( f \) 仅有零根，那么 \( f = x^n \)，此与题设条件 \( f(x^2) = f(x)f(x+1) \) 矛盾。所以 \( f \) 必有非零根 \( \alpha \neq 0 \)。显然，\( \alpha \neq -1 \)，因若不然，则 \( \alpha - 1 = -2 \) 不是单位根，矛盾。又若 \( \alpha \neq 1 \)，可令 \( \alpha = e^{i\theta} \)，则由 \( |\alpha - 1| = 1 \)，得 \( \theta = \frac{\pi}{3} \) 或 \( \frac{5\pi}{3} \)，所以 \( \alpha = \frac{1}{2} \pm i \frac{\sqrt{3}}{2} \)。但 \( \alpha^2 \) 也是 \( f \) 的根，而 \( |\alpha^2 - 1|^2 = 3 \)，与 \( |\alpha^2 - 1| = 0 \) 或 \( 1 \) 矛盾。因此 \( f \) 的根仅有 0 和 1，故可设 \( f = ax^m(x-1)^n \)。\\
+    代入题设等式，可得 \( a = 1,\ m = n \)。所以
+    \[
+    f = x^n(x-1)^n.
+    \]
+ \end{solution}
+
+\subsection{证明题}
+\begin{example}
+    设 \( p \) 为素数，\( f = x^p + px + 1 \)，证明：\( f \) 在 \( \mathbb{Q}[x] \) 中不可约。
+\end{example}
+
+\begin{proof}
+     \( p = 2 \) 时可约。\\
+    \( p \) 为奇素数时，
+    \[
+    f(x-1) = \sum_{k=0}^{p}(-1)^k \binom{p}{k}x^{p-k} + p(x-1) + 1 = \sum_{k=0}^{p-2}(-1)^k \binom{p}{k}x^{p-k} + 2px - p.
+    \]
+    由 Eisenstein 判别法知 \( f(x-1) \) 在 \( \mathbb{Q}[x] \) 中不可约，于是 \( f \) 在 \( \mathbb{Q}[x] \) 中不可约。
+\end{proof}
+
+\begin{example}
+    设 \( f \in \mathbb{Q}[x] \)，且在 \( \mathbb{Q} \) 上不可约。若存在 \( 0 \neq a \in \mathbb{C} \)，使得 \( f(a) = f(a^{-1}) = 0 \)。证明：若 \( b \in \mathbb{C} \)，\( f(b) = 0 \)，则 \( b \neq 0 \)，且 \( f(b^{-1}) = 0 \)。
+\end{example}
+
+\begin{proof}
+    若 \( b = 0 \)，由 \( f \) 不可约，得 \( f = cx,\ c \in \mathbb{Q}^* \)。于是 \( ca = 0 \)，从而 \( a = 0 \)，矛盾。因此 \( b \neq 0 \)。\\
+    令 \( g = x^n f\left( \frac{1}{x} \right),\ n = \deg f \)。由 \( f(a) = f(a^{-1}) = 0 \)，知 \( a \) 是 \( f, g \) 的公共根，又 \( f \) 不可约，于是 \( f = dg,\ d \in \mathbb{Q}^* \)，从而 \( 0 = f(b) = dg(b) = db^n f(b^{-1}) \)，因此 \( f(b^{-1}) = 0 \)。
+\end{proof}
+
+\begin{example}
+    设 \( p \in \mathbb{Q}[x] \) 是 \( \mathbb{Q} \) 上不可约多项式，且 \( \deg p = n \) 为大于1的奇数。证明：若 \( \alpha, \beta \in \mathbb{C},\ p(\alpha) = p(\beta) = 0 \)，那么 \( \alpha + \beta \notin \mathbb{Q},\ \alpha \beta \notin \mathbb{Q} \)。
+\end{example}
+
+\begin{proof}
+    反证法。假设 \( \alpha + \beta = r \in \mathbb{Q} \)，则 \( \beta = r - \alpha \)。于是，\( \alpha \) 是 \( p(x),\ p(r - x) \) 的公共根，又 \( p \in \mathbb{Q}[x] \) 是 \( \mathbb{Q} \) 上不可约多项式，从而 \( p(x) = -p(r - x) \)。令 \( x = \frac{r}{2} \)，则 \( p\left( \frac{r}{2} \right) = 0 \)。这与 \( p \) 的次数大于1且在 \( \mathbb{Q} \) 上不可约矛盾。\\
+    假设 \( \alpha \beta = r \in \mathbb{Q} \)，则 \( \beta = \frac{r}{\alpha} \)。于是，\( \alpha \) 是 \( p(x),\ x^n p\left( \frac{r}{x} \right) \) 的公共根，又 \( p \in \mathbb{Q}[x] \) 是 \( \mathbb{Q} \) 上不可约多项式，从而 \( p(x) = c x^n p\left( \frac{r}{x} \right),\ c \in \mathbb{Q}^* \)。故 \( y \to \frac{r}{y} \) 是 \( p \) 的复根集上的一个双射，由 \( n \) 为奇数，于是存在 \( p \) 的复根 \( \delta \)，使得 \( \delta = \frac{r}{\delta} \)，即 \( \delta^2 - r = 0 \)，因此 \( \delta \) 是 \( p,\ x^2 - r \) 的公共根。又 \( p \) 在 \( \mathbb{Q} \) 上不可约，故 \( p \mid x^2 - r \)，这与 \( \deg p = n \) 为大于1的奇数矛盾。
+\end{proof}
+
+\begin{example}
+     若 \( f, g \in \mathbb{Z}[x],\ \deg f \geq 1,\ \deg g \geq 1,\ (f, g) = 1 \)。证明：只有有限多个 \( k \in \mathbb{Z} \) 使得 \( g(k) \mid f(k) \)。
+\end{example}
+
+\begin{proof}
+     因为 \( f, g \in \mathbb{Z}[x],\ \deg f \geq 1,\ \deg g \geq 1,\ (f, g) = 1 \)，所以存在 \( u, v \in \mathbb{Z}[x] \) 使得 \( uf + vg = m \)，其中 \( m \in \mathbb{Z} \setminus \{0\} \)。若 \( g(k) \mid f(k) \)，则 \( g(k) \mid m \)，于是 \( g(k) = d \)，其中 \( d \mid m \)。而 \( g(x) = d \) 只有有限多个整数根。故只有有限多个 \( k \in \mathbb{Z} \) 使得 \( g(k) \mid f(k) \)。
+\end{proof}
+
+\begin{example}
+     称实函数 \( f(x) \) 为超越函数，如果不存在有限个非零的实数 \( a_{ij}\ (i=0,1,\dots,m;\ j=0,1,\dots,n) \)，使得 \( \forall x \in \mathbb{R},\ \sum_{i=0}^{m} \sum_{j=0}^{n} a_{ij}x^i f^j(x) = 0 \)。证明：\( \sin x\ (x \in \mathbb{R}) \) 是超越函数。
+\end{example}
+
+\begin{proof}
+    反证法。假设 \( \sin x \) 不是超越函数，则存在有限个非零的实数 \( a_{ij} \)，使得
+    \[
+    \forall x \in \mathbb{R},\ \sum_{i=0}^{m} \sum_{j=0}^{n} a_{ij}x^i (\sin x)^j = 0.
+    \]
+    即
+    \[
+    \forall x \in \mathbb{R},\ \sum_{i=0}^{m} x^i \sum_{j=0}^{n} a_{ij} (\sin x)^j = 0.
+    \]
+    令 \( f_i = \sum_{j=0}^{n} a_{ij} (\sin x)^j \)，则 \( f_i \neq 0 \)，于是存在 \( \sin \theta \)，使得 \( f_i(\sin \theta) \neq 0,\ \forall i = 0,1,\dots,m \)。令 \( g = \sum_{i=0}^{m} f_i(\sin \theta)x^i \)，则 \( g \neq 0 \)。在原式中令 \( x = 2k\pi + \theta \)，得
+    \[
+    0 = \sum_{i=0}^{m} (2k\pi + \theta)^i \sum_{j=0}^{n} a_{ij} (\sin \theta)^j = g(2k\pi + \theta),\quad \forall k \in \mathbb{Z}.
+    \]
+    于是，\( g = 0 \)，因此 \( f_i(\sin \theta) = 0,\ \forall i = 0,1,\dots,m \)。矛盾。
+\end{proof}
+
+
+\chapter{第四次习题课}
+\section{习题讲解}
+
+\begin{example}
+用定义证明极限。
+
+(1) $\lim_{n \to \infty} \frac{2n^2-1}{3n^2+2} = \frac{2}{3}$
+
+(2) $\lim_{x \to 2} x^3 = 8$
+\end{example}
+
+\begin{proof}[(1)]
+对任意 $\varepsilon > 0$，要找到 $N > 0$，使得当 $n > N$ 时，
+\[
+\left|\frac{2n^2-1}{3n^2+2} - \frac{2}{3}\right| < \varepsilon
+\]
+
+计算：
+\[
+\left|\frac{2n^2-1}{3n^2+2} - \frac{2}{3}\right| = \left|\frac{3(2n^2-1) - 2(3n^2+2)}{3(3n^2+2)}\right| = \left|\frac{-7}{3(3n^2+2)}\right| = \frac{7}{3(3n^2+2)}
+\]
+
+由于 $\frac{7}{3(3n^2+2)} < \frac{7}{9n^2}$，取 $N = \sqrt{\frac{7}{9\varepsilon}}$，则当 $n > N$ 时，
+\[
+\frac{7}{3(3n^2+2)} < \frac{7}{9n^2} < \varepsilon
+\]
+因此极限成立。
+\end{proof}
+
+\begin{proof}[(2)]
+对任意 $\varepsilon > 0$，要找到 $\delta > 0$，使得当 $0 < |x-2| < \delta$ 时，$|x^3 - 8| < \varepsilon$。
+
+由于 $|x^3 - 8| = |x-2||x^2 + 2x + 4|$，当 $|x-2| < 1$ 时，有 $1 < x < 3$，从而
+\[
+|x^2 + 2x + 4| < 3^2 + 2 \times 3 + 4 = 19
+\]
+
+取 $\delta = \min\left\{1, \frac{\varepsilon}{19}\right\}$，则当 $0 < |x-2| < \delta$ 时，
+\[
+|x^3 - 8| = |x-2||x^2 + 2x + 4| < \frac{\varepsilon}{19} \times 19 = \varepsilon
+\]
+因此极限成立。
+\end{proof}
+
+\begin{example}
+计算极限。
+
+(1) $\lim_{n \to \infty} \frac{3^n+n^3}{3^{n+1}+(n+1)^3}$
+
+(2) $\lim_{n \to \infty} \sqrt{n} (\sqrt{n+1} - \sqrt{n})$
+
+(3) $\lim_{x \to \infty} \left(\frac{x+1}{x-1}\right)^{\frac{2x-1}{x+1}}$
+
+(4) $\lim_{x \to 0} \frac{\sqrt{1+x} - \sqrt[3]{1+2x^2}}{\ln(1+3x)}$
+\end{example}
+
+\begin{solution}[(1)]
+分子分母同时除以 $3^n$：
+\[
+\frac{3^n+n^3}{3^{n+1}+(n+1)^3} = \frac{1 + \frac{n^3}{3^n}}{3 + \frac{(n+1)^3}{3^n}}
+\]
+
+由于 $\lim_{n \to \infty} \frac{n^3}{3^n} = 0$，$\lim_{n \to \infty} \frac{(n+1)^3}{3^n} = 0$，所以
+\[
+\lim_{n \to \infty} \frac{3^n+n^3}{3^{n+1}+(n+1)^3} = \frac{1}{3}
+\]
+\end{solution}
+
+\begin{solution}[(2)]
+分子有理化：
+\[
+\sqrt{n} (\sqrt{n+1} - \sqrt{n}) = \sqrt{n} \cdot \frac{(n+1)-n}{\sqrt{n+1} + \sqrt{n}} = \frac{\sqrt{n}}{\sqrt{n+1} + \sqrt{n}}
+\]
+
+分子分母同时除以 $\sqrt{n}$：
+\[
+\frac{1}{\sqrt{1+\frac{1}{n}} + 1} \to \frac{1}{1+1} = \frac{1}{2} \quad (n \to \infty)
+\]
+\end{solution}
+
+\begin{solution}[(3)]
+1
+\end{solution}
+
+\begin{solution}[(4)]
+使用等价无穷小：当 $x \to 0$ 时，
+\[
+\sqrt{1+x} = 1 + \frac{1}{2}x - \frac{1}{8}x^2 + o(x^2)
+\]
+\[
+\sqrt[3]{1+2x^2} = 1 + \frac{2}{3}x^2 + o(x^2)
+\]
+\[
+\ln(1+3x) = 3x + o(x)
+\]
+
+所以：
+\[
+\sqrt{1+x} - \sqrt[3]{1+2x^2} = \left(1 + \frac{1}{2}x - \frac{1}{8}x^2\right) - \left(1 + \frac{2}{3}x^2\right) + o(x^2) = \frac{1}{2}x - \frac{19}{24}x^2 + o(x^2)
+\]
+
+因此：
+\[
+\frac{\sqrt{1+x} - \sqrt[3]{1+2x^2}}{\ln(1+3x)} = \frac{\frac{1}{2}x - \frac{19}{24}x^2 + o(x^2)}{3x + o(x)} \to \frac{1}{6} \quad (x \to 0)
+\]
+\end{solution}
+
+\begin{example}
+设 $\lim_{n \to \infty} x_{2n} = \lim_{n \to \infty} x_{2n+1} = a$，证明：$\lim_{n \to \infty} x_n = a$。
+\end{example}
+
+\begin{proof}
+对任意 $\varepsilon > 0$，由于 $\lim_{n \to \infty} x_{2n} = a$，存在 $N_1$ 使得当 $n > N_1$ 时，$|x_{2n} - a| < \varepsilon$。
+
+由于 $\lim_{n \to \infty} x_{2n+1} = a$，存在 $N_2$ 使得当 $n > N_2$ 时，$|x_{2n+1} - a| < \varepsilon$。
+
+取 $N = \max\{2N_1, 2N_2 + 1\}$，则当 $n > N$ 时：
+- 若 $n$ 为偶数，则 $n = 2k$，且 $k > N_1$，故 $|x_n - a| = |x_{2k} - a| < \varepsilon$
+- 若 $n$ 为奇数，则 $n = 2k+1$，且 $k > N_2$，故 $|x_n - a| = |x_{2k+1} - a| < \varepsilon$
+
+因此对任意 $n > N$，都有 $|x_n - a| < \varepsilon$，即 $\lim_{n \to \infty} x_n = a$。
+\end{proof}
+
+\begin{example}
+设 $x_n$ 是无穷大量，$\lim_{n \to \infty} y_n = b \neq 0$。证明：$x_n y_n$ 与 $(x_n/y_n)$ 都是无穷大量。
+\end{example}
+
+\begin{proof}
+由于 $\lim_{n \to \infty} y_n = b \neq 0$，存在 $N_1$ 使得当 $n > N_1$ 时，$|y_n| > \frac{|b|}{2}$。
+
+对任意 $M > 0$，由于 $x_n$ 是无穷大量，存在 $N_2$ 使得当 $n > N_2$ 时，$|x_n| > \frac{2M}{|b|}$。
+
+取 $N = \max\{N_1, N_2\}$，则当 $n > N$ 时：
+\[
+|x_n y_n| = |x_n| \cdot |y_n| > \frac{2M}{|b|} \cdot \frac{|b|}{2} = M
+\]
+所以 $x_n y_n$ 是无穷大量。
+
+类似地，当 $n > N$ 时：
+\[
+\left|\frac{x_n}{y_n}\right| = \frac{|x_n|}{|y_n|} > \frac{2M}{|b|} \cdot \frac{2}{|b|} = \frac{4M}{b^2}
+\]
+由于 $M$ 任意，$\frac{x_n}{y_n}$ 也是无穷大量。
+\end{proof}
+
+\begin{example}
+设 $0 < x_1 < 1$, $x_{n+1} = x_n(1-x_n)$, $n=1,2,3,\cdots$。证明：$x_n$ 收敛，并求它的极限。
+\end{example}
+
+\begin{proof}
+首先证明 $0 < x_n < 1$ 对所有 $n$ 成立。
+
+当 $n=1$ 时，由条件 $0 < x_1 < 1$。
+
+假设 $0 < x_n < 1$，则 $x_{n+1} = x_n(1-x_n) > 0$，且由均值不等式：
+\[
+x_{n+1} = x_n(1-x_n) \leq \left(\frac{x_n + (1-x_n)}{2}\right)^2 = \frac{1}{4} < 1
+\]
+所以 $0 < x_{n+1} < 1$，由数学归纳法，对所有 $n$ 都有 $0 < x_n < 1$。
+
+再证明数列单调递减：
+\[
+x_{n+1} - x_n = x_n(1-x_n) - x_n = -x_n^2 < 0
+\]
+所以 $x_{n+1} < x_n$，数列单调递减。
+
+由于数列有下界且单调递减，故收敛。设 $\lim_{n \to \infty} x_n = L$，在递推式两边取极限：
+\[
+L = L(1-L)
+\]
+解得 $L = 0$ 或 $L = 1$，但 $x_n < 1$ 且单调递减，故 $L = 0$。
+
+因此 $\lim_{n \to \infty} x_n = 0$。
+\end{proof}
+
+\begin{definition}[压缩映射]
+设函数 \( f \) 在区间 \([a, b]\) 上定义，\( f([a, b]) \subset [a, b] \)，并存在一个常数 \( k \)，满足 \( 0 < k < 1 \)，使得对一切 \( x, y \in [a, b] \) 成立不等式 \( |f(x) - f(y)| \leq k|x - y| \)，则称 \( f \) 是 \([a, b]\) 上的一个压缩映射，称常数 \( k \) 为压缩常数。
+\end{definition}
+
+\begin{theorem}[压缩映射原理]
+设 \( f \) 是 \([a, b]\) 上的一个压缩映射，则
+\begin{enumerate}
+    \item \( f \) 在 \([a, b]\) 中存在唯一的不动点 \(\xi = f(\xi)\)；
+    \item 由任何初始值 \( a_0 \in [a, b] \) 和递推公式 \( a_{n+1} = f(a_n), n \in \mathbb{N}_+ \) 生成的数列 \(\{a_n\}\) 一定收敛于 \(\xi\)；
+    \item 成立估计式 
+    \[
+    |a_n - \xi| \leq \frac{k}{1-k} |a_n - a_{n-1}|
+    \]
+    和
+    \[
+    |a_n - \xi| \leq \frac{k^n}{1-k} |a_1 - a_0|
+    \]
+    （即事后估计与先验估计）。
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+（注意在这个证明中不需要函数 \( f \) 的连续性概念。）
+
+由于 \( f([a, b]) \subset [a, b] \)，因此 \(\{a_n\}\) 必在 \([a, b]\) 中。根据 Cauchy 收敛准则估计
+\[
+|a_n - a_{n+p}| \leq k |a_{n-1} - a_{n+p-1}| \leq k^2 |a_{n-2} - a_{n+p-2}| 
+\]
+\[
+\leq \cdots \leq k^n |a_0 - a_p| \leq k^n (b-a)。
+\]
+可见对 \(\epsilon > 0\)，只要取 \(N = \left[ \frac{\ln (\epsilon / (b-a))}{\ln k} \right]\)，当 \(n > N\) 和 \(p \in \mathbb{N}_+\) 时，就有 \(|a_n - a_{n+p}| < \epsilon\)。因此 \(\{a_n\}\) 是基本数列，从而收敛。记其极限为 \(\xi \in [a, b]\)。
+
+为了证明这个 \(\xi\) 是 \(f\) 的不动点，需要研究第二个数列 \(\{f(a_n)\}\)。从不等式 
+\[
+|f(a_n) - f(\xi)| \leq k |a_n - \xi|
+\]
+和 \(\lim_{n \to \infty} a_n = \xi\) 可见，数列 \(\{f(a_n)\}\) 收敛于 \(f(\xi)\)。
+
+在 \(a_{n+1} = f(a_n)\) 两边令 \(n \to \infty\)，就得到 \(\xi = f(\xi)\)。因此 \(\xi\) 是 \(f\) 的不动点。
+
+如果 \(f\) 在 \([a, b]\) 内还有不动点 \(\eta\)，即 \(\eta = f(\eta)\)，则就有 
+\[
+|\xi - \eta| = |f(\xi) - f(\eta)| \leq k |\xi - \eta|。
+\]
+由于 \(0 < k < 1\)，只能有 \(\xi = \eta\)。因此 \(f\) 在 \([a, b]\) 内的不动点是唯一的。这样就证明了命题的 (1) 和 (2)。
+
+命题之 (3) 的前一式可从估计式
+\[
+|a_n - \xi| = |f(a_{n-1}) - f(\xi)| \leq k |a_{n-1} - \xi| \leq k (|a_{n-1} - a_n| + |a_n - \xi|)
+\]
+得到：
+\[
+|a_n - \xi| \leq \frac{k}{1-k} |a_n - a_{n-1}|。
+\]
+
+又由上述出发，利用 \(|a_j - a_{j-1}| \leq k |a_{j-1} - a_{j-2}|\) 就可以如下得到 (3) 的后一式：
+\[
+|a_n - \xi| \leq \frac{k^2}{1-k} |a_{n-1} - a_{n-2}| \leq \cdots \leq \frac{k^n}{1-k} |a_1 - a_0|。
+\]
+\end{proof}
+
+\begin{example}
+求函数 $f(x) = [2x] - 2[x]$ 的不连续点，并确定其不连续点的类型。
+\end{example}
+
+\begin{solution}
+设 $x = n + \alpha$，其中 $n = [x]$，$0 \leq \alpha < 1$。
+
+则 $[2x] = [2n + 2\alpha] = 2n + [2\alpha]$，所以：
+\[
+f(x) = (2n + [2\alpha]) - 2n = [2\alpha]
+\]
+
+由于 $[2\alpha]$ 在 $\alpha = 0, \frac{1}{2}$ 处不连续，即 $x = n$ 和 $x = n + \frac{1}{2}$ 处不连续。
+
+在 $x = n$ 处：
+左极限：$\lim_{x \to n^-} f(x) = [2 \times (1^-)] = 1$
+函数值：$f(n) = [2 \times 0] = 0$
+右极限：$\lim_{x \to n^+} f(x) = [2 \times (0^+)] = 0$
+所以是跳跃间断点。
+
+在 $x = n + \frac{1}{2}$ 处：
+左极限：$\lim_{x \to (n+\frac{1}{2})^-} f(x) = [2 \times (\frac{1}{2}^-)] = 0$
+函数值：$f(n+\frac{1}{2}) = [2 \times \frac{1}{2}] = 1$
+右极限：$\lim_{x \to (n+\frac{1}{2})^+} f(x) = [2 \times (\frac{1}{2}^+)] = 1$
+所以是跳跃间断点。
+
+综上，所有整数点和半整数点都是跳跃间断点。
+\end{solution}
+
+\begin{example}
+求 $u(x) = x^5 - 3x^4 + 2x^3$ 分别在 $x \to 0$ 和 $x \to \infty$ 时的等价量。
+\end{example}
+
+\begin{solution}
+当 $x \to 0$ 时：
+\[
+u(x) = x^3(x^2 - 3x + 2) = x^3(2 - 3x + x^2) \sim 2x^3
+\]
+所以等价量为 $2x^3$。
+
+当 $x \to \infty$ 时：
+\[
+u(x) = x^5\left(1 - \frac{3}{x} + \frac{2}{x^2}\right) \sim x^5
+\]
+所以等价量为 $x^5$。
+\end{solution}
+
+\begin{example}
+证明 $f(x) = x^2$ 在 $[0,+\infty)$ 上非一致连续，但在 $[0,A]$ 上一致连续（$A$为任意有限正数）。
+\end{example}
+
+\begin{proof}
+(1) 在 $[0,+\infty)$ 上非一致连续：
+
+取 $\varepsilon_0 = 1$，对任意 $\delta > 0$，取 $x = \frac{1}{\delta}$，$y = \frac{1}{\delta} + \frac{\delta}{2}$，则
+\[
+|x - y| = \frac{\delta}{2} < \delta
+\]
+但
+\[
+|f(x) - f(y)| = \left|\frac{1}{\delta^2} - \left(\frac{1}{\delta} + \frac{\delta}{2}\right)^2\right| = \left|1 + \frac{\delta^2}{4}\right| > 1 = \varepsilon_0
+\]
+所以非一致连续。
+
+(2) 在 $[0,A]$ 上一致连续：
+
+由于 $f(x) = x^2$ 在闭区间 $[0,A]$ 上连续，根据 Cantor 定理，在闭区间上连续的函数一定一致连续。
+\end{proof}
+
+\begin{example}
+    设 \( f \in C[a,+\infty) \)，且存在有限极限 \( f(+\infty)=A \)。证明：\( f \) 在 \([a,+\infty)\) 上一致连续。
+    \end{example}
+    
+    \begin{proof}
+    对任意 \(\varepsilon > 0\)，由于 \(\lim\limits_{x \to +\infty} f(x) = A\)，存在 \( M > a \)，使得当 \( x > M \) 时，有 \( |f(x)-A| < \frac{\varepsilon}{2} \)。
+    
+    又因为 \( f \) 在闭区间 \([a, M+1]\) 上连续，由 Cantor 定理，\( f \) 在 \([a, M+1]\) 上一致连续。因此对上述 \(\varepsilon\)，存在 \(\delta > 0\)，使得当 \( x', x'' \in [a, M+1] \) 且 \( |x'-x''| < \delta \) 时，有 \( |f(x') - f(x'')| < \varepsilon \)。
+    
+    不妨设 \(\delta < 1\)。现在，我们断言：对任意 \( x', x'' \in [a, +\infty) \)，只要 \( |x'-x''| < \delta \)，就有 \( |f(x') - f(x'')| < \varepsilon \)。
+    
+    事实上，分两种情况：
+    \begin{enumerate}
+        \item 如果 \( x', x'' \in [a, M+1] \)，由一致连续性，结论成立。
+        \item 如果 \( x', x'' > M \)，则
+        \[ 
+        |f(x') - f(x'')| \leq |f(x') - A| + |A - f(x'')| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+        \]
+    \end{enumerate}
+    注意：由于 \(\delta < 1\)，不可能一个点在 \([a, M+1]\) 内而另一个点大于 \(M+1\)。因为若 \(x' \in [a, M+1]\) 且 \(x'' > M+1\)，则 \( |x'-x''| > 1 > \delta \)，与假设矛盾。所以只可能有两种情况：要么两点都在 \([a, M+1]\) 内，要么两点都大于 \(M\)。
+    
+    因此，我们证明了 \(f\) 在 \([a, +\infty)\) 上一致连续。
+    \end{proof}
+
+\begin{example}
+证明：若 $a_n > 0 \ (n=1,2,\cdots)$，且 $\lim_{n \to \infty} \frac{a_n}{a_{n+1}} = l > 1$，则 $\lim_{n \to \infty} a_n = 0$。
+\end{example}
+
+\begin{proof}
+由于 $\lim_{n \to \infty} \frac{a_n}{a_{n+1}} = l > 1$，取 $\varepsilon = \frac{l-1}{2} > 0$，存在 $N$ 使得当 $n \geq N$ 时，
+\[
+\left|\frac{a_n}{a_{n+1}} - l\right| < \varepsilon
+\]
+即
+\[
+l - \varepsilon < \frac{a_n}{a_{n+1}} < l + \varepsilon
+\]
+
+特别地，$\frac{a_n}{a_{n+1}} > l - \varepsilon = \frac{l+1}{2} > 1$，所以 $a_{n+1} < \frac{2}{l+1} a_n$。
+
+令 $q = \frac{2}{l+1}$，则 $0 < q < 1$，且当 $n \geq N$ 时，
+\[
+a_{n+1} < q a_n < q^2 a_{n-1} < \cdots < q^{n-N+1} a_N
+\]
+
+由于 $0 < q < 1$，$\lim_{n \to \infty} q^{n-N+1} = 0$，所以 $\lim_{n \to \infty} a_n = 0$。
+\end{proof}
+
+\begin{example}
+设 $S$ 是非空有界上的数集，$\sup S = a \notin S$。证明在数集 $S$ 中可取出严格单调增加的数列 $\{x_n\}$，使得 $\lim_{n \to \infty} x_n = a$。
+\end{example}
+
+\begin{proof}
+由于 $a = \sup S$ 且 $a \notin S$，对任意 $\varepsilon > 0$，存在 $x \in S$ 使得 $a - \varepsilon < x < a$。
+
+取 $\varepsilon_1 = 1$，存在 $x_1 \in S$ 使得 $a - 1 < x_1 < a$。
+
+取 $\varepsilon_2 = \min\left\{\frac{1}{2}, a - x_1\right\}$，存在 $x_2 \in S$ 使得 $a - \varepsilon_2 < x_2 < a$，且 $x_2 > x_1$。
+
+依此类推，取 $\varepsilon_n = \min\left\{\frac{1}{n}, a - x_{n-1}\right\}$，存在 $x_n \in S$ 使得 $a - \varepsilon_n < x_n < a$，且 $x_n > x_{n-1}$。
+
+这样构造的数列 $\{x_n\}$ 严格单调增加且以 $a$ 为上界，故收敛。设 $\lim_{n \to \infty} x_n = L$，则 $L \leq a$。
+
+又对任意 $\varepsilon > 0$，当 $n$ 充分大时，$x_n > a - \varepsilon$，所以 $L \geq a - \varepsilon$，由 $\varepsilon$ 的任意性，$L \geq a$。
+
+因此 $L = a$，即 $\lim_{n \to \infty} x_n = a$。
+\end{proof}
+
+\begin{example}
+设 $f(x)$ 在 $[a,b]$ 上连续，证明函数 
+\[
+M(x) = \sup \{f(t): a \leq t \leq x\}, \quad m(x) = \inf \{f(t): a \leq t \leq x\}
+\]
+在 $[a,b]$ 上连续。
+\end{example}
+
+\begin{proof}
+先证 $M(x)$ 的连续性。
+
+(1) $M(x)$ 单调不减：若 $x_1 < x_2$，则 $M(x_2) = \sup_{a \leq t \leq x_2} f(t) \geq \sup_{a \leq t \leq x_1} f(t) = M(x_1)$。
+
+(2) 右连续：对任意 $x_0 \in [a,b)$，由 $f$ 在 $[x_0, x_0+\delta]$ 上连续，存在 $\xi \in [x_0, x_0+\delta]$ 使得 $f(\xi) = M(x_0+\delta)$。
+
+由于 $f$ 在 $x_0$ 处连续，对任意 $\varepsilon > 0$，存在 $\delta > 0$ 使得当 $|x - x_0| < \delta$ 时，$|f(x) - f(x_0)| < \varepsilon$。
+
+特别地，当 $0 < x - x_0 < \delta$ 时，
+\[
+M(x) = \max\{M(x_0), \sup_{x_0 \leq t \leq x} f(t)\} \leq \max\{M(x_0), f(x_0) + \varepsilon\} \leq M(x_0) + \varepsilon
+\]
+又 $M(x) \geq M(x_0)$，所以 $|M(x) - M(x_0)| < \varepsilon$，即右连续。
+
+(3) 左连续：对任意 $x_0 \in (a,b]$，由 $f$ 在 $[x_0-\delta, x_0]$ 上连续，存在 $\xi \in [x_0-\delta, x_0]$ 使得 $f(\xi) = M(x_0)$。
+
+对任意 $\varepsilon > 0$，存在 $\delta > 0$ 使得当 $|x - x_0| < \delta$ 时，$|f(x) - f(x_0)| < \varepsilon$。
+
+当 $0 < x_0 - x < \delta$ 时，
+\[
+M(x_0) = \max\{M(x), \sup_{x \leq t \leq x_0} f(t)\} \leq \max\{M(x), M(x) + \varepsilon\} = M(x) + \varepsilon
+\]
+又 $M(x_0) \geq M(x)$，所以 $|M(x_0) - M(x)| < \varepsilon$，即左连续。
+
+综上，$M(x)$ 在 $[a,b]$ 上连续。同理可证 $m(x)$ 的连续性。
+\end{proof}
+
+\begin{example}
+设正数列 \(\{a_n\}\) 满足条件 \(a_{n+m} \leq a_n a_m, \forall n, m \in \mathbb{N}_+\)，则有
+\[
+\lim_{n \to \infty} \frac{\ln a_n}{n} = \inf_{n \geq 1} \left\{ \frac{\ln a_n}{n} \right\}.
+\]
+\end{example}
+
+\begin{proof}
+令 \(\alpha = \inf_{n \geq 1} \left\{ \frac{\ln a_n}{n} \right\}\)，则从命题3.6.2的公式(3.3)可见有
+\[
+\alpha \leq \varliminf_{n \to \infty} \frac{\ln a_n}{n} \leq \varlimsup_{n \to \infty} \frac{\ln a_n}{n}. \tag{3.8}
+\]
+又从 \(\alpha\) 为下确界（即最大下界）可见，对 \(\epsilon > 0\)，存在 \(N\)，使得
+\[
+\frac{\ln a_N}{N} < \alpha + \epsilon.
+\]
+固定这个 \(N\)，可以将每个正整数 \(n\) 写为 \(n = mN + k\)，其中 \(0 \leq k < N\)。从题设条件，有不等式
+\[
+a_n = a_{mN+k} \leq a_N^m a_k,
+\]
+取对数后可以得到
+\[
+\frac{\ln a_n}{n} \leq \frac{m}{n} \ln a_N + \frac{1}{n} \ln a_k \leq \frac{mN}{n} (\alpha + \epsilon) + \frac{1}{n} \ln a_k.
+\]
+在这个不等式两边令 \(n \to \infty\)，右边第一项中有极限
+\[
+\lim_{n \to \infty} \frac{mN}{n} = 1,
+\]
+而 \(a_k\) 最多只取 \(N\) 个值，因此右边的极限是 \(\alpha + \epsilon\)。左边的极限虽然不知道是否存在，但可利用上极限的保不等式性质（作为练习题），在不等式两边取上极限，从而得到
+\[
+\varlimsup_{n \to \infty} \frac{\ln a_n}{n} \leq \alpha + \epsilon.
+\]
+由于 \(\epsilon > 0\) 的任意性，就得到
+\[
+\varlimsup_{n \to \infty} \frac{\ln a_n}{n} \leq \alpha.
+\]
+将这个不等式与 (3.8) 合并，可见 \(\varliminf_{n \to \infty} \frac{\ln a_n}{n} = \varlimsup_{n \to \infty} \frac{\ln a_n}{n} = \alpha\)，因此极限 \(\lim_{n \to \infty} \frac{\ln a_n}{n}\) 存在且等于 \(\alpha\)。
+\end{proof}
+
+\begin{remark}
+
+1. 上述结论的意思是：当 \(\alpha\) 为有限数时数列 \(\left\{ \frac{\ln a_n}{n} \right\}\) 一定收敛，以 \(\alpha\) 为极限，而当 \(\alpha = -\infty\) 时，这个数列一定是负无穷大量。
+
+2.
+又由此可见，在正数列满足条件 \(a_{n+m} \leq a_n a_m, \forall n, m \in \mathbb{N}_+\) 时，极限 \(\lim_{n \to \infty} \sqrt[n]{a_n}\) 一定存在。
+
+3.
+与此等价的命题是：设 \(\{a_n\}\) 满足条件 \(a_{n+m} \leq a_n + a_m, \forall n, m \in \mathbb{N}_+\)，则有
+\[
+\lim_{n \to \infty} \frac{a_n}{n} = \inf_{n \geq 1} \left\{ \frac{a_n}{n} \right\}.
+\]
+\end{remark}
+
+\begin{example}
+设 \( f(x) \) 在 \((a, +\infty)\) 上可导，并且 \(\lim_{x \to +\infty} f'(x) = 0\)，证明 \(\lim_{x \to +\infty} \frac{f(x)}{x} = 0\)。
+\end{example}
+
+\begin{proof}
+由 \(\lim_{x \to +\infty} f'(x) = 0\)，可知 \(\forall \varepsilon > 0, \exists X' > 0, \forall x > X'\)，成立 \(|f'(x)| < \frac{\varepsilon}{2}\)。取定 \(x_0 \geq X'\)，则 \(\exists X > x_0, \forall x > X\)，成立 \(\left| \frac{f(x_0)}{x} \right| < \frac{\varepsilon}{2}\)，应用 Lagrange 中值定理，
+
+则有
+\begin{align*}
+\left| \frac{f(x)}{x} \right| 
+&= \left| \frac{f(x_0)}{x} + \frac{f(x) - f(x_0)}{x - x_0} \cdot \frac{x - x_0}{x} \right| \\
+&\leq \left| \frac{f(x_0)}{x} \right| + \left| \frac{f(x) - f(x_0)}{x - x_0} \right| \cdot \left| \frac{x - x_0}{x} \right| \\
+&= \left| \frac{f(x_0)}{x} \right| + |f'(\xi)| \cdot \left| \frac{x - x_0}{x} \right| \\
+&< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,
+\end{align*}
+其中 \(\xi\) 在 \(x_0\) 与 \(x\) 之间。
+
+所以 \(\lim_{x \to +\infty} \frac{f(x)}{x} = 0\) 成立。
+\end{proof}
+
+
+\chapter{第五次习题课}
+
+\section*{一、填空题（每小题3分，共15分）}
+
+\begin{example}
+    \begin{enumerate}
+        \item 排列217986354的逆序数是 \underline{18}。
+        
+        \item 设 $a, b, c$ 为互不相同的数，
+        $P(x) = \begin{vmatrix} 
+        1 & x & x^2 & x^3 \\ 
+        1 & a & a^2 & a^3 \\ 
+        1 & b & b^2 & b^3 \\ 
+        1 & c & c^2 & c^3 
+        \end{vmatrix}$ 的全部根是 \underline{$a, b, c$}。
+        
+        \item 把 $\alpha_1 = \begin{pmatrix} 2 \\ -1 \\ 4 \\ -1 \end{pmatrix}$ 
+        写成 $\alpha_2 = \begin{pmatrix} 2 \\ -1 \\ 3 \\ 1 \end{pmatrix}$ 与 
+        $\alpha_3 = \begin{pmatrix} 4 \\ -2 \\ 5 \\ 4 \end{pmatrix}$ 的线性组合 \\
+        \underline{$\alpha_1 = 3\alpha_2 - \alpha_3$}。
+        
+        \item 矩阵 $\begin{pmatrix} 
+        14 & 12 & 6 & 8 & 2 \\ 
+        6 & 104 & 21 & 9 & 17 \\ 
+        7 & 6 & 3 & 4 & 1 \\ 
+        35 & 30 & 15 & 20 & 5 
+        \end{pmatrix}$ 的秩是 \underline{2}。
+        
+        \item 已知线性方程组 $Ax = \beta$ 无解。增广矩阵 $(A, \beta)$ 的秩为 $r$，则系数矩阵 $A$ 的秩是 \underline{$r-1$}。
+    \end{enumerate}
+\end{example}
+
+\section*{二、判断题（每小题2分，共10分）}
+
+\begin{example}
+    \begin{enumerate}
+    \item \underline{错误} 阶梯型矩阵的秩等于其非零列的数目。
+    
+    \textbf{反例：} 
+    $\begin{pmatrix}
+    1 & 2 & 3 \\
+    0 & 0 & 4 \\
+    0 & 0 & 0
+    \end{pmatrix}$ 的非零列为3列，但秩为2。
+    
+    \item \underline{错误} 若 $A = \begin{pmatrix} 
+    a_{11} & a_{12} & a_{13} \\ 
+    a_{21} & a_{22} & a_{23} \\ 
+    a_{31} & a_{32} & a_{33} 
+    \end{pmatrix}$，且 $|A| \neq 0$。则行列式
+    $\begin{vmatrix} 
+    2a_{11} & 2a_{12} & 2a_{13} \\ 
+    2a_{21} & 2a_{22} & 2a_{23} \\ 
+    2a_{31} & 2a_{32} & 2a_{33} 
+    \end{vmatrix} = 2^3|A| = 8|A|$，不是 $2|A|$。
+    
+    \item \underline{正确} 若 $a_1 + a_2, a_2 + a_3, a_3 + a_1$ 线性相关，则 $a_1, a_2, a_3$ 线性相关。
+    
+    \item \underline{正确} 与基础解系等价的线性无关向量组也是基础解系。
+    
+    \item \underline{错误} 存在两组向量组 $A$ 有秩 $r_1, B$ 有秩 $r_2$，使得 $A, B$ 合并所得的向量组有秩 $r_3 > r_1 + r_2$。
+    \end{enumerate}
+\end{example}
+
+\section*{三、计算题（15分）}
+
+\begin{example}
+计算行列式：
+\[
+D = \begin{vmatrix}
+1 & -1/3 & 1/3 & -1 \\
+1/2 & 1 & 1 & 1 \\
+1 & 2 & -1 & 0 \\
+1 & 1 & 1/2 & 1/2
+\end{vmatrix}
+\]
+\end{example}
+
+\begin{solution}
+\textbf{方法：} 使用初等行变换化简为上三角行列式。
+
+具体变换步骤：
+\begin{enumerate}
+    \item 第一行的 $-\frac{1}{2}$ 倍加到第二行
+    \item 第一行的 $-1$ 倍加到第三行
+    \item 第一行的 $-1$ 倍加到第四行
+    \item 第二行的 $-\frac{18}{7}$ 倍加到第三行
+    \item 第二行的 $-\frac{12}{7}$ 倍加到第四行
+    \item 第三行的 $-\frac{11}{42}$ 倍加到第四行
+\end{enumerate}
+
+最终得到上三角行列式：
+\[
+\begin{vmatrix}
+1 & -1/3 & 1/3 & -1 \\
+0 & 7/6 & 5/6 & 3/2 \\
+0 & 0 & -3 & -2 \\
+0 & 0 & 0 & 13/42
+\end{vmatrix}
+\]
+
+计算对角线元素乘积：
+\[
+D = 1 \times \frac{7}{6} \times (-3) \times \frac{13}{42}=- \frac{7}{6} \times 3 \times \frac{13}{42} = -\frac{7 \times 3 \times 13}{6 \times 42} = -\frac{273}{252} = -\frac{13}{12}
+\]
+
+因此，$D = -\dfrac{13}{12}$。
+\end{solution}
+
+\section*{四、用克拉默法则解线性方程组（10分）}
+
+\begin{example}
+用克拉默法则解下列线性方程组：
+\[
+\begin{cases} 
+x_1 + 5x_2 + 6x_3 = 0, \\ 
+x_2 + 5x_3 + 6x_4 = 0, \\ 
+x_3 + 5x_4 + 6x_5 = 0, \\ 
+x_4 + 5x_5 = 1, \\ 
+5x_1 + 6x_2 = 1. 
+\end{cases}
+\]
+\end{example}
+
+\begin{solution}
+系数行列式：
+\[
+D = \begin{vmatrix}
+1 & 5 & 6 & 0 & 0 \\
+0 & 1 & 5 & 6 & 0 \\
+0 & 0 & 1 & 5 & 6 \\
+0 & 0 & 0 & 1 & 5 \\
+5 & 6 & 0 & 0 & 0
+\end{vmatrix} = 665
+\]
+
+各 $D_j$ 的值：
+\[
+D_1 = 1507, \quad D_2 = -1145, \quad D_3 = 703, \quad D_4 = -395, \quad D_5 = 212
+\]
+
+由克拉默法则：
+\[
+x_1 = \frac{1507}{665}, \quad x_2 = -\frac{1145}{665}, \quad x_3 = \frac{703}{665}, \quad x_4 = -\frac{395}{665}, \quad x_5 = \frac{212}{665}
+\]
+
+化简得：
+\[
+x_1 = \frac{1507}{665}, \quad x_2 = -\frac{229}{133}, \quad x_3 = \frac{37}{35}, \quad x_4 = -\frac{79}{133}, \quad x_5 = \frac{212}{665}
+\]
+\end{solution}
+
+\begin{example}
+求下列三对角行列式的递推关系式（空白处均为0）：
+\[
+D_n = 
+\begin{vmatrix}
+a_1 & b_1 \\
+c_1 & a_2 & b_2 \\
+& c_2 & a_3 & \ddots \\
+& & \ddots & \ddots \\
+& & & \ddots & a_{n-1} & b_{n-1} \\
+& & & & c_{n-1} & a_n
+\end{vmatrix}
+\]
+\end{example}
+
+\begin{solution}
+当 $n \geq 2$ 时，按最后一行展开行列式：
+
+注意到 $a_n$ 的余子式是 $D_{n-1}$，而 $c_{n-1}$ 的余子式（对应 $b_{n-1}$ 的位置）是 $D_{n-2}$。
+
+因此，按最后一行展开可得：
+\[
+D_n = a_n D_{n-1} - b_{n-1} c_{n-1} D_{n-2} \quad (n \geq 2)
+\]
+初始条件为：
+\[
+D_0 = 1, \quad D_1 = a_1
+\]
+
+\textbf{注：} 令 $b_1 = \cdots = b_{n-1} = 1$, $c_1 = \cdots = c_{n-1} = -1$，则行列式 $D_n$ 与连分数密切相关。进一步，令 $a_1 = \cdots = a_n = 1$，则行列式 $D_n$ 满足：
+\[
+D_n = D_{n-1} + D_{n-2} \quad (n \geq 2), \quad D_0 = 1, \quad D_1 = 1
+\]
+这就是著名的 Fibonacci 数列。
+\end{solution}
+
+\begin{example}
+计算 \( n \) 阶行列式 (\( bc \neq 0 \)):
+\[
+D_n = 
+\begin{vmatrix}
+a & b & & & & \\
+c & a & b & & & \\
+    & c & a & b & & \\
+    &   & \ddots & \ddots & \ddots & \\
+    & & & c & a & b \\
+    & & & & c & a
+\end{vmatrix}_{n \times n}
+\]
+\end{example}
+
+\begin{proof}
+由例6.5（三对角行列式）可知递推式为 
+\[
+D_n = a D_{n-1} - bc D_{n-2} \quad (n \geq 2),
+\]
+其中 $D_0 = 1$, $D_1 = a$。
+
+为方便计算通项，可补充定义 $D_{-1} = 0$。
+
+设 $a = \alpha + \beta$, $bc = \alpha \beta$，则递推式可写为：
+\[
+D_n - \alpha D_{n-1} = \beta (D_{n-1} - \alpha D_{n-2}), \quad
+D_n - \beta D_{n-1} = \alpha (D_{n-1} - \beta D_{n-2}).
+\]
+
+于是，
+\[
+D_n - \alpha D_{n-1} = \beta^n, \quad
+D_n - \beta D_{n-1} = \alpha^n.
+\]
+
+分两种情况：
+
+1. 若 $a^2 \neq 4bc$（即 $\alpha \neq \beta$），由上式解得
+\[
+D_n = \frac{\alpha^{n+1} - \beta^{n+1}}{\alpha - \beta}.
+\]
+
+2. 若 $a^2 = 4bc$（即 $\alpha = \beta$），则 $\alpha = \beta = \frac{a}{2}$，于是
+\[
+D_n - \frac{a}{2} D_{n-1} = \left(\frac{a}{2}\right)^n.
+\]
+由此可得
+\[
+D_n = (n+1) \left( \frac{a}{2} \right)^n.
+\]
+
+\end{proof}
+
+\begin{example}
+    求证：\( n \) 阶行列式
+    
+    \[|A| = 
+    \begin{vmatrix}
+    \cos x & 1 & 0 & 0 & \cdots & 0 & 0 & 0 \\
+    1 & 2\cos x & 1 & 0 & \cdots & 0 & 0 & 0 \\
+    0 & 1 & 2\cos x & 1 & \cdots & 0 & 0 & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & 1 & 2\cos x & 1 \\
+    0 & 0 & 0 & 0 & \cdots & 0 & 1 & 2\cos x
+    \end{vmatrix} = \cos nx.\]
+\end{example}
+
+\begin{proof}
+    证明：由行列式的性质6，将 \(|A|\) 的第一列进行拆分，可得
+\[
+|A| = 
+\begin{vmatrix}
+2 \cos x & 1 & 0 & 0 & \cdots & 0 & 0 \\
+1 & 2 \cos x & 1 & 0 & \cdots & 0 & 0 \\
+0 & 1 & 2 \cos x & 1 & \cdots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \cdots & 1 & 2 \cos x \\
+0 & 0 & 0 & 0 & \cdots & 0 & 1 & 2 \cos x
+\end{vmatrix}
+-
+\begin{vmatrix}
+\cos x & 1 & 0 & 0 & \cdots & 0 & 0 \\
+0 & 2 \cos x & 1 & 0 & \cdots & 0 & 0 \\
+0 & 1 & 2 \cos x & 1 & \cdots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \cdots & 1 & 2 \cos x \\
+0 & 0 & 0 & 0 & \cdots & 0 & 1 & 2 \cos x
+\end{vmatrix}
+\]
+\[
+= D_n - \cos x D_{n-1},
+\]
+其中 \(D_n\) 是形如例6.6的行列式，其中 \(a = 2 \cos x\), \(b = c = 1\). 根据例1.14的结论，可以事先解出：\(\alpha = \cos x + i \sin x\), \(\beta = \cos x - i \sin x\).
+
+若 \(x \neq k \pi (k \in \mathbb{Z})\), 则 \(\alpha \neq \beta\), 从而
+\[
+D_n = \frac{\alpha^{n+1} - \beta^{n+1}}{\alpha - \beta}
+= \frac{(\cos(n+1)x + i \sin(n+1)x) - (\cos(n+1)x - i \sin(n+1)x)}{(\cos x + i \sin x) - (\cos x - i \sin x)}
+= \frac{\sin(n+1)x}{\sin x},
+\]
+\[
+|A| = D_n - \cos x D_{n-1} = \frac{\sin(n+1)x - \cos x \sin nx}{\sin x}
+= \cos nx.
+\]
+
+若 \(x = k \pi (k \in \mathbb{Z})\), 则 \(\alpha = \beta\), 从而
+\[
+D_n = (n+1) \left( \frac{a}{2} \right)^n = (n+1)(\cos x)^n = (n+1)(-1)^{kn},
+\]
+\[
+|A| = D_n - \cos x D_{n-1} = (n+1)(-1)^{kn} - (-1)^k n(-1)^{k(n-1)}
+= (-1)^{kn} = \cos nx.
+\]
+\end{proof}
+\section*{五、向量组的线性无关性与极大线性无关组（10分）}
+
+\begin{example}
+设
+\[
+\alpha_1 = \begin{pmatrix} 1 \\ -1 \\ 2 \\ 4 \end{pmatrix}, \quad 
+\alpha_2 = \begin{pmatrix} 0 \\ 3 \\ 1 \\ 2 \end{pmatrix}, \quad 
+\alpha_3 = \begin{pmatrix} 3 \\ 0 \\ 7 \\ 14 \end{pmatrix}, \quad 
+\alpha_4 = \begin{pmatrix} 1 \\ -1 \\ 2 \\ 0 \end{pmatrix}, \quad 
+\alpha_5 = \begin{pmatrix} 2 \\ 1 \\ 5 \\ 6 \end{pmatrix}
+\]
+(1) 证明 $\alpha_1, \alpha_2$ 线性无关；
+(2) 把 $\alpha_1, \alpha_2$ 扩充成一极大线性无关组。
+\end{example}
+
+\begin{proof}[(1)]
+考虑 $k_1\alpha_1 + k_2\alpha_2 = 0$，即
+\[
+k_1\begin{pmatrix} 1 \\ -1 \\ 2 \\ 4 \end{pmatrix} + k_2\begin{pmatrix} 0 \\ 3 \\ 1 \\ 2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \end{pmatrix}
+\]
+得方程组：
+\[
+\begin{cases}
+k_1 = 0 \\
+-k_1 + 3k_2 = 0 \\
+2k_1 + k_2 = 0 \\
+4k_1 + 2k_2 = 0
+\end{cases}
+\]
+解得 $k_1 = k_2 = 0$，所以 $\alpha_1, \alpha_2$ 线性无关。
+\end{proof}
+
+\begin{solution}[(2)]
+将 $\alpha_1, \alpha_2, \alpha_3, \alpha_4, \alpha_5$ 排成矩阵作行变换：
+\[
+(\alpha_1, \alpha_2, \alpha_3, \alpha_4, \alpha_5) = 
+\begin{pmatrix}
+1 & 0 & 3 & 1 & 2 \\
+-1 & 3 & 0 & -1 & 1 \\
+2 & 1 & 7 & 2 & 5 \\
+4 & 2 & 14 & 0 & 6
+\end{pmatrix}
+\]
+行变换至行最简形：
+\[
+\xrightarrow{\text{行变换}} 
+\begin{pmatrix}
+1 & 0 & 3 & 0 & 1 \\
+0 & 1 & 1 & 0 & 1 \\
+0 & 0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+\]
+可以看出，$\alpha_1, \alpha_2, \alpha_4$ 线性无关（对应第1,2,4列），且 $\alpha_3 = 3\alpha_1 + \alpha_2$，$\alpha_5 = \alpha_1 + \alpha_2 + \alpha_4$。
+
+所以 $\alpha_1, \alpha_2, \alpha_4$ 是一个极大线性无关组。
+\end{solution}
+
+\section*{六、齐次线性方程组的基础解系（10分）}
+
+\begin{example}
+求下列齐次线性方程组的一个基础解系，并用它表出全部解：
+\[
+\begin{cases} 
+x_1 - 2x_2 + x_3 + x_4 - x_5 = 0, \\ 
+2x_1 + x_2 - x_3 - x_4 - x_5 = 0, \\ 
+x_1 + 7x_2 - 5x_3 - 5x_4 + 5x_5 = 0, \\ 
+3x_1 - x_2 - 2x_3 + x_4 - x_5 = 0. 
+\end{cases}
+\]
+\end{example}
+
+\begin{solution}
+写出系数矩阵并作行变换：
+\[
+A = \begin{pmatrix}
+1 & -2 & 1 & 1 & -1 \\
+2 & 1 & -1 & -1 & -1 \\
+1 & 7 & -5 & -5 & 5 \\
+3 & -1 & -2 & 1 & -1
+\end{pmatrix}
+\]
+行变换至行最简形：
+\[
+\xrightarrow{\text{行变换}} 
+\begin{pmatrix}
+1 & 0 & 0 & 0 & -2 \\
+0 & 1 & 0 & 0 & -4 \\
+0 & 0 & 1 & 0 & -8/3 \\
+0 & 0 & 0 & 1 & -13/3
+\end{pmatrix}
+\]
+所以同解方程组为：
+\[
+\begin{cases}
+x_1 = 2x_5 \\
+x_2 = 4x_5 \\
+x_3 = \frac{8}{3}x_5 \\
+x_4 = \frac{13}{3}x_5
+\end{cases}
+\]
+令 $x_5 = 3$，得基础解系：
+\[
+\xi = \begin{pmatrix} 6 \\ 12 \\ 8 \\ 13 \\ 3 \end{pmatrix}
+\]
+全部解为 $x = k\xi$，其中 $k \in \mathbb{R}$。
+\end{solution}
+
+\section*{七、含参数的线性方程组（15分）}
+
+\begin{example}
+讨论 $a, b$ 取什么值时下列方程组有解，并求解：
+\[
+\begin{cases} 
+ax_1 + x_2 + x_3 = 4, \\ 
+x_1 + bx_2 + x_3 = 3, \\ 
+x_1 + 2bx_2 + x_3 = 4. 
+\end{cases}
+\]
+\end{example}
+
+\begin{solution}
+写出增广矩阵并作行变换：
+\[
+(A, \beta) = \begin{pmatrix}
+a & 1 & 1 & 4 \\
+1 & b & 1 & 3 \\
+1 & 2b & 1 & 4
+\end{pmatrix}
+\]
+行变换：
+\[
+\xrightarrow{r_2 - r_3} \begin{pmatrix}
+a & 1 & 1 & 4 \\
+0 & -b & 0 & -1 \\
+1 & 2b & 1 & 4
+\end{pmatrix}
+\xrightarrow{r_1 \leftrightarrow r_3} \begin{pmatrix}
+1 & 2b & 1 & 4 \\
+0 & -b & 0 & -1 \\
+a & 1 & 1 & 4
+\end{pmatrix}
+\]
+\[
+\xrightarrow{r_3 - a r_1} \begin{pmatrix}
+1 & 2b & 1 & 4 \\
+0 & -b & 0 & -1 \\
+0 & 1-2ab & 1-a & 4-4a
+\end{pmatrix}
+\]
+
+分情况讨论：
+
+\textbf{情况1：} $b = 0$。此时第二行为 $(0, 0, 0, -1)$，方程组无解。
+
+\textbf{情况2：} $b \neq 0$。继续化简：
+\[
+\xrightarrow{r_2 \times (-\frac{1}{b})} \begin{pmatrix}
+1 & 2b & 1 & 4 \\
+0 & 1 & 0 & \frac{1}{b} \\
+0 & 1-2ab & 1-a & 4-4a
+\end{pmatrix}
+\xrightarrow{r_3 - (1-2ab)r_2} \begin{pmatrix}
+1 & 2b & 1 & 4 \\
+0 & 1 & 0 & \frac{1}{b} \\
+0 & 0 & 1-a & 4-4a - \frac{1-2ab}{b}
+\end{pmatrix}
+\]
+
+\begin{enumerate}
+    \item 当 $a \neq 1$ 时，方程组有唯一解：
+    \[
+    x_2 = \frac{1}{b}, \quad x_3 = \frac{4-4a - \frac{1-2ab}{b}}{1-a}, \quad x_1 = 4 - 2b \cdot \frac{1}{b} - x_3 = 2 - x_3
+    \]
+    
+    \item 当 $a = 1$ 时，矩阵变为：
+    \[
+    \begin{pmatrix}
+    1 & 2b & 1 & 4 \\
+    0 & 1 & 0 & \frac{1}{b} \\
+    0 & 0 & 0 & -\frac{1-2b}{b}
+    \end{pmatrix}
+    \]
+    若 $b = \frac{1}{2}$，则第三行全零，方程组有无穷多解：
+    \[
+    x_2 = 2, \quad x_1 + x_3 = 2 \Rightarrow x_1 = 2 - t, x_3 = t \ (t \in \mathbb{R})
+    \]
+    若 $b \neq \frac{1}{2}$，则方程组无解。
+\end{enumerate}
+
+\textbf{总结：}
+\begin{itemize}
+    \item 当 $b = 0$ 时，无解。
+    \item 当 $b \neq 0$ 且 $a \neq 1$ 时，有唯一解。
+    \item 当 $b = \frac{1}{2}$ 且 $a = 1$ 时，有无穷多解。
+    \item 当 $b \neq 0, b \neq \frac{1}{2}$ 且 $a = 1$ 时，无解。
+\end{itemize}
+\end{solution}
+
+\section*{八、证明题（15分）}
+
+\begin{example}
+设 $A = (a_{ij})$ 为 $n$ 阶实方阵。
+\begin{enumerate}
+    \item 如果 $|a_{ii}| > \sum_{j\neq i} |a_{ij}|, \ i = 1, 2, \ldots, n$，那么 $|A| \neq 0$；
+    \item 如果 $a_{ii} > \sum_{j\neq i} |a_{ij}|, \ i = 1, 2, \ldots, n$，那么 $|A| > 0$。
+\end{enumerate}
+\end{example}
+
+\begin{proof}
+(1) 假设 $|A| = 0$，则齐次线性方程组 $Ax = 0$ 有非零解 $x = (x_1, \ldots, x_n)^T$。
+
+设 $|x_k| = \max\{|x_1|, |x_2|, \ldots, |x_n|\} > 0$。考虑第 $k$ 个方程：
+\[
+a_{k1}x_1 + a_{k2}x_2 + \cdots + a_{kn}x_n = 0
+\]
+于是
+\[
+a_{kk}x_k = -\sum_{j\neq k} a_{kj}x_j
+\]
+两边取绝对值，利用三角不等式：
+\[
+|a_{kk}| |x_k| = \left|\sum_{j\neq k} a_{kj}x_j\right| \leq \sum_{j\neq k} |a_{kj}| |x_j| \leq \sum_{j\neq k} |a_{kj}| |x_k|
+\]
+因为 $|x_k| > 0$，可约去：
+\[
+|a_{kk}| \leq \sum_{j\neq k} |a_{kj}|
+\]
+这与已知条件 $|a_{kk}| > \sum_{j\neq k} |a_{kj}|$ 矛盾。所以 $|A| \neq 0$。
+
+(2) 解法1 考虑矩阵族 $A(t) = (a_{ij}(t))$，其中
+\[
+a_{ij}(t) = 
+\begin{cases}
+a_{ii} & i = j \\
+t a_{ij} & i \neq j
+\end{cases}
+\]
+且 $t \in [0,1]$。显然 $A(0) = \text{diag}(a_{11}, a_{22}, \ldots, a_{nn})$，$A(1) = A$。
+
+由于 $a_{ii} > \sum_{j\neq i} |a_{ij}| \geq 0$，所以 $a_{ii} > 0$，从而 $|A(0)| = \prod_{i=1}^n a_{ii} > 0$。
+
+对于任意 $t \in [0,1]$，有
+\[
+a_{ii} > \sum_{j\neq i} |a_{ij}| \geq t \sum_{j\neq i} |a_{ij}| = \sum_{j\neq i} |t a_{ij}|
+\]
+所以由(1)知 $|A(t)| \neq 0$。又因为 $|A(t)|$ 是 $t$ 的连续函数，且 $|A(0)| > 0$，所以在 $[0,1]$ 上 $|A(t)|$ 保持同号，故 $|A(1)| = |A| > 0$。
+
+(2) 解法2 
+    考虑矩阵 \( tI_n + A \)，当 \( t \geq 0 \) 时，这是一个严格对角占优阵，因此其行列式 \( f(t) = |tI_n + A| \) 不为零。又 \( f(t) \) 是关于 \( t \) 的多项式且首项系数为 1，所以当 \( t \) 充分大时，\( f(t) > 0 \)。注意到 \( f(t) \) 是 \([0,+\infty)\) 上处处不为零的连续函数，并且当 \( t \) 充分大时取值为正，因此 \( f(t) \) 在 \([0,+\infty)\) 上取值恒为正。特别地，\( f(0) = |A| > 0 \)。
+\end{proof}
+
+
+\section*{九、摄动法证明}
+
+\begin{example}
+    设 \( A \) 是一个 \( n \) 阶方阵，求证：存在一个正数 \( a \)，使得对任意的 \( 0 < t < a \)，矩阵 \( tI_n + A \) 都是非异阵。
+    \end{example}
+    
+    \begin{proof}
+    通过简单的计算可得
+    \[|tI_n + A| = t^n + a_1 t^{n-1} + \cdots + a_{n-1} t + a_n,\]
+    这是一个关于未定元 \( t \) 的 \( n \) 次多项式。上述多项式至多只有 \( n \) 个不同的根。若上述多项式的根都是零，则不妨取 \( a = 1 \); 若上述多项式有非零根，则令 \( a \) 为 \( |tI_n + A| \) 所有非零根的模长的最小值。因此对任意的 \( 0 < t_0 < a, t_0 \) 都不是 \( |tI_n + A| \) 的根，即 \( |t_0 I_n + A| \neq 0 \)，从而 \( t_0 I_n + A \) 是非异阵。
+\end{proof}
+
+\begin{note}摄动法的原理
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明矩阵问题对非异阵成立。
+        \item 对任意的 \( n \) 阶矩阵 \( A \)，由上例可知，存在一列有理数 \( t_k \to 0 \)，使得 \( t_k I_n + A \) 都是非异阵。验证 \( t_k I_n + A \) 仍满足矩阵问题的条件，从而该问题对 \( t_k I_n + A \) 成立。
+        \item 若矩阵问题关于 \( t_k \) 连续，则可取极限令 \( t_k \to 0 \)，从而得到该问题对一般的矩阵 \( A \) 也成立。
+    \end{enumerate}
+    
+    \begin{remark}(1) 矩阵问题对非异阵成立以及矩阵问题关于 \( t_k \) 连续，这两个要求缺一不可，否则将不能使用摄动法进行证明。
+    
+    (2) 验证摄动矩阵仍然满足矩阵问题的条件是必要的。例如，若矩阵问题中有 \( AB = -BA \) 这一条件，但 \( (t_k I_n + A)B \neq -B(t_k I_n + A) \)，因此便不能使用摄动法。
+    
+    (3) 根据实际问题的需要，也可以使用其他非异阵来替代 \( I_n \) 对 \( A \) 进行摄动。
+    \end{remark}   
+\end{note}
+
+\chapter{第六次习题课}
+\section{习题讲解}
+
+\begin{example}[行列式的降阶公式]
+    设 \( A \) 是 \( m \) 阶矩阵, \( D \) 是 \( n \) 阶矩阵, \( B \) 是 \( m \times n \) 矩阵, \( C \) 是 \( n \times m \) 矩阵, 证明:  
+    \begin{enumerate}
+        \item 若 \( A \) 可逆, 则  
+        \[
+        \begin{vmatrix}
+        A & B \\
+        C & D
+        \end{vmatrix} = |A||D - CA^{-1}B|;
+        \]
+        \item 若 \( D \) 可逆, 则  
+        \[
+        \begin{vmatrix}
+        A & B \\
+        C & D
+        \end{vmatrix} = |D||A - BD^{-1}C|;
+        \]
+        \item 若 \( A, D \) 都可逆, 则  
+        \[
+        |D||A - BD^{-1}C| = |A||D - CA^{-1}B|.
+        \]
+    \end{enumerate}
+    \end{example}
+    
+    \begin{proof}
+    (1) 用第三类分块初等变换, 以 \(-CA^{-1}\) 左乘以第一分块行加到第二分块行上, 得到  
+    \[
+    \begin{pmatrix}
+    A & B \\
+    C & D
+    \end{pmatrix} \to 
+    \begin{pmatrix}
+    A & B \\
+    O & D - CA^{-1}B
+    \end{pmatrix}.
+    \]
+    由于第三类分块初等变换不改变行列式的值, 故结论即得。
+    
+    (2) 同理可证。
+    
+    (3) 是 (1) 和 (2) 的推论。
+\end{proof}
+
+\begin{example}
+    设 \( A, B, C, D \) 是 \( n \) 阶矩阵且 \( AC = CA \)，求证：
+    \[
+    \begin{vmatrix}
+    A & B \\
+    C & D
+    \end{vmatrix} = |AD - CB|.
+    \]
+    \end{example}
+    
+    \begin{proof}
+    若 \( A \) 是非异阵，则由降阶公式可得
+    \[
+    \begin{vmatrix}
+    A & B \\
+    C & D
+    \end{vmatrix} = |A||D - CA^{-1}B| = |AD - ACA^{-1}B| = |AD - CB|.
+    \]
+    对于一般的方阵 \( A \)，可取到一列有理数 \( t_k \to 0 \)，使得 \( t_k I_n + A \) 为非异阵，并且条件 \((t_k I_n + A)C = C(t_k I_n + A)\) 仍然成立。由非异阵情形的证明可得
+    \[
+    \begin{vmatrix}
+    t_k I_n + A & B \\
+    C & D
+    \end{vmatrix} = |(t_k I_n + A)D - CB|.
+    \]
+    注意到上述两边均为行列式，其值都是 \( t_k \) 的多项式，从而关于 \( t_k \) 连续。上式两边同时取极限，令 \( t_k \to 0 \)，即有
+    \[
+    \begin{vmatrix}
+    A & B \\
+    C & D
+    \end{vmatrix} = |AD - CB| \text{ 成立。}
+    \]
+\end{proof}
+
+\begin{example}
+    设 \( A \) 为 \( n \) 阶矩阵，求证：\[ |A^*| = |A|^{n-1} \]。
+\end{example}
+    
+\begin{proof}
+    若 \( A \) 是非异阵，已经证明了 \[ |A^*| = |A|^{n-1} \]对于一般的方阵 \( A \)，可取到一列有理数 \( t_k \to 0 \)，使得 \( t_k I_n + A \) 为非异阵。由非异阵情形的证明可得
+    \[ |(t_k I_n + A)^*| = |t_k I_n + A|^{n-1} \]
+    注意到上述两边均为行列式的幂次，其值都是 \( t_k \) 的多项式，从而关于 \( t_k \) 连续。上述两边同时取极限，令 \( t_k \to 0 \)，即有 \[ |A^*| = |A|^{n-1} \] 成立。
+\end{proof}
+
+\begin{example}
+    设 \( A, B \) 是 \( n \) 阶矩阵，求证：
+    \[
+    \begin{vmatrix}
+    A & B \\
+    B & A
+    \end{vmatrix} = |A + B||A - B|.
+    \]
+    \end{example}
+    
+    \begin{proof}
+    将分块矩阵的第二行加到第一行上，再将第二列减去第一列，可得
+    \[
+    \begin{pmatrix}
+    A & B \\
+    B & A
+    \end{pmatrix} \rightarrow 
+    \begin{pmatrix}
+    A + B & A + B \\
+    B & A
+    \end{pmatrix} \rightarrow 
+    \begin{pmatrix}
+    A + B & O \\
+    B & A - B
+    \end{pmatrix}.
+    \]
+    第三类分块初等变换不改变行列式的值，因此可得
+    \[
+    \begin{vmatrix}
+    A & B \\
+    B & A
+    \end{vmatrix} = 
+    \begin{vmatrix}
+    A + B & O \\
+    B & A - B
+    \end{vmatrix} = |A + B||A - B|.
+    \]
+\end{proof}
+
+\begin{example}
+    计算：
+    \[
+    |A| = 
+    \begin{vmatrix}
+    x & y & z & w \\
+    y & x & w & z \\
+    z & w & x & y \\
+    w & z & y & x
+    \end{vmatrix}
+    \]
+    \end{example}
+    
+\begin{solution}
+    令
+    \[
+    B = 
+    \begin{pmatrix}
+    x & y \\
+    y & x
+    \end{pmatrix}, \quad C = 
+    \begin{pmatrix}
+    z & w \\
+    w & z
+    \end{pmatrix},
+    \]
+    则 \(|A| = 
+    \begin{vmatrix}
+    B & C \\
+    C & B
+    \end{vmatrix}\)。由例 7.3 可得
+    \[
+    |A| = |B + C||B - C| = 
+    \begin{vmatrix}
+    x + z & y + w \\
+    y + w & x + z
+    \end{vmatrix}
+    \begin{vmatrix}
+    x - z & y - w \\
+    y - w & x - z
+    \end{vmatrix}  
+    \]
+    \[
+        = (x + y + z + w)(x + z - y - w)(x + y - z - w)(x + w - y - z).
+    \]
+\end{solution} 
+
+\begin{example}
+    设 \( A, B, C, D \) 都是 \( n \) 阶矩阵，求证：
+    \[
+    |M| = 
+    \begin{vmatrix}
+    A & B & C & D \\
+    B & A & D & C \\
+    C & D & A & B \\
+    D & C & B & A
+    \end{vmatrix} = |A + B + C + D||A + B - C - D||A - B + C - D||A - B - C + D|.
+    \]
+    \end{example}
+    
+    \begin{proof}
+    反复利用例 7.3 的结论可得
+    \[
+    |M| = 
+    \begin{vmatrix}
+    \begin{vmatrix}
+    A & B \\
+    B & A
+    \end{vmatrix} & 
+    \begin{vmatrix}
+    C & D \\
+    D & C
+    \end{vmatrix} \\
+    \begin{vmatrix}
+    C & D \\
+    D & C
+    \end{vmatrix} & 
+    \begin{vmatrix}
+    A & B \\
+    B & A
+    \end{vmatrix}
+    \end{vmatrix}
+    = 
+    \begin{vmatrix}
+    A + C & B + D \\
+    B + D & A + C
+    \end{vmatrix}
+    \cdot
+    \begin{vmatrix}
+    A - C & B - D \\
+    B - D & A - C
+    \end{vmatrix}
+    \]
+    \[
+    = |A + B + C + D||A - B + C - D||A + B - C - D||A - B - C + D|.
+    \]
+    \end{proof}
+
+    \begin{example}
+        设 \(\alpha_1, \alpha_2, \cdots, \alpha_m\) 是一组线性无关的向量，向量组 \(\beta_1, \beta_2, \cdots, \beta_k\) 可用 \(\alpha_1, \alpha_2, \cdots, \alpha_m\) 线性表示如下：
+        \[
+        \begin{cases}
+        \beta_1 = a_{11}\alpha_1 + a_{12}\alpha_2 + \cdots + a_{1m}\alpha_m, \\
+        \beta_2 = a_{21}\alpha_1 + a_{22}\alpha_2 + \cdots + a_{2m}\alpha_m, \\
+        \quad \vdots \\
+        \beta_k = a_{k1}\alpha_1 + a_{k2}\alpha_2 + \cdots + a_{km}\alpha_m.
+        \end{cases}
+        \]
+        记表示矩阵 \(A = (a_{ij})_{k \times m}\)，求证：向量组 \(\beta_1, \beta_2, \cdots, \beta_k\) 的秩等于 \(r(A)\)。
+\end{example}
+        
+\begin{proof}
+    设 \(r(A) = r\)，记 \(A\) 的 \(k\) 个行向量为 \(\gamma_1, \gamma_2, \cdots, \gamma_k\)。不失一般性，可假设 \(A\) 的前 \(r\) 个行向量线性无关，其余行向量均可用前 \(r\) 个行向量线性表示。若
+    \[
+    \gamma_i = c_1\gamma_1 + c_2\gamma_2 + \cdots + c_r\gamma_r,
+    \]
+    则经过简单计算可得
+    \[
+    \beta_i = c_1\beta_1 + c_2\beta_2 + \cdots + c_r\beta_r.
+    \]
+    另一方面，若
+    \[
+    c_1\beta_1 + c_2\beta_2 + \cdots + c_r\beta_r = 0,
+    \]
+    则
+    \[
+    c_1(a_{11}\alpha_1 + \cdots + a_{1m}\alpha_m) + \cdots + c_r(a_{r1}\alpha_1 + \cdots + a_{rm}\alpha_m) = 0,
+    \]
+    即
+    \[
+    (c_1a_{11} + \cdots + c_r a_{r1}) \alpha_1 + \cdots + (c_1a_{1m} + \cdots + c_r a_{rm}) \alpha_m = 0.
+    \]
+    因为 \(\alpha_1, \cdots , \alpha_m\) 线性无关，故可得
+    \[
+    \begin{cases}
+    a_{11}c_1 + a_{21}c_2 + \cdots + a_{r1}c_r = 0, \\
+    a_{12}c_1 + a_{22}c_2 + \cdots + a_{r2}c_r = 0, \\
+    \vdots \\
+    a_{1m}c_1 + a_{2m}c_2 + \cdots + a_{rm}c_r = 0.
+    \end{cases}
+    \]
+    将上述方程组看成是未知数 \(c_i\) 的齐次线性方程组，其系数矩阵的秩为 \(r\)，未知数个数也是 \(r\)，因此只有唯一一组解，即零解。这表明 \(\beta_1, \beta_2, \cdots , \beta_r\) 是向量组 \(\beta_1, \beta_2, \cdots , \beta_k\) 的极大无关组，因此向量组 \(\beta_1, \beta_2, \cdots , \beta_k\) 的秩等于 \(r\)。
+    \end{proof}
+
+\begin{example}
+        设 \(\alpha_1, \alpha_2, \cdots, \alpha_m\) 是向量空间 \(V\) 中一组向量，向量组 \(\beta_1, \beta_2, \cdots, \beta_k\) 可用 \(\alpha_1, \alpha_2, \cdots, \alpha_m\) 线性表出，求证：向量组 \(\beta_1, \beta_2, \cdots, \beta_k\) 的秩小于等于向量组 \(\alpha_1, \alpha_2, \cdots, \alpha_m\) 的秩。
+\end{example}
+        
+\begin{proof}
+    不失一般性，可设 \(\alpha_1, \alpha_2, \cdots, \alpha_r\) 是向量组 \(\alpha_1, \alpha_2, \cdots, \alpha_m\) 的极大无关组，\(\beta_1, \beta_2, \cdots, \beta_s\) 是向量组 \(\beta_1, \beta_2, \cdots, \beta_k\) 的极大无关组。因为 \(\alpha_1, \alpha_2, \cdots, \alpha_m\) 可用 \(\alpha_1, \alpha_2, \cdots, \alpha_r\) 线性表出，所以 \(\beta_1, \beta_2, \cdots, \beta_s\) 也可用 \(\alpha_1, \alpha_2, \cdots, \alpha_r\) 线性表出，从而由 §§ 3.1.3 定理 2 可知 \(s \leq r\)，结论成立。
+\end{proof}
+\begin{remark}
+    如果将向量组 \(\alpha_1, \alpha_2, \cdots, \alpha_m\) 称为原向量组，将向量组 \(\beta_1, \beta_2, \cdots, \beta_k\) 称为表出向量组，则例 3.19 可简述为：“表出向量组的秩不超过原向量组的秩”。从几何上看，这是一个自然的结果。因为每个 \(\beta_i\) 都属于由 \(\alpha_1, \alpha_2, \cdots, \alpha_m\) 生成的子空间，故它们的秩不会超过该子空间的维数。
+\end{remark}
+
+
+\begin{example}
+    设 \( V \) 是 \( n \) 维线性空间，\( v_1, v_2, \cdots, v_m \) 是一组线性无关的向量（\( V \) 的子空间 \( U \) 的一组基），\( e_1, e_2, \cdots, e_n \) 是 \( V \) 的一组基。求证：必可在 \( e_1, e_2, \cdots, e_n \) 中选出 \( n - m \) 个向量，使之和 \( v_1, v_2, \cdots, v_m \) 一起组成 \( V \) 的一组基。
+\end{example}
+
+\begin{proof}
+    若 \( m < n \)，将 \( e_i (1 \leq i \leq n) \) 依次加入向量组 \( v_1, v_2, \cdots, v_m \)，则必有一个 \( e_i \)，使得 \( v_1, v_2, \cdots, v_m, e_i \) 线性无关。这是因为若任意一个 \( e_i \) 加入 \( v_1, v_2, \cdots, v_m \) 后均线性相关，则每个 \( e_i \) 都可用 \( v_1, v_2, \cdots, v_m \) 线性表示，由例 3.19 可得 \( n \leq m \)，矛盾。现不妨设 \( i = m + 1 \)。若 \( m + 1 < n \)，又可从 \( e_1, e_2, \cdots, e_n \) 中找到一个向量，加入之后仍线性无关。不断这样做下去，便可将 \( v_1, v_2, \cdots, v_m \) 扩张成为 \( V \) 的一组基。
+\end{proof}
+
+\begin{example}
+    设 \(\alpha_1 = (1,0,-1,0), \alpha_2 = (0,1,2,1), \alpha_3 = (2,1,0,1)\) 是四维实行向量空间 \(V\) 中的向量，它们生成的子空间为 \(V_1\)，又向量 \(\beta_1 = (-1,1,1,1), \beta_2 = (1,-1,-3,-1), \beta_3 = (-1,1,-1,1)\) 生成的子空间为 \(V_2\)，求子空间 \(V_1 + V_2\) 和 \(V_1 \cap V_2\) 的基。
+\end{example}
+    
+\begin{solution}[解法 1]
+    \(V_1 + V_2\) 是由 \(\alpha_i\) 和 \(\beta_i\) 生成的，因此只要求出这 6 个向量的极大无关组即可。将这 6 个向量按列分块方式拼成矩阵，并用初等行变换将其化为阶梯形矩阵：
+    
+    \[
+\begin{pmatrix}
+    1 & 0 & 2 & -1 & 1 & -1 \\
+    0 & 1 & 1 & 1 & -1 & 1 \\
+    -1 & 2 & 0 & 1 & -3 & -1 \\
+    0 & 1 & 1 & 1 & -1 & 1
+\end{pmatrix} \rightarrow 
+\begin{pmatrix}
+    1 & 0 & 2 & -1 & 1 & -1 \\
+    0 & 1 & 1 & 1 & -1 & 1 \\
+    0 & 2 & 2 & 0 & -2 & -2 \\
+    0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix} \rightarrow
+    \]
+    
+    \[
+\begin{pmatrix}
+    1 & 0 & 2 & -1 & 1 & -1 \\
+    0 & 1 & 1 & 1 & -1 & 1 \\
+    0 & 0 & 0 & -2 & 0 & -4 \\
+    0 & 0 & 0 & 0 & 0 & 0
+\end{pmatrix}
+    \]
+    
+    故可取 \(\alpha_1, \alpha_2, \beta_1\) 为 \(V_1 + V_2\) 的基（不唯一）。
+    
+    再求 \(V_1 \cap V_2\) 的基。首先注意到 \(\alpha_1, \alpha_2\) 是 \(V_1\) 的基（从上面的矩阵即可看出），又不难验证 \(\beta_1, \beta_2\) 是 \(V_2\) 的基，\(V_2\) 中的向量可以表示为 \(\beta_1, \beta_2\) 的线性组合。假设 \(t_1 \beta_1 + t_2 \beta_2\) 属于 \(V_1\)，则向量组 \(\alpha_1, \alpha_2, t_1 \beta_1 + t_2 \beta_2\) 和向量组 \(\alpha_1, \alpha_2\) 的秩相等（因为 \(\alpha_1, \alpha_2\) 是 \(V_1\) 的基）。因此，我们可以用矩阵方法来求出参数 \(t_1, t_2\)。注意到
+    
+    \[
+\begin{pmatrix}
+    1 & 0 & -t_1 + t_2 \\
+    0 & 1 & t_1 - t_2 \\
+    -1 & 2 & t_1 - 3t_2 \\
+    0 & 1 & t_1 - t_2
+\end{pmatrix} \rightarrow 
+\begin{pmatrix}
+    1 & 0 & -t_1 + t_2 \\
+    0 & 1 & t_1 - t_2 \\
+    0 & 2 & -2t_2 \\
+    0 & 0 & 0
+\end{pmatrix} \rightarrow 
+\begin{pmatrix}
+    1 & 0 & -t_1 + t_2 \\
+    0 & 1 & t_1 - t_2 \\
+    0 & 0 & -2t_1 \\
+    0 & 0 & 0
+\end{pmatrix}
+    \]
+    
+    故可得 \(t_1 = 0\)，所以 \(V_1 \cap V_2\) 的基可取为 \(\beta_2\)。
+\end{solution}
+    
+\begin{solution}[解法 2]
+    求 \( V_1 + V_2 \) 的基同解法 1，现用解线性方程组的方法来求 \( V_1 \cap V_2 \) 的基。因为 \( \alpha_1, \alpha_2 \) 是 \( V_1 \) 的基，\( \beta_1, \beta_2 \) 是 \( V_2 \) 的基，故对任一向量 \( \gamma \in V_1 \cap V_2 \)，\( \gamma = x_1 \alpha_1 + x_2 \alpha_2 = (-x_3) \beta_1 + (-x_4) \beta_2 \)。因此，求向量 \( \gamma \) 等价于求解线性方程组
+    \[ x_1 \alpha_1 + x_2 \alpha_2 + x_3 \beta_1 + x_4 \beta_2 = 0. \]
+    通过初等行变换将其系数矩阵 \( (\alpha_1, \alpha_2, \beta_1, \beta_2) \) 进行化简：
+    \[
+\begin{pmatrix}
+    1 & 0 & -1 & 1 \\
+    0 & 1 & 1 & -1 \\
+    0 & 0 & -2 & 0 \\
+    0 & 0 & 0 & 0 
+\end{pmatrix} \rightarrow 
+\begin{pmatrix}
+    1 & 0 & 0 & 1 \\
+    0 & 1 & 0 & -1 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0 
+\end{pmatrix},
+    \]
+    故上述线性方程组的通解为 \( (x_1, x_2, x_3, x_4) = k(-1, 1, 0, 1) \)，从而 \( \gamma = -k(\alpha_1 - \alpha_2) = -k \beta_2 \) (\( k \in \mathbb{R} \))，于是 \( \beta_2 \) 是 \( V_1 \cap V_2 \) 的基。
+\end{solution}
+
+
+% \begin{example}
+%     设 \( f \) 在 \([a, b]\) 上连续，在 \((a, b)\) 上可微，且满足条件  
+%     \[
+%     f(a)f(b) > 0, \quad f(a)f\left(\frac{a+b}{2}\right) < 0,
+%     \]
+%     证明：对每个实数 \( k \)，在 \((a, b)\) 内存在点 \(\xi\)，使成立 \( f'(\xi) - kf(\xi) = 0 \)。
+% \end{example}
+        
+% \begin{proof}
+%     令 \( g(x) = e^{-kx}f(x) \)，则 \( g(x) \) 在 \([a,b]\) 上连续，在 \((a,b)\) 上可微。
+    
+%     由条件 \( f(a)f(b) > 0 \) 可知 \( f(a) \) 与 \( f(b) \) 同号，而 \( e^{-ka} \) 与 \( e^{-kb} \) 均为正数，所以
+%     \[
+%     g(a)g(b) = e^{-k(a+b)} f(a) f(b) > 0.
+%     \]
+    
+%     又由条件 \( f(a)f\left(\frac{a+b}{2}\right) < 0 \) 可得
+%     \[
+%     g(a)g\left(\frac{a+b}{2}\right) = e^{-k\left(a+\frac{a+b}{2}\right)} f(a) f\left(\frac{a+b}{2}\right) < 0.
+%     \]
+    
+%     因此，\( g(a) \) 与 \( g\left(\frac{a+b}{2}\right) \) 异号。根据零点存在定理，存在 \( \eta_1 \in \left( a, \frac{a+b}{2} \right) \)，使得 \( g(\eta_1) = 0 \)。
+    
+%     同时，由于 \( g(a)g(b) > 0 \)，而 \( g(a) \) 与 \( g\left(\frac{a+b}{2}\right) \) 异号，故 \( g\left(\frac{a+b}{2}\right) \) 与 \( g(b) \) 也异号（因为若 \( g(a) \) 与 \( g(b) \) 同号，而 \( g(a) \) 与 \( g\left(\frac{a+b}{2}\right) \) 异号，则 \( g\left(\frac{a+b}{2}\right) \) 与 \( g(b) \) 异号）。再根据零点存在定理，存在 \( \eta_2 \in \left( \frac{a+b}{2}, b \right) \)，使得 \( g(\eta_2) = 0 \)。
+    
+%     于是，\( g(\eta_1) = g(\eta_2) = 0 \)，且 \( \eta_1 < \eta_2 \)。由罗尔中值定理，存在 \( \xi \in (\eta_1, \eta_2) \subset (a,b) \)，使得
+%     \[
+%     g'(\xi) = 0.
+%     \]
+    
+%     计算 \( g'(x) \)：
+%     \[
+%     g'(x) = \frac{d}{dx}\left( e^{-kx} f(x) \right) = e^{-kx} f'(x) - k e^{-kx} f(x) = e^{-kx} \left( f'(x) - k f(x) \right).
+%     \]
+    
+%     因此，由 \( g'(\xi) = 0 \) 得
+%     \[
+%     e^{-k\xi} \left( f'(\xi) - k f(\xi) \right) = 0.
+%     \]
+    
+%     由于 \( e^{-k\xi} > 0 \)，故必有
+%     \[
+%     f'(\xi) - k f(\xi) = 0.
+%     \]
+    
+%     这就完成了证明。
+% \end{proof}
+        
+% \begin{example}
+%     设 \( f \in C[0,1] \)，在 \((0,1)\) 上可微，并且 \( f(0) = 0 \)，\( f(1) = 1 \)。又设 \( k_1, k_2, \cdots, k_n \) 是满足 \( k_1 + k_2 + \cdots + k_n = 1 \) 的 \( n \) 个正数。证明：在 \((0,1)\) 中存在 \( n \) 个互不相同的数 \( t_1, t_2, \cdots, t_n \)，使得
+%     \[
+%     \frac{k_1}{f'(t_1)} + \frac{k_2}{f'(t_2)} + \cdots + \frac{k_n}{f'(t_n)} = 1.
+%     \tag{7.17}
+%     \]
+% \end{example}
+        
+% \begin{proof}
+%     由于 \( f \) 在 \([0,1]\) 上连续，且 \( f(0)=0 \)，\( f(1)=1 \)，根据介值定理，可以在 \((0,1)\) 中插入点 \( x_1, x_2, \cdots, x_{n-1} \)，使得
+%     \[
+%     0 = x_0 < x_1 < x_2 < \cdots < x_{n-1} < x_n = 1,
+%     \]
+%     并满足
+%     \[
+%     f(x_1) = k_1,\quad f(x_2) = k_1 + k_2,\quad \cdots,\quad f(x_{n-1}) = k_1 + k_2 + \cdots + k_{n-1}.
+%     \]
+%     （注意：因为 \( k_1, \dots, k_n \) 均为正数，所以部分和递增，且最后一个部分和 \( k_1 + \cdots + k_{n-1} < 1 \)，因此这样的 \( x_i \) 存在。）
+    
+%     在区间 \([x_{i-1}, x_i]\) 上（\( i = 1, 2, \dots, n \)）应用 Lagrange 中值定理，存在 \( t_i \in (x_{i-1}, x_i) \)，使得
+%     \[
+%     f'(t_i) = \frac{f(x_i) - f(x_{i-1})}{x_i - x_{i-1}}.
+%     \]
+%     注意，当 \( i = 1,2,\dots,n-1 \) 时，\( f(x_i) - f(x_{i-1}) = k_i \)；而当 \( i = n \) 时，
+%     \[
+%     f(x_n) - f(x_{n-1}) = 1 - (k_1 + \cdots + k_{n-1}) = k_n.
+%     \]
+%     因此，对每个 \( i = 1,2,\dots,n \)，都有
+%     \[
+%     k_i = f'(t_i)(x_i - x_{i-1}) \quad \text{即} \quad \frac{k_i}{f'(t_i)} = x_i - x_{i-1}.
+%     \]
+%     将上述等式从 \( i = 1 \) 到 \( n \) 求和，即得
+%     \[
+%     \frac{k_1}{f'(t_1)} + \frac{k_2}{f'(t_2)} + \cdots + \frac{k_n}{f'(t_n)} = (x_1 - x_0) + (x_2 - x_1) + \cdots + (x_n - x_{n-1}) = x_n - x_0 = 1.
+%     \]
+%     由于每个 \( t_i \) 属于互不相交的开区间 \((x_{i-1}, x_i)\)，所以它们互不相同。这就完成了证明。
+% \end{proof} 
+        
+% \begin{example}
+%     设 \( f \) 在 \((0,+\infty)\) 上二阶可微，且已知
+%     \[ M_0 = \sup\{|f(x)| \mid x \in (0,+\infty)\} \]
+%     和 
+%     \[ M_2 = \sup\{|f''(x)| \mid x \in (0,+\infty)\} \]
+%     为有限数。证明 
+%     \[ M_1 = \sup\{|f'(x)| \mid x \in (0,+\infty)\} \]
+%     也是有限数，并满足不等式
+%     \[ M_1 \leq 2\sqrt{M_0M_2}. \]
+% \end{example}
+            
+% \begin{proof}
+%     写出
+%     \[ f(x+t) = f(x) + f'(x)t + \frac{f''(\xi)}{2}t^2, \]
+%     其中 \( x,t > 0, \xi \in (x,x+t) \)。由此有估计
+%     \[ |tf'(x)| \leq \left| f(x+t) - f(x) - \frac{t^2}{2}f''(\xi) \right| \leq 2M_0 + \frac{t^2}{2}M_2. \]
+%     这样就得到
+%     \[ |f'(x)| \leq \frac{2M_0}{t} + \frac{t}{2}M_2. \]
+%     这对每个 \( x \in (0,+\infty) \) 成立。取上确界，就有
+%     \[ M_1 \leq \frac{2M_0}{t} + \frac{t}{2}M_2. \tag{7.24} \]
+%     因此 \( M_1 \) 为有限数。由于这对每个 \( t > 0 \) 成立，为了得到最好的估计，可以取 \( t = 2\sqrt{M_0/M_2} \)，使右边的和达到最小，即有
+%     \[ M_1 \leq 2\sqrt{M_0M_2}. \]
+% \end{proof}        
+
+% \nocite{*}
+% \printbibliography[heading=bibintoc, title=\ebibname]
+% \appendix
+% \chapter{基本数学工具}
+% 本附录包括了计量经济学中用到的一些基本数学，我们扼要论述了求和算子的各种性质，研究了线性和某些非线性方程的性质，并复习了比例和百分数。我们还介绍了一些在应用计量经济学中常见的特殊函数，包括二次函数和自然对数，前 4 节只要求基本的代数技巧，第 5 节则对微分学进行了简要回顾；虽然要理解本书的大部分内容，微积分并非必需，但在一些章末附录和第 3 篇某些高深专题中，我们还是用到了微积分。
+
+% \section{求和算子与描述统计量}
+
+% \textbf{求和算子} 是用以表达多个数求和运算的一个缩略符号，它在统计学和计量经济学分析中扮演着重要作用。如果 $\{x_i: i=1, 2, \ldots, n\}$ 表示 $n$ 个数的一个序列，那么我们就把这 $n$ 个数的和写为：
+
+% \begin{equation}
+% \sum_{i=1}^n x_i \equiv x_1 + x_2 +\cdots + x_n
+% \end{equation}
+
+\end{document}
