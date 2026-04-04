@@ -5,7 +5,7 @@
 
 \author{忘记了一天}
 \institute{XTU\_data\_2}
-\date{march 20, 2026}
+\date{April 2, 2026}
 % \version{4.3}
 % \bioinfo{自定义}{信息}
 
@@ -213,31 +213,31 @@ O & A_{22}
     \]
 \end{proof}
 
-\begin{example}
-    设 \(\varphi\) 是有限维线性空间 \(V\) 到 \(U\) 的线性映射，求证：必存在 \(U\) 到 \(V\) 的线性映射 \(\psi\)，使得 \(\varphi\psi\varphi = \varphi\)。
-\end{example}
+% \begin{example}
+%     设 \(\varphi\) 是有限维线性空间 \(V\) 到 \(U\) 的线性映射，求证：必存在 \(U\) 到 \(V\) 的线性映射 \(\psi\)，使得 \(\varphi\psi\varphi = \varphi\)。
+% \end{example}
     
-\begin{proof}[证法 1（几何方法）]
-    设 \(V\) 和 \(U\) 的维数分别是 \(n\) 和 \(m\)。由例 \ref{ex4.22} 可知，存在 \(V\) 和 \(U\) 的基 \(\{e_1, e_2, \cdots, e_n\}, \{f_1, f_2, \cdots, f_m\}\)，使得 \(\varphi\) 在这两组基下的表示矩阵为
-    \[
-    \begin{pmatrix}
-    I_r & O \\
-    O & O
-    \end{pmatrix}.
-    \]
-    这就是 \(\varphi(e_i) = f_i, 1 \leq i \leq r; \varphi(e_j) = 0, r+1 \leq j \leq m\)。定义 \(\psi\) 是 \(U\) 到 \(V\) 的线性映射，它在基上的作用为
-    \[
-    \psi(f_i) = e_i, 1 \leq i \leq r; \quad \psi(f_j) = 0, r+1 \leq j \leq m,
-    \]
-    则在 \(V\) 的基上，有
-    \[
-    \varphi\psi\varphi(e_i) = \varphi\psi(f_i) = \varphi(e_i), \quad 1 \leq i \leq r;
-    \]
-    \[
-    \varphi\psi\varphi(e_j) = \varphi\psi(0) = 0 = \varphi(e_j), \quad r+1 \leq j \leq m.
-    \]
-    于是 \(\varphi\psi\varphi = \varphi\)。
-\end{proof}
+% \begin{proof}[证法 1（几何方法）]
+%     设 \(V\) 和 \(U\) 的维数分别是 \(n\) 和 \(m\)。由例 \ref{ex4.22} 可知，存在 \(V\) 和 \(U\) 的基 \(\{e_1, e_2, \cdots, e_n\}, \{f_1, f_2, \cdots, f_m\}\)，使得 \(\varphi\) 在这两组基下的表示矩阵为
+%     \[
+%     \begin{pmatrix}
+%     I_r & O \\
+%     O & O
+%     \end{pmatrix}.
+%     \]
+%     这就是 \(\varphi(e_i) = f_i, 1 \leq i \leq r; \varphi(e_j) = 0, r+1 \leq j \leq m\)。定义 \(\psi\) 是 \(U\) 到 \(V\) 的线性映射，它在基上的作用为
+%     \[
+%     \psi(f_i) = e_i, 1 \leq i \leq r; \quad \psi(f_j) = 0, r+1 \leq j \leq m,
+%     \]
+%     则在 \(V\) 的基上，有
+%     \[
+%     \varphi\psi\varphi(e_i) = \varphi\psi(f_i) = \varphi(e_i), \quad 1 \leq i \leq r;
+%     \]
+%     \[
+%     \varphi\psi\varphi(e_j) = \varphi\psi(0) = 0 = \varphi(e_j), \quad r+1 \leq j \leq m.
+%     \]
+%     于是 \(\varphi\psi\varphi = \varphi\)。
+% \end{proof}
 
 \begin{example}
     设 \(\varphi\) 是线性空间 \(V\) 上的线性变换，若它在 \(V\) 的任一组基下的表示矩阵都相同，求证：\(\varphi\) 是纯量变换，即存在常数 \(k\)，使得 \(\varphi(\alpha) = k\alpha\) 对一切 \(\alpha \in V\) 都成立。
@@ -247,65 +247,35 @@ O & A_{22}
     取定 \(V\) 的一组基，设 \(\varphi\) 在这组基下的表示矩阵是 \(A\)。由已知条件可知，对任意一个同阶可逆矩阵 \(P\)，\(A = P^{-1}AP\)，即 \(PA = AP\)。因此矩阵 \(A\) 和任意一个可逆矩阵乘法可交换，于是 \(A = kI_n\)，由此即知 \(\varphi\) 是纯量变换。
 \end{proof}
 
-\begin{example}\label{ex3.93}
-    设 \( A \) 为 \( m \times n \) 矩阵，证明：存在 \( n \times m \) 矩阵 \( B \)，使得 \( ABA = A \)。
-\end{example}
+% \begin{example}\label{ex3.93}
+%     设 \( A \) 为 \( m \times n \) 矩阵，证明：存在 \( n \times m \) 矩阵 \( B \)，使得 \( ABA = A \)。
+% \end{example}
     
-\begin{proof}[证法 1]
-    设 \( PAQ = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} \)，其中 \( P \) 是 \( m \) 阶非异阵，\( Q \) 是 \( n \) 阶非异阵。注意到问题的条件和结论在相抵变换：\( A \mapsto PAQ \)，\( B \mapsto Q^{-1}BP^{-1} \) 下保持不变，故不妨从一开始就假设 \( A = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} \) 是相抵标准型。设 \( B = \begin{pmatrix} B_1 & B_2 \\ B_3 & B_4 \end{pmatrix} \) 为对应的分块，由 \( ABA = A \) 可得 \( B_1 = I_r \)，其余分块取法任意。
-\end{proof}
+% \begin{proof}[证法 1]
+%     设 \( PAQ = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} \)，其中 \( P \) 是 \( m \) 阶非异阵，\( Q \) 是 \( n \) 阶非异阵。注意到问题的条件和结论在相抵变换：\( A \mapsto PAQ \)，\( B \mapsto Q^{-1}BP^{-1} \) 下保持不变，故不妨从一开始就假设 \( A = \begin{pmatrix} I_r & O \\ O & O \end{pmatrix} \) 是相抵标准型。设 \( B = \begin{pmatrix} B_1 & B_2 \\ B_3 & B_4 \end{pmatrix} \) 为对应的分块，由 \( ABA = A \) 可得 \( B_1 = I_r \)，其余分块取法任意。
+% \end{proof}
 
-\begin{example}
-    设 \(\varphi\) 是有限维线性空间 \(V\) 到 \(U\) 的线性映射，求证：必存在 \(U\) 到 \(V\) 的线性映射 \(\psi\)，使得 \(\varphi\psi\varphi = \varphi\)。
-\end{example}
+% \begin{example}
+%     设 \(\varphi\) 是有限维线性空间 \(V\) 到 \(U\) 的线性映射，求证：必存在 \(U\) 到 \(V\) 的线性映射 \(\psi\)，使得 \(\varphi\psi\varphi = \varphi\)。
+% \end{example}
     
-\begin{proof}[证法 2（代数方法）] \par
-    取定 \(V\) 和 \(U\) 的两组基，设 \(\varphi\) 在这两组基下的表示矩阵为 \(m \times n\) 矩阵 \(A\)，则由例\ref{ex3.93}可知，存在 \(n \times m\) 矩阵 \(B\)，使得 \(ABA = A\)。由矩阵 \(B\) 可定义从 \(U\) 到 \(V\) 的线性映射 \(\psi\)，它适合 \(\varphi\psi\varphi = \varphi\)。
-\end{proof}
+% \begin{proof}[证法 2（代数方法）] \par
+%     取定 \(V\) 和 \(U\) 的两组基，设 \(\varphi\) 在这两组基下的表示矩阵为 \(m \times n\) 矩阵 \(A\)，则由例\ref{ex3.93}可知，存在 \(n \times m\) 矩阵 \(B\)，使得 \(ABA = A\)。由矩阵 \(B\) 可定义从 \(U\) 到 \(V\) 的线性映射 \(\psi\)，它适合 \(\varphi\psi\varphi = \varphi\)。
+% \end{proof}
 
-\begin{example}
-    设 \( V_1, V_2 \) 是 \( V \) 上线性变换 \( \varphi \) 的不变子空间，求证：\( V_1 \cap V_2, V_1 + V_2 \) 也是 \( \varphi \) 的不变子空间。
-\end{example}
+% \begin{example}
+%     设 \( V_1, V_2 \) 是 \( V \) 上线性变换 \( \varphi \) 的不变子空间，求证：\( V_1 \cap V_2, V_1 + V_2 \) 也是 \( \varphi \) 的不变子空间。
+% \end{example}
     
-\begin{proof}
-    任取 \( v \in V_1 \cap V_2 \)，则由 \( v \in V_i \) 可得 \( \varphi(v) \in V_i \; (i = 1, 2) \)，于是 \( \varphi(v) \in V_1 \cap V_2 \)，从而 \( V_1 \cap V_2 \) 是 \( \varphi \) 的不变子空间。
+% \begin{proof}
+%     任取 \( v \in V_1 \cap V_2 \)，则由 \( v \in V_i \) 可得 \( \varphi(v) \in V_i \; (i = 1, 2) \)，于是 \( \varphi(v) \in V_1 \cap V_2 \)，从而 \( V_1 \cap V_2 \) 是 \( \varphi \) 的不变子空间。
     
-    任取 \( v \in V_1 + V_2 \)，则 \( v = v_1 + v_2 \)，其中 \( v_i \in V_i \)，故 \( \varphi(v_i) \in V_i \; (i = 1, 2) \)，于是
-    \[
-    \varphi(v) = \varphi(v_1) + \varphi(v_2) \in V_1 + V_2,
-    \]
-    从而 \( V_1 + V_2 \) 是 \( \varphi \) 的不变子空间。
-\end{proof}
-
-\begin{example}
-    若$\lambda_1,\lambda_2,\cdots,\lambda_k$是线性变换$\mathcal{A}$的k个互不相同的特征值，而$\{\xi_{i1},\xi_{i2},\cdots,\xi_{ir_i}\} (i = 1 ,2,\cdots,k)$是属于特征值$\lambda_i$的线性无关的特征向量组。求证：向量组$\{\xi_{11},\xi_{12},\cdots,\xi_{1r_1},\cdots,\xi_{k1},\xi_{k2},\cdots,\xi_{kr_k}\}$也线性无关。
-\end{example}
-
-\begin{proof}
-    数学归纳法：当$k = 1$时，结论显然成立。假设当$k = m-1$时结论成立，现讨论$k = m$的情况。设有数$a_{ij} (1 \leq i \leq m, 1 \leq j \leq r_i)$使得
-\[a_{11}\xi_{11} + a_{12}\xi_{12} + \cdots + a_{1r_1}\xi_{1r_1} + \cdots + a_{m1}\xi_{m1} + a_{m2}\xi_{m2} + \cdots + a_{mr_m}\xi_{mr_m} = 0\]
-
-    上式两边同时作用$\mathcal{A}$，则有
-\[
-a_{11}\lambda_1\xi_{11} + a_{12}\lambda_1\xi_{12} + \cdots + a_{1r_1}\lambda_1\xi_{1r_1} + \cdots + a_{m1}\lambda_m\xi_{m1} + a_{m2}\lambda_m\xi_{m2} + \cdots + a_{mr_m}\lambda_m\xi_{mr_m} = 0
-\]
-
-    上式两边同时乘以$\lambda_m$，则有
-\[
-a_{11}\lambda_m\xi_{11} + a_{12}\lambda_m\xi_{12} + \cdots + a_{1r_1}\lambda_m\xi_{1r_1} + \cdots + a_{m1}\lambda_m\xi_{m1} + a_{m2}\lambda_m\xi_{m2} + \cdots + a_{mr_m}\lambda_m\xi_{mr_m} = 0
-\]
-    上式两边相减，得到
-
-\(
-a_{11}(\lambda_1 - \lambda_m)\xi_{11} + a_{12}(\lambda_1 - \lambda_m)\xi_{12} + \cdots + a_{1r_1}(\lambda_1 - \lambda_m)\xi_{1r_1} + \cdots + a_{m-1,1}(\lambda_{m-1} - \lambda_m)\xi_{m-1,1} +  a_{m-1,2}(\lambda_{m-1} - \lambda_m)\xi_{m-1,2} + \cdots + a_{m-1,r_{m-1}}(\lambda_{m-1} - \lambda_m)\xi_{m-1,r_{m-1}} = 0
-\)
-
-    由归纳假设可知，$a_{ij}(\lambda_i - \lambda_m) = 0$，由于$\lambda_i \neq \lambda_m$，故$a_{ij} = 0$，从而$a_{m1}\xi_{m1} + a_{m2}\xi_{m2} + \cdots + a_{mr_m}\xi_{mr_m} = 0$，又由于$\{\xi_{m1},\xi_{m2},\cdots,\xi_{mr_m}\}$线性无关，所以$a_{m1} = a_{m2} = \cdots = a_{mr_m} = 0$。
-    
-    因此$a_{ij} = 0(1 \leq i \leq m, 1 \leq j \leq r_i)$，结论成立。
-\end{proof}
-
-
+%     任取 \( v \in V_1 + V_2 \)，则 \( v = v_1 + v_2 \)，其中 \( v_i \in V_i \)，故 \( \varphi(v_i) \in V_i \; (i = 1, 2) \)，于是
+%     \[
+%     \varphi(v) = \varphi(v_1) + \varphi(v_2) \in V_1 + V_2,
+%     \]
+%     从而 \( V_1 + V_2 \) 是 \( \varphi \) 的不变子空间。
+% \end{proof}
 
 \begin{example}
     用几何方法证明 Cayley-Hamilton定理：已知$\mathcal{A}  $是有限维线性空间V中的线性变换，\(f(\lambda)\) 是变换 \(\mathcal{A}\) 的特征多项式，则 \(f(\mathcal{A}) = 0\)。
@@ -377,6 +347,231 @@ f(\mathcal{A}) \xi = g(\mathcal{A}) h(\mathcal{A}) \xi = h(\mathcal{A}) g(\mathc
 \]
     因此 $f(\mathcal{A}) = 0$。
 
+\end{proof}
+
+
+
+\chapter{第二次习题课}
+
+\section{不定积分}
+
+\begin{example}
+    求下列不定积分：
+    \[
+    \int \frac{\ln x}{x\sqrt{1 + \ln x}} \; dx
+    \]
+    \[
+    \int (1 + x - \frac{1}{x})e^{x + \frac{1}{x}} \; dx
+    \]
+    \[
+    \int \frac{1}{(x+1)(x^2 - 2x + 2)} \; dx
+    \]
+    \[
+    \int \frac{x}{1 + \sin x} \; dx
+    \]
+    \[
+    \int \frac{1}{1 + x^3} \; dx
+    \]
+    \[
+    \int \frac{\sin x}{1 + \sin 2x} \; dx
+    \]
+    \[
+    \int \frac{1}{1 + x^5} \; dx
+    \]
+\end{example}
+
+\begin{example}
+    \begin{enumerate}
+        \item 用配对积分法计算下列不定积分：
+        \begin{enumerate}
+            \item \(\displaystyle \int \frac{e^x \, dx}{e^x + e^{-x}}\);
+            \item \(\displaystyle \int \frac{b \sin x + a \cos x}{a \sin x + b \cos x} \, dx \quad (a \neq b)\);
+        \end{enumerate}
+        
+        % \item 通过计算不定积分
+        % \[
+        % \int (\cos^4 x - \sin^4 x) \, dx \quad \text{与} \quad \int (\cos^4 x + \sin^4 x) \, dx,
+        % \]
+        \item 
+        求出不定积分
+        \[
+        \int \cos^4 x \, dx \quad \text{和} \quad \int \sin^4 x \, dx.
+        \]
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+(a)
+令 \( M(x) = \int \frac{e^x}{e^x + e^{-x}} \, dx \), \( N(x) = \int \frac{e^{-x}}{e^x + e^{-x}} \, dx \)，则
+\[
+M(x) + N(x) = x + c,
+\]
+\[
+M(x) - N(x) = \ln(e^x + e^{-x}) + c,
+\]
+故
+\[
+M(x) = \frac{1}{2}x + \frac{1}{2} \ln(e^x + e^{-x}) + c.
+\]
+
+(b)
+令 \( M(x) = \int \frac{\sin x}{a \sin x + b \cos x} \, dx \), \( N(x) = \int \frac{\cos x}{a \sin x + b \cos x} \, dx \)，则
+\[
+aM(x) + bN(x) = x + c,
+\]
+\[
+aN(x) - bM(x) = \ln|a \sin x + b \cos x| + c,
+\]
+故原积分
+\[
+\begin{aligned}
+&\int \frac{b \sin x + a \cos x}{a \sin x + b \cos x} \, dx \\
+&= bM(x) + aN(x) \\
+&= \frac{b}{a^2+b^2}(ax - b\ln|a\sin x + b\cos x|) + \frac{a}{a^2+b^2}(bx + a\ln|a\sin x + b\cos x|) + c \\
+&= \frac{2ab}{a^2+b^2}\,x - \frac{a^2-b^2}{a^2+b^2}\ln|a\sin x + b\cos x| + c.
+\end{aligned}
+\]
+\end{solution}
+
+\begin{solution}
+解1
+用分部积分法可进行如下：
+\[
+\begin{aligned}
+I &= -\int \sin^3 x \, dx \\
+    &= -\sin^3 x \cos x + \int \cos x \, d\sin^3 x \\
+    &= -\sin^3 x \cos x + 3 \int \sin^2 x \cos^2 x \, dx \\
+    &= -\sin^3 x \cos x + 3 \int \sin^4 x (1 - \sin^2 x) \, dx \\
+    &= -\sin^3 x \cos x + 3 \int \sin^2 x \, dx - 3 \int \sin^4 x \, dx \\
+    &= -\sin^3 x \cos x + \frac{3}{2} \int (1 - \cos 2x) \, dx - 3I \\
+    &= -\sin^3 x \cos x + \frac{3}{2} x - \frac{3}{8} \sin 2x - 3I,
+\end{aligned}
+\]
+所以得到
+\[
+I = -\frac{1}{4} \sin^3 x \cos x + \frac{3}{8} x - \frac{3}{16} \sin 2x + C.
+\]
+
+解2
+如果用三角函数的倍角公式，则可得到更简单的解法：
+\[
+\begin{aligned}
+I &= \int \left( \frac{1 - \cos 2x}{2} \right)^2 \, dx = \frac{1}{4} \int (1 - 2\cos 2x + \cos^2 2x) \, dx \\
+    &= \frac{1}{4} \int \left( 1 - 2\cos 2x + \frac{1 + \cos 4x}{2} \right) \, dx \\
+    &= \frac{3}{8} x - \frac{1}{4} \sin 2x + \frac{1}{32} \sin 4x + C.
+\end{aligned}
+\]
+
+解3
+\[
+\begin{aligned}
+\int (\cos^4 x - \sin^4 x) \, dx &= \int (\cos^2 x - \sin^2 x) \, dx = \sin 2x + C, \\
+\int (\cos^4 x + \sin^4 x) \, dx &= \int (1 - 2\sin^2 x \cos^2 x) \, dx = \int \left(1 - \frac{1}{2}\sin^2 2x\right) dx \\
+&= \frac{3}{4}x - \frac{1}{4}\sin 4x + C.
+\end{aligned}
+\]
+\end{solution}
+
+\begin{example}
+    计算下列不定积分：
+    \begin{enumerate}
+        \item \[
+    \int \frac{dx}{1 + x^4}.
+    \]
+        \item \[
+    \int \frac{1}{1 + \tan x} \; dx
+    \]
+    \end{enumerate}
+    
+\end{example}
+
+\begin{solution}
+    令 \( M(x) = \int \frac{dx}{1+x^4}, N(x) = \int \frac{x^2 dx}{1+x^4} \)，则有
+    \[
+    \begin{aligned}
+    M(x) - N(x) &= \int \frac{1-x^2}{1+x^4} dx = -\int \frac{1-\frac{1}{x^2}}{x^2+\frac{1}{x^2}} dx \\
+    &= -\int \frac{d\left(x+\frac{1}{x}\right)}{\left(x+\frac{1}{x}\right)^2-2} = -\frac{1}{2\sqrt{2}}\ln\frac{x^2-\sqrt{2}x+1}{x^2+\sqrt{2}x+1} + C, \\
+    M(x) + N(x) &= \int \frac{1+x^2}{1+x^4} dx = \int \frac{1+\frac{1}{x^2}}{x^2+\frac{1}{x^2}} dx = \int \frac{d\left(x-\frac{1}{x}\right)}{\left(x-\frac{1}{x}\right)^2+2} \\
+    &= \frac{1}{\sqrt{2}}\arctan\frac{x-\frac{1}{x}}{\sqrt{2}} + C = \frac{1}{\sqrt{2}}\arctan\frac{x^2-1}{\sqrt{2}x} + C,
+    \end{aligned}
+    \]
+    因此得到
+    \[
+    \begin{aligned}
+    M(x) &= \frac{1}{2}\bigl[(M(x) + N(x)) + (M(x) - N(x))\bigr] \\
+    &= -\frac{1}{4\sqrt{2}}\ln\frac{x^2-\sqrt{2}x+1}{x^2+\sqrt{2}x+1} + \frac{1}{2\sqrt{2}}\arctan\frac{x^2-1}{\sqrt{2}x} + C.
+    \end{aligned}
+    \]
+    本题也可用因式分解裂项的标准方法做，但计算量却要大得多。
+\end{solution}
+
+\begin{solution}
+    参考上例组合积分 
+    \[
+    \begin{aligned}
+        \int \frac{1}{1 + \tan x} \; dx = \int \frac{\cos x}{\cos x + \sin x} \; dx \\
+        = \int \frac{\frac{\cos x + \sin x  + \cos x- \sin x }{2}}{\cos x + \sin x} \; dx\\
+        = \int \frac{1}{2} \; dx + \int \frac{\cos x - \sin x}{2(\cos x + \sin x)} \; dx\\
+        = \frac{1}{2}x + \frac{1}{2}\ln|\cos x + \sin x| + C.
+    \end{aligned}
+    \]
+\end{solution}
+
+\begin{example}
+    设对正整数 \( n > 2 \)，定义 
+    \[
+    I_n = \int \frac{\sin nx}{\sin x} \, dx.
+    \]
+    证明：
+    \[
+    I_n = \frac{2}{n-1} \sin(n-1)x + I_{n-2}.
+    \]
+    \end{example}
+    
+\begin{proof}
+考虑降 \( n \)，
+\[
+\begin{aligned}
+I_n &= \int \frac{\sin(n-1)x \cos x + \sin x \cos(n-1)x}{\sin x} \, dx \\
+&= \int \frac{\sin(n-1)x \cos x}{\sin x} \, dx + \int \cos(n-1)x \, dx \\
+&= \frac{1}{2} \int \frac{\sin nx + \sin(n-2)x}{\sin x} \, dx + \int \cos(n-1)x \, dx \\
+&= \frac{1}{2} I_n + \frac{1}{2} I_{n-2} + \frac{1}{n-1} \sin(n-1)x,
+\end{aligned}
+\]
+所以
+\[
+I_n = \frac{2}{n-1} \sin(n-1)x + I_{n-2}.
+\]
+\end{proof}
+
+\section{习题讲解}
+
+\begin{example}
+    若$\lambda_1,\lambda_2,\cdots,\lambda_k$是线性变换$\mathcal{A}$的k个互不相同的特征值，而$\{\xi_{i1},\xi_{i2},\cdots,\xi_{ir_i}\} (i = 1 ,2,\cdots,k)$是属于特征值$\lambda_i$的线性无关的特征向量组。求证：向量组$\{\xi_{11},\xi_{12},\cdots,\xi_{1r_1},\cdots,\xi_{k1},\xi_{k2},\cdots,\xi_{kr_k}\}$也线性无关。
+\end{example}
+
+\begin{proof}
+    数学归纳法：当$k = 1$时，结论显然成立。假设当$k = m-1$时结论成立，现讨论$k = m$的情况。设有数$a_{ij} (1 \leq i \leq m, 1 \leq j \leq r_i)$使得
+\[a_{11}\xi_{11} + a_{12}\xi_{12} + \cdots + a_{1r_1}\xi_{1r_1} + \cdots + a_{m1}\xi_{m1} + a_{m2}\xi_{m2} + \cdots + a_{mr_m}\xi_{mr_m} = 0\]
+
+    上式两边同时作用$\mathcal{A}$，则有
+\[
+a_{11}\lambda_1\xi_{11} + a_{12}\lambda_1\xi_{12} + \cdots + a_{1r_1}\lambda_1\xi_{1r_1} + \cdots + a_{m1}\lambda_m\xi_{m1} + a_{m2}\lambda_m\xi_{m2} + \cdots + a_{mr_m}\lambda_m\xi_{mr_m} = 0
+\]
+
+    上式两边同时乘以$\lambda_m$，则有
+\[
+a_{11}\lambda_m\xi_{11} + a_{12}\lambda_m\xi_{12} + \cdots + a_{1r_1}\lambda_m\xi_{1r_1} + \cdots + a_{m1}\lambda_m\xi_{m1} + a_{m2}\lambda_m\xi_{m2} + \cdots + a_{mr_m}\lambda_m\xi_{mr_m} = 0
+\]
+    上式两边相减，得到
+
+\(
+a_{11}(\lambda_1 - \lambda_m)\xi_{11} + a_{12}(\lambda_1 - \lambda_m)\xi_{12} + \cdots + a_{1r_1}(\lambda_1 - \lambda_m)\xi_{1r_1} + \cdots + a_{m-1,1}(\lambda_{m-1} - \lambda_m)\xi_{m-1,1} +  a_{m-1,2}(\lambda_{m-1} - \lambda_m)\xi_{m-1,2} + \cdots + a_{m-1,r_{m-1}}(\lambda_{m-1} - \lambda_m)\xi_{m-1,r_{m-1}} = 0
+\)
+
+    由归纳假设可知，$a_{ij}(\lambda_i - \lambda_m) = 0$，由于$\lambda_i \neq \lambda_m$，故$a_{ij} = 0$，从而$a_{m1}\xi_{m1} + a_{m2}\xi_{m2} + \cdots + a_{mr_m}\xi_{mr_m} = 0$，又由于$\{\xi_{m1},\xi_{m2},\cdots,\xi_{mr_m}\}$线性无关，所以$a_{m1} = a_{m2} = \cdots = a_{mr_m} = 0$。
+    
+    因此$a_{ij} = 0(1 \leq i \leq m, 1 \leq j \leq r_i)$，结论成立。
 \end{proof}
 
 \begin{example}\label{ex6.1.2}
@@ -516,7 +711,6 @@ f(\mathcal{A}) \xi = g(\mathcal{A}) h(\mathcal{A}) \xi = h(\mathcal{A}) g(\mathc
 \begin{proof}
     由例 \ref{ex6.7}可知，\( g(\lambda_0) \) 是 \( g(A) = O \) 的特征值，从而 \( g(\lambda_0) = 0 \)。
 \end{proof}
-
 
 \begin{example}
     
