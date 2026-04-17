@@ -5,7 +5,7 @@
 
 \author{忘记了一天}
 \institute{XTU\_data\_2}
-\date{April 2, 2026}
+\date{April 18, 2026}
 % \version{4.3}
 % \bioinfo{自定义}{信息}
 
@@ -720,7 +720,640 @@ a_{11}(\lambda_1 - \lambda_m)\xi_{11} + a_{12}(\lambda_1 - \lambda_m)\xi_{12} + 
     
 \end{proof}
 
+\chapter{第三次习题课}
 
+\section{月考考题}
+本试卷中的 \(P\) 指的是数域，\(\mathrm{Hom}(V,W)\) 表示线性空间 \(V\) 到 \(W\) 的所有线性映射构成的集合，\(\mathrm{End}V\) 表示 \(V\) 上所有线性变换构成的集合，\(\phi \in \mathrm{End}V\)，\(\ker \phi ,\mathrm{Im}\phi\) 分别表示 \(\phi\) 的核空间和像空间。
+\subsection{填空题}
+\begin{example}
+    设 \(a\in P.\) 定义 \(S_{a}\in \mathrm{End}P[x]_{n}\) 为 \(S_{a}(f(x)) = f(x + a),\forall f(x)\in P[x]_{n}.\) 则 \(S_{a}\) 在 \(P[x]_{n}\) 中的基 \(1,x,\frac{x^{2}}{2!},\dots ,\frac{x^{n - 1}}{(n - 1)!}\) 下的矩阵为:
+    \[
+    \begin{pmatrix}
+    1 & a & \frac{a^2}{2!} & \cdots & \frac{a^{n-1}}{(n-1)!} \\
+    0 & 1 & a & \cdots & \frac{a^{n-2}}{(n-2)!} \\
+    0 & 0 & 1 & \cdots & \frac{a^{n-3}}{(n-3)!} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & \cdots & 1
+    \end{pmatrix}
+    \]
+\end{example}
+
+\begin{solution}
+    \[
+    \frac{(x+a)^m}{m!} = \frac{\sum_{k =0}^{m} C_m^k x^k a^{m-k}}{m!} = \sum_{k=0}^m \frac{x^k}{k!} \cdot \frac{k!\cdot a^{m-k}}{m!} \cdot \frac{m!}{k!(m-k)!}=\sum_{k=0}^m \frac{a^{m-k}}{(m-k)!} \cdot \frac{x^k}{k!}
+    \]
+\end{solution}
+
+\begin{example}
+    设 \(X = \{x_{1},\ldots ,x_{n}\}\) ,记 \(\mathbb{C}^{X} = \{f\mid f:X\to \mathbb{C}\}\) ,则 \(\mathbb{C}^{X}\) 是 \(X\) 到复数域 \(\mathbb{C}\) 上的所有映射所构成的 \(\mathbb{C}\) 上的空间,其中的加法和数乘定义如下: \((f + g)(x) = f(x) + g(x),(kf)(x) =\) \(kf(x),\forall f,g\in \mathbb{C}^{X},k\in P.\) 请给出 \(\mathbb{C}^{X}\) 的一组基:
+    \[
+    \mathbb{C}^X \text{ 的一组基为 } \{\delta_i\}_{i=1,\dots,n},\text{ 其中 }
+    \delta_i(x_j)=\begin{cases}
+    0, & i\neq j\\
+    1, & i=j
+    \end{cases}
+    \]
+    且任意 \(f = \sum_{i=1}^n f(x_i)\delta_i\).
+\end{example}
+
+\begin{solution}
+    验证两点 \\
+    (1) 线性无关：设 \(a_1, a_2, \cdots, a_n\) 是\(\mathbb{C} \)上的数，使得
+    \[
+    \sum _{i =1}^n a_i \delta_i = 0
+    \]
+    \[
+    \forall x_j \in X, \sum_{i=1}^n a_i \delta_i(x_j) = a_j = 0,
+    \]
+    (2)线性表出
+    \[
+    \forall f \in \mathbb{C}^X, f = \sum_{i=1}^n f(x_i)\delta_i.
+    \]
+    $f$被\(\{\delta_i\}_{i=1,\dots,n}\) 线性表示出来
+\end{solution}
+
+\begin{example}
+    设 \(A = (a_{ij})\in P^{n\times n}\) ,其所有特征值 \(\lambda_{1},\ldots ,\lambda_{n}\) .请把 \(\sum_{1\leq i< j\leq n}\lambda_{i}\lambda_{j}\) 用 \(A\) 的元素 \(a_{ij}(1\leq i,j\leq n)\) 表示出来:
+    \[
+    \sum_{1\leq i<j\leq n}\lambda_i\lambda_j = \frac{1}{2}\left[\bigl(\sum_{i=1}^n\lambda_i\bigr)^2 - \sum_{i=1}^n\lambda_i^2\right]
+    = \frac{1}{2}\left[(tr A)^2 - tr (A^2)\right]
+    = \frac{1}{2}\left[\bigl(\sum_{i=1}^n a_{ii}\bigr)^2 - \sum_{i=1}^n\sum_{j=1}^n a_{ij}a_{ji}\right]
+    \]
+\end{example}
+
+\begin{solution}
+    \textbf{解法一（由 Vieta 定理）}
+    \[
+    \sum_{1\le i<j\le n}\lambda_i\lambda_j = \frac{1}{2}\left[\left(\sum_{i=1}^n\lambda_i\right)^2 - \sum_{i=1}^n\lambda_i^2\right].
+    \]
+    而 \(\sum_{i=1}^n\lambda_i = \operatorname{tr}A = \sum_{i=1}^n a_{ii}\)，
+    \(\sum_{i=1}^n\lambda_i^2 = \operatorname{tr}(A^2) = \sum_{i=1}^n\sum_{j=1}^n a_{ij}a_{ji}\)。
+    因此
+    \[
+    \sum_{1\le i<j\le n}\lambda_i\lambda_j = \frac{1}{2}\left[\left(\sum_{i=1}^n a_{ii}\right)^2 - \sum_{i=1}^n\sum_{j=1}^n a_{ij}a_{ji}\right].
+    \]
+
+    \textbf{解法二（特征多项式系数）:}
+考虑特征多项式
+\[
+f(\lambda)=|\lambda I_n - A| = \lambda^n - \sigma_1\lambda^{n-1} + \sigma_2\lambda^{n-2} - \cdots + (-1)^n\det A,
+\]
+其中 \(\sigma_1 = \sum_{i=1}^n\lambda_i = \operatorname{tr}A\)，
+\(\sigma_2 = \sum_{1\le i<j\le n}\lambda_i\lambda_j\)。
+另一方面，将行列式展开，\(\sigma_2\) 等于所有 \(n-2\) 阶主子式之和，即
+\[
+\sigma_2 = \sum_{1\le i<j\le n}
+\begin{vmatrix}
+a_{ii} & a_{ij} \\
+a_{ji} & a_{jj}
+\end{vmatrix}
+= \sum_{1\le i<j\le n} (a_{ii}a_{jj} - a_{ij}a_{ji}).
+\]
+所以
+\[
+\sum_{1\le i<j\le n}\lambda_i\lambda_j = \sum_{1\le i<j\le n} (a_{ii}a_{jj} - a_{ij}a_{ji}).
+\]
+两种表达式等价，因为
+\[
+\frac{1}{2}\left[\left(\sum_i a_{ii}\right)^2 - \sum_i\sum_j a_{ij}a_{ji}\right]
+= \sum_{i<j} a_{ii}a_{jj} - \sum_{i<j} a_{ij}a_{ji}.
+\]
+\end{solution}
+
+\begin{example}
+    设 \(\phi\) 是6维复线性空间 \(V\) 上的线性变换,其特征多项式为 \(f = (\lambda +2)^{4}(\lambda -2)^{2}\) ,则 \(\phi\) 的Jordan标准形有 \underline{10} 种可能(不计子块次序).
+\end{example}
+
+\begin{solution}
+    对于特征值 \(-2\)（代数重数4），初等因子（Jordan块大小）的可能分拆有：
+    \[
+    4,\quad 3+1,\quad 2+2,\quad 2+1+1,\quad 1+1+1+1,
+    \]
+    共5种。
+    对于特征值 \(2\)（代数重数2），可能分拆有：
+    \[
+    2,\quad 1+1,
+    \]
+    共2种。
+    由乘法原理，Jordan标准形的总数为 \(5\times 2 = 10\) 种。
+\end{solution}
+
+\begin{example}
+    设 \(A = \left( \begin{array}{ccc}1 & 2 & 1 \\ 1 & -1 & 1 \\ 2 & 0 & 1 \end{array} \right)\) , \(m\) 是正整数,则 \(A^{m} =\)
+    \[
+    A = PJP^{-1},\quad J = \begin{pmatrix}-1 & 1 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 3\end{pmatrix},\quad
+    A^m = P\begin{pmatrix}(-1)^m & m(-1)^{m-1} & 0 \\ 0 & (-1)^m & 0 \\ 0 & 0 & 3^m\end{pmatrix}P^{-1}
+    \]
+    具体 \(P\) 可计算如下
+\end{example}
+
+\begin{solution}
+    \[
+    \det(\lambda I - A) = (\lambda +1) ^2(\lambda -3) 
+    \]
+    考虑二重根$\lambda = -1$的特征子空间
+    \[
+    r(\lambda I_n +1 A) = 2, \ker(\lambda I_n + A) = 1 
+    \]
+    对应1个2阶jordan块 从而有
+    \[
+    A = PJP^{-1},\quad J = \begin{pmatrix}-1 & 1 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 3\end{pmatrix},\quad
+    \]
+    设$P = (v_1,v_2,v_3)$,则
+    \[
+    A(v_1,v_2,v_3) = (v_1,v_2,v_3)\begin{pmatrix}-1 & 1 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 3\end{pmatrix}
+    \]
+    解出$P$，计算$A^m = PJ^mP^{-1}$ 计算过程自行补充
+\end{solution}
+
+\begin{example}
+    设 \(f \in \mathrm{Hom}(\mathbb{C}^{n \times n}, \mathbb{C}), f(AB) = f(BA), \forall A, B \in \mathbb{C}^{n \times n}, f(I_n) = 2\) , 则 \(f(\mathrm{diag}(1, 2, \ldots , n)) =\)
+    \[
+    f = \frac{2}{n}tr,\quad f(diag\{1,2,\dots,n\}) = \frac{2}{n}\cdot\frac{n(n+1)}{2}=n+1.
+    \]
+\end{example}
+
+\begin{solution}
+    由已知条件，\(f\) 是迹的常数倍，即存在常数 \(a\) 使得 \(f = a\cdot\operatorname{tr}\)。
+    因为 \(f(I_n)=2\)，而 \(\operatorname{tr}(I_n)=n\)，所以 \(a = \frac{2}{n}\)。
+    于是
+    \[
+    f(\operatorname{diag}(1,2,\dots,n)) = \frac{2}{n}\cdot \operatorname{tr}(\operatorname{diag}(1,2,\dots,n))
+    = \frac{2}{n}\cdot \frac{n(n+1)}{2} = n+1.
+    \]
+
+    \textbf{迹的公理化定义 }
+
+    取 \(A = E_{ij},\ B = E_{ji}\ (i \neq j)\)，则
+    \[
+    AB = E_{ij}E_{ji} = E_{ii},\qquad BA = E_{ji}E_{ij} = E_{jj}.
+    \]
+    由 \(f(AB)=f(BA)\) 得 \(f(E_{ii}) = f(E_{jj})\)。记此公共值为 \(a\)，则对每个 \(i\) 有 \(f(E_{ii}) = a\)。而 \(\operatorname{tr}(E_{ii})=1\)，故 \(a = a \cdot \operatorname{tr}(E_{ii})\)。
+
+    再取 \(A = E_{ik},\ B = E_{kj}\ (i \neq j)\)，则
+    \[
+    AB = E_{ik}E_{kj} = E_{ij},\qquad BA = E_{kj}E_{ik} = 0
+    \]
+    于是 \(f(E_{ij}) = f(0) = 0\)。而 \(\operatorname{tr}(E_{ij})=0\)，故 \(f(E_{ij}) = a \cdot \operatorname{tr}(E_{ij})\)。
+\end{solution}
+\subsection{叙述、判断和说理题}
+
+\begin{example}
+    \begin{enumerate}
+        \item[(1)] 线性映射的定义中的保加法和数乘这两个条件是否相互独立?
+    
+        \begin{solution}
+            独立。保加法不能推出保数乘。反例：取复数域 \(\mathbb{C}\) 上的线性空间 \(V = W = \mathbb{C}\)，定义映射 \(f: \mathbb{C} \to \mathbb{C},\ f(z) = \overline{z}\)（共轭）。则
+            \[
+            f(z_1 + z_2) = \overline{z_1 + z_2} = \overline{z_1} + \overline{z_2} = f(z_1) + f(z_2),
+            \]
+            即保加法成立。但取 \(z = i,\ v = 1\)，有
+            \[
+            f(z \cdot v) = f(i) = -i,\quad z f(v) = i \cdot 1 = i,
+            \]
+            故 \(f(z v) \neq z f(v)\)，不满足保数乘。因此两个条件相互独立。
+        \end{solution}
+    
+        \item[(2)] 请构造有限维线性空间 \(V\) 及 \(\phi \in \operatorname{End}V\) 分别满足以下条件的三个例子：
+        \[
+        \text{(a) } \ker \phi = \operatorname{Im} \phi;\qquad
+        \text{(b) } \ker \phi + \operatorname{Im} \phi = V;\qquad
+        \text{(c) } \ker \phi + \operatorname{Im} \phi \neq V.
+        \]
+    
+        \begin{solution}
+            取 \(\dim V = 2\)，设 \(\{e_1, e_2\}\) 为 \(V\) 的一组基。
+    
+            \textbf{(a)}  \(\phi(e_1,e_2) = \begin{pmatrix}
+                0 & 1 \\
+                0 &  0\\
+                \end{pmatrix}\) 即
+            \[
+            \phi(e_1) = 0,\quad \phi(e_2) = e_1.
+            \]
+            则 \(\operatorname{Im} \phi = Span(e_1)\)，\(ker \phi = Span(e_1)\)，故 \(ker \phi = \operatorname{Im} \phi\)。
+    
+            \textbf{(b)}  \(\phi(e_1,e_2) = \begin{pmatrix}
+                1 & 0 \\
+                0 &  0\\
+                \end{pmatrix}\) 即
+            \[
+            \phi(e_1) = e_1,\quad \phi(e_2) = 0.
+            \]
+            则 \(\operatorname{Im} \phi = Span(e_1)\)，\(ker \phi = Span(e_2)\)，且 \(ker \phi \cap \operatorname{Im} \phi = \{0\}\)，因此 \(ker \phi + \operatorname{Im} \phi = V\)。
+    
+            \textbf{(c)} 采用 (a) 中构造即满足 \(ker \phi + \operatorname{Im} \phi = Span(e_2) \neq V\)。
+        \end{solution}
+    
+        \item[(3)] 
+        \begin{enumerate}
+            \item[(a)] 请给出 \(\phi\) 的特征值、特征向量和特征子空间的定义；
+    
+            \begin{solution}
+                设 \(\phi \in \operatorname{End}V\)。若存在 \(\lambda \in P\) 和非零向量 \(\alpha \in V\) 使得
+                \[
+                \phi(\alpha) = \lambda \alpha,
+                \]
+                则称 \(\lambda\) 为 \(\phi\) 的一个\textbf{特征值}，\(\alpha\) 为属于 \(\lambda\) 的\textbf{特征向量}。集合
+                \[
+                W_\lambda = \{\alpha \in V \mid \phi(\alpha) = \lambda \alpha\} = \ker(\phi - \lambda I_V)
+                \]
+                称为属于 \(\lambda\) 的\textbf{特征子空间}。
+            \end{solution}
+    
+            \item[(b)] 请给出无限维线性空间 \(V\) 上没有特征值的线性变换 \(\phi\) 的例子；
+    
+            \begin{solution}
+                取 \(V = P[x]\) 为域 \(P\) 上全体多项式构成的无限维线性空间，定义
+                \[
+                \phi(f) = x f(x),\quad \forall f(x) \in P[x].
+                \]
+                若 \(\phi(f) = \lambda f\)，即 \(x f(x) = \lambda f(x)\)，则 \((x - \lambda) f(x) = 0\) 在多项式环中意味着 \(f(x) \equiv 0\)，故无非零特征向量。因此 \(\phi\) 没有特征值。
+            \end{solution}
+    
+            \item[(c)] 请给出无限维线性空间 \(V\) 上没有最小多项式的线性变换 \(\phi\) 的例子。
+    
+            \begin{solution}
+                取 \(V = P[x]\)，定义求导变换 \(\phi(f) = f'\)。对于任意非零多项式 \(f\)，\(\phi^k(f) \neq 0\) 对充分大的 \(k\) 仍成立（除非 \(f\) 是零多项式），因此不存在非零多项式 \(m(t)\) 使得 \(m(\phi)=0\)（因为若 \(m(t)\) 是多项式，则 \(m(\phi)\) 作用在 \(x^n\) 上会给出某个阶导数，当 \(n\) 大于 \(m\) 的次数时结果非零）。故 \(\phi\) 没有最小多项式。
+            \end{solution}
+        \end{enumerate}
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+     设 \(V\) 是数域 \(P\) 上的线性空间，\(\phi \in \operatorname{End}V\)
+    \begin{enumerate}
+        \item[(1)] 请给出 \(\phi\) 的不变子空间的定义；
+    
+        \begin{solution}
+            若 \(U\) 是 \(V\) 的子空间，且满足
+            \[
+            \phi(U) \subseteq  U,
+            \]
+            即对任意 \(u \in U\) 有 \(\phi(u) \in U\)，则称 \(U\) 为 \(\phi\) 的\textbf{不变子空间}（或 \(\phi\)-子空间）。
+        \end{solution}
+    
+        \item[(2)] \(n\) 维线性空间 \(V\) 的两组基的过渡矩阵是否一定可逆？
+    
+        \begin{solution}
+            可逆。设 \(\{e_1,\dots,e_n\}\) 和 \(\{f_1,\dots,f_n\}\) 是 \(V\) 的两组基，过渡矩阵 \(P = (p_{ij})\) 定义为
+            \[
+            (f_1,\dots,f_n) = (e_1,\dots,e_n) P.
+            \]
+            由于两组基均线性无关，过渡矩阵 \(P\) 是满秩的，即 \(\det P \neq 0\)，故 \(P\) 可逆。
+        \end{solution}
+    
+        \item[(3)] 设 \(\alpha \in V\)，请构造 \(V\) 中包含 \(\alpha\) 的最小的 \(\phi\)-子空间；
+    
+        \begin{solution}
+            考虑集合
+            \[
+            W = \operatorname{span}\{\phi^k(\alpha) \mid k = 0,1,2,\dots\},
+            \]
+            即由 \(\alpha, \phi(\alpha), \phi^2(\alpha), \dots\) 张成的子空间。显然 \(W\) 是 \(\phi\)-不变的，因为对任意生成元 \(\phi^k(\alpha)\)，有 \(\phi(\phi^k(\alpha)) = \phi^{k+1}(\alpha) \in W\)。若 \(U\) 是任一包含 \(\alpha\) 的 \(\phi\)-不变子空间，则 \(\alpha \in U\) 推出 \(\phi(\alpha) \in U\)，进而 \(\phi^k(\alpha) \in U\) 对一切 \(k\) 成立，从而 \(W \subset U\)。故 \(W\) 是包含 \(\alpha\) 的最小 \(\phi\)-不变子空间。
+        \end{solution}
+    
+        \item[(4)] 设 \(V\) 是 \([0,1]\) 上连续实函数全体所成的 \(\mathbb{R}\) 上线性空间，\(\phi\) 为 \(V\) 的“不定积分”变换：
+            \[
+            \phi f(x) = \int_0^x f(t)\,dt.
+            \]
+            则 \(V\) 中以 \(x = \frac{1}{2}\) 为零点的函数全体所构成的子空间，是否为 \(\phi\)-子空间？
+    
+        \begin{solution}
+            不是。记
+            \[
+            U = \{ f \in V \mid f(1/2)=0 \}.
+            \]
+            取 \(\alpha(x) = x - \frac{1}{2} \in U\)，则
+            \[
+            \phi(\alpha)(x) = \int_0^x \left(t - \frac{1}{2}\right) dt = \frac{x^2}{2} - \frac{x}{2} = \frac{1}{2}x(x-1).
+            \]
+            计算 \(\phi(\alpha)(1/2) = \frac{1}{2} \cdot \frac{1}{2} \cdot (-\frac{1}{2}) = -\frac{1}{8} \neq 0\)，故 \(\phi(\alpha) \notin U\)。因此 \(U\) 不是 \(\phi\)-不变子空间。
+        \end{solution}
+    \end{enumerate} 
+\end{example}
+
+\begin{example}
+    设 \(V\) 是数域 \(P\) 上有限维线性空间，\(\phi \in \operatorname{End}V\)
+    \begin{enumerate}
+        \item[(1)] 请给出 \(\phi\) 可对角化的五个等价陈述；
+    
+        \begin{solution}
+            \begin{enumerate}
+                \item  \(\phi\) 有 \(n\) 个线性无关的特征向量；
+                \item \(V\) 可以分解为 \(\phi\) 的特征子空间的直和；
+                \item 对$\phi$的每个特征值的几何重数等于代数重数；
+                \item 最小多项式无重根
+                \item Jordan块均为1阶，即初等因子均为1次多项式
+            \end{enumerate}
+            若扩域到复数域，复正规矩阵（如 Hermite 矩阵、酉矩阵、反 Hermite 矩阵等）均可酉对角化。
+        \end{solution}
+    
+        \item[(2)] 若 \(\phi, \sigma \in \operatorname{End}V\) 都是可对角化的，试问 \(\phi + \sigma,\ \phi\sigma\) 是否一定可对角化？若 \(\phi,\sigma\) 幂零，\(\phi+\sigma,\ \phi\sigma\) 是否幂零？
+        \begin{solution}
+            \(\phi + \sigma,\ \phi\sigma\) 不一定可对角化 \\
+            设 \(\dim V=2\)，基为 \(\{e_1,e_2\}\)。取
+            \[
+            \phi = \begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix},\quad 
+            \delta = \begin{pmatrix} 2 & 1 \\ 0 & 1 \end{pmatrix},
+            \]
+            有两个不同的特征向量，可对角化。计算
+            \[
+            \phi+\delta = \begin{pmatrix} 3 & 1 \\ 0 & 3 \end{pmatrix},
+            \]
+            这是2阶Jordan块，不可对角化。而
+            \[
+            \phi\delta = \begin{pmatrix} 2 & 1 \\ 0 & 2 \end{pmatrix},
+            \]
+            也是2阶Jordan块，不可对角化。故存在反例。
+    
+            对于幂零情形，\(\phi+\sigma,\ \phi\sigma\) 不一定幂零。取上面的$V$和基
+            \[
+            \phi = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix},\quad 
+            \delta = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix},
+            \]
+            则 \(\phi^2=\delta^2=0\)，幂零。但
+            \[
+            \phi+\delta = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+            \]
+            非幂零（特征值 \(\pm1\)），\(\phi\delta = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}\) 非幂零（幂等）。
+        \end{solution}
+    
+        \item[(3)] 定义 \(\operatorname{End}V\) 上的线性变换 \(\operatorname{ad}\phi\)，使得
+            \[
+            \operatorname{ad}\phi(\sigma) = \phi\sigma - \sigma\phi,\quad \forall \sigma\in \operatorname{End}V.
+            \]
+            若 \(\phi\) 可对角化，试问 \(\operatorname{ad}\phi\) 是否可对角化？若 \(\phi\) 幂零，\(\operatorname{ad}\phi\) 是否幂零？
+    
+        \begin{solution}
+            若 \(\phi\) 可对角化，则 \(\operatorname{ad}\phi\) 可对角化；若 \(\phi\) 幂零，则 \(\operatorname{ad}\phi\) 幂零。
+    
+            \textbf{证明思路一（矩阵语言）：} 取定基，将 \(\phi,\sigma\) 表示为矩阵 \(A,X\)，则 \(\operatorname{ad}\phi(X)=AX-XA\)。在 \(P^{n\times n}\) 的基 \(\{E_{ij}\}\) 下，\(\operatorname{ad}\phi\) 的矩阵为 \(A\otimes I_n - I_n\otimes A^{\mathsf{T}}\)。若 \(A\) 可对角化，存在可逆 \(Q\) 使 \(Q^{-1}AQ=\Lambda\)，则通过 \(Q\otimes (Q^{\mathsf{T}})^{-1}\) 可将 \(\operatorname{ad}\phi\) 对角化，特征值为 \(\lambda_i-\lambda_j\)。若 \(A\) 幂零，则 \(A\) 可上三角化且对角元为零，从而 \(A\otimes I - I\otimes A^{\mathsf{T}}\) 上三角且对角元全为零，故幂零。
+    
+            \textbf{证明思路二（基向量法）：} 若 \(A\) 可对角化，存在特征向量组 \(\{\alpha_i\}\) 和 \(\{\beta_j\}\) 使 \(A\alpha_i=\lambda_i\alpha_i\)，\(A^{\mathsf{T}}\beta_j=\lambda_j\beta_j\)，则 \(\{\alpha_i\beta_j^{\mathsf{T}}\}\) 构成 \(P^{n\times n}\) 的基，且 \(\operatorname{ad}\phi(\alpha_i\beta_j^{\mathsf{T}})=(\lambda_i-\lambda_j)\alpha_i\beta_j^{\mathsf{T}}\)，故可对角化。若 \(A\) 幂零，存在基使 \(A\) 为上三角且对角元为0，则 \(\operatorname{ad}\phi\) 在该基下的矩阵为上三角且对角元全为0，故幂零。
+        \end{solution}
+    
+        \item[(4)] 若 \(\phi\) 有 \(\dim V\) 个不同的特征值，试问 \(\phi\) 的不变子空间共有多少个？
+    
+        \begin{solution}
+            设 \(\dim V=n\)，\(\phi\) 有 \(n\) 个互不相同的特征值（在 \(P\) 中）。则 \(\phi\) 可对角化，且每个特征值对应一维特征子空间。设特征向量为 \(e_1,\dots,e_n\) 构成一组基。则任意 \(\phi\)-不变子空间必为由若干特征向量张成的子空间，因为若 \(U\) 不变，则 \(U\) 可分解为特征子空间的直和。因此，不变子空间与 \(\{e_1,\dots,e_n\}\) 的子集一一对应，共有 \(2^n\) 个（包括零子空间和全空间）。故答案为 \(2^n\)。
+        \end{solution}
+    \end{enumerate}
+\end{example}
+\subsection{计算题}
+\begin{example}
+    设 \(A = \begin{pmatrix} 1 & 2 & 1 \\ 1 & -1 & 1 \\ 2 & 0 & 1 \end{pmatrix}\)，求可逆矩阵 \(T\)，使 \(T^{-1} A T\) 为 \(A\) 的 Jordan 标准形。
+\end{example}
+
+\begin{solution}
+计算特征多项式：
+\[
+\det(\lambda I - A) = 
+\begin{vmatrix}
+\lambda-1 & -2 & -1 \\
+-1 & \lambda+1 & -1 \\
+-2 & 0 & \lambda-1
+\end{vmatrix}
+= (\lambda+1)^2(\lambda-3).
+\]
+特征值为 \(\lambda_1 = -1\)（代数重数2），\(\lambda_2 = 3\)（代数重数1）。
+
+计算 \(r(-I - A)\)：
+\[
+-I - A = \begin{pmatrix}
+-2 & -2 & -1 \\
+-1 & 0 & -1 \\
+-2 & 0 & -2
+\end{pmatrix}
+\sim \begin{pmatrix}
+1 & 0 & 1 \\
+0 & 1 & -\frac{1}{2} \\
+0 & 0 & 0
+\end{pmatrix},
+\]
+秩为2，故几何重数 \(3 - 2 = 1\)，对应一个2阶Jordan块。因此 Jordan 标准形为
+\[
+J = \begin{pmatrix}
+-1 & 1 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 3
+\end{pmatrix}.
+\]
+
+设 \(T = (\alpha_1, \alpha_2, \alpha_3)\)，满足 \(AT = TJ\)，即
+\[
+A\alpha_1 = - \alpha_1,\quad A\alpha_2 = \alpha_1 - \alpha_2,\quad A\alpha_3 = 3\alpha_3.
+\]
+\end{solution}
+
+\begin{example}
+    设 \(A = \begin{pmatrix} 2 & 0 & 0 \\ a & 2 & 0 \\ b & c & -1 \end{pmatrix}\)，若 \(A\) 可对角化，请给出 \(a,b,c\) 满足的条件。
+\end{example}
+    
+\begin{solution}
+计算特征多项式：
+\[
+\det(\lambda I - A) = 
+\begin{vmatrix}
+\lambda-2 & 0 & 0 \\
+-a & \lambda-2 & 0 \\
+-b & -c & \lambda+1
+\end{vmatrix}
+= (\lambda-2)^2 (\lambda+1).
+\]
+特征值 \(\lambda_1 = 2\)（代数重数2），\(\lambda_2 = -1\)（代数重数1）。可对角化当且仅当几何重数等于代数重数，即 \(\dim \ker(A - 2I) = 2\)。
+
+计算
+\[
+A - 2I = \begin{pmatrix}
+0 & 0 & 0 \\
+a & 0 & 0 \\
+b & c & -3
+\end{pmatrix}.
+\]
+其秩为 \(1\) 时，零空间维数为 \(2\)。因此需
+\[
+\operatorname{rank}(A-2I) = 1.
+\]
+若 \(a \neq 0\)，则第一列非零，但第二列全零，第三列 \( (0,0,-3)^{\mathsf{T}} \)，秩至少为2。故必须 \(a = 0\)。此时矩阵为
+\[
+A - 2I = \begin{pmatrix}
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+b & c & -3
+\end{pmatrix}.
+\]
+秩为1当且仅当 \((b,c,-3)\) 非零，对$b,c$无要求，故\(a=0\)，\(b,c\) 任意。
+\end{solution}
+  
+\begin{example}
+    \begin{enumerate}
+        \item[(1)] 令 \(V = \left\{ f \in \operatorname{Hom}(\mathbb{C}^{n \times n}, \mathbb{C}) \mid f(A) = f(B),\ \forall A \sim B,\ A,B \in \mathbb{C}^{n \times n} \right\}\)，求 \(\dim V\)。
+        
+        \item[(2)] 若 \(f(I_n) = 2\)，且 \(A = (a_{ij}) \in \mathbb{C}^{n \times n}\) 的对角元 \(a_{ii}\) 是 \(1,2,\dots,n\) 的一个全排列，求 \(f(A)\)。
+    \end{enumerate}
+\end{example}
+
+\begin{solution}
+    由条件，\(f\) 是相似不变量。\(\forall i\neq j\)，有 \(E_{ii} \sim E_{jj}\)，故 \(f(E_{ii}) = f(E_{jj}) \triangleq a\)。\\
+    取 \(A = E_{ij}\)，$P = I_n + E_{ij}$，则$P^{-1} = I_n - E_{ij}$ 
+    $$f(E_{ii}) = f(A) = f(P^{-1} AP) = f(E_{ii}+ E_{jj} ) = f(E_{ii}) + f(E_{ij})$$
+    $$
+    \Rightarrow f(E_{ij}) = 0  = a \cdot tr(E_{ij})
+    $$
+    $f$与$a \cdot tr(\cdot) $在$\{E_{11},\cdots,E_{nn}\}$作用相同，故$f = a \cdot tr(\cdot)$.\\
+    从而$V = \{a \cdot tr(\cdot) | a \in \mathbb{C}\}$，$dimV = 1$
+
+    由(1)知 \(f = a \cdot \operatorname{tr}\)，代入 \(f(I_n) = a \cdot n = 2\) 得 \(a = \dfrac{2}{n}\)。于是
+    \[
+    f(A) = \frac{2}{n} \operatorname{tr}(A) = \frac{2}{n} \sum_{i=1}^n a_{ii}.
+    \]
+    因为 \(a_{ii}\) 是 \(1,2,\dots,n\) 的一个全排列，所以 \(\sum_{i=1}^n a_{ii} =  \frac{n(n+1)}{2}\)，故
+    \[
+    f(A) = \frac{2}{n} \cdot \frac{n(n+1)}{2} = n+1.
+    \]
+\end{solution}
+
+\subsection{证明题}
+\begin{example}
+    设$\phi$是$n$维复线性空间$V$上的线性变换.
+    \begin{enumerate}
+        \item[(1)]用几何方法证明 \(\phi\) 的 Jordan 标准形存在且唯一.
+        \item[(2)]设$\lambda_0$是$\phi$的特征值，请分别给出$\phi$的 Jordan 标准形中属于$\lambda_0$的 Jordan 块的个数，属于$\lambda_0$的$k$阶 Jordan块的个数的几何意义，并说明理由.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+        对于(1)先证明任意幂零变换 \(\phi\) 可将空间 \(V\) 分解为循环子空间的直和。对维数 \(n\) 进行归纳。
+        
+        当 \(n=1\) 时显然成立。设维数小于 \(n\) 时结论成立。对 \(n\) 维空间 \(V\) 上的幂零变换 \(\phi\)，存在正整数 \(k\le n\) 使得 \(\phi^k=0\) 且 \(\phi^{k-1}\neq0\)。取 \(\alpha\in V\) 使 \(\phi^{k-1}(\alpha)\neq0\)，则向量组 \(\alpha,\phi(\alpha),\dots,\phi^{k-1}(\alpha)\) 线性无关。令
+        \[
+        U = \operatorname{span}\{\alpha,\phi(\alpha),\dots,\phi^{k-1}(\alpha)\},
+        \]
+        则 \(U\) 是 \(\phi\)-不变子空间。若 \(U=V\)，则在这组基下 \(\phi\) 的表示矩阵即为 Jordan 块 \(J_k(0)\)，结论成立。
+        
+        若 \(U\neq V\)，设 \(W\) 是满足 \(W\cap U=0\) 的维数最大的 \(\phi\)-不变子空间（这样的 \(W\) 存在，例如取零子空间）。下证 \(V=U\oplus W\)。若不然，存在 \(\beta\in V\) 且 \(\beta\notin U\oplus W\)。由于 \(\phi^k=0\)，可设 \(\phi^t(\beta)\notin U\oplus W\) 而 \(\phi^{t+1}(\beta)\in U\oplus W\)（取最小的 \(t\)）。令 \(\gamma = \phi^t(\beta)\)，则 \(\phi(\gamma)\in U\oplus W\)。设 \(\phi(\gamma)=u+w\)，其中 \(u\in U,\ w\in W\)。由 \(\phi^k(\gamma)=0\) 得 \(\phi^{k-1}(u+w)=0\)，即 \(\phi^{k-1}(u)+\phi^{k-1}(w)=0\)。因为 \(\phi^{k-1}(w)\in W\)（\(W\) 不变）且 \(\phi^{k-1}(u)\in U\)，而 \(U\cap W=0\)，故 \(\phi^{k-1}(u)=0\) 且 \(\phi^{k-1}(w)=0\)。由 \(u\in U\) 可设 \(u = c_1\phi(\alpha)+\cdots+c_{k-1}\phi^{k-1}(\alpha)\)，则 \(u=\phi(x)\) 其中 \(x=c_1\alpha+\cdots+c_{k-1}\phi^{k-2}(\alpha)\in U\)。于是 \(w = \phi(\gamma)-u = \phi(\gamma-x)\)。由于 \(\gamma\notin U\oplus W\) 而 \(x\in U\)，故 \(\gamma-x\notin U\oplus W\)。令 \(W' = W \oplus \operatorname{span}(\gamma-x)\)，则 \(W'\) 仍是 \(\phi\)-不变子空间（因为 \(\phi(\gamma-x)=w\in W\)），且 \(\dim W'>\dim W\)，与 \(W\) 的极大性矛盾。因此 \(V=U\oplus W\)。由归纳假设 \(W\) 可分解为 \(\phi\)-循环子空间直和，从而 \(V\) 可分解为循环子空间直和，每个循环子空间对应一个 Jordan 块。
+        
+        对一般线性变换 \(\phi\)，设其特征值全在基域中（否则在代数闭包中考虑）。对每个特征值 \(\lambda\)，考虑根子空间 \(R_\lambda(\phi)=\ker(\phi-\lambda I)^n\)，则 \(V=\bigoplus R_\lambda(\phi)\)。在 \(R_\lambda(\phi)\) 上，\(\phi-\lambda I\) 是幂零的，故存在一组基使该限制的矩阵为 Jordan 形（对角元为 \(\lambda\)）。从而 \(\phi\) 的 Jordan 标准形存在。唯一性由根子空间的维数和每个 Jordan 块的大小（由 \(\dim\ker(\phi-\lambda I)^k\) 的跳跃决定）唯一确定。
+
+    (2) 属于$\lambda_0$的Jordan块数：$n - r(\lambda_0I_V - \phi)$\\
+        属于$\lambda_0$的$k$阶Jordan块数：$r(\lambda_0I_V - \phi)^{k+1} + r(\lambda_0I_V - \phi)^{k-1}- 2r(\lambda_0I_V - \phi)^k$\\
+        几何意义：$k$维循环子空间的个数.
+\end{proof}
+
+\begin{example}
+    设$\phi$是$n$维复线性空间$V$上的线性变换，$\phi$的特征多项式为$$f(\lambda) = \prod_{i = 1}^s(\lambda - \lambda_i)^{n_i},\;\lambda_i \neq \lambda_j ,1 \leq i \neq j \leq s $$
+    我们知道有$V$关于$\phi$的根子空间分解$V = \bigoplus_{i=1}^s (\phi-\lambda_i id)^{n_i}$ \\
+    称$R_{\lambda_i}(\phi) := ker(\phi-\lambda_i id)^{n_i} = \{\alpha \in V \mid (\phi - \lambda_i \mathrm{id})^{n_i}\alpha = 0\}.$为$phi$的属于$\lambda_i$的根子空间，其中$id$是$V$上的恒等变换.\\
+    证明：
+    \begin{enumerate}
+        \item[(1)]$dimR_{\lambda_i}(\phi) = n_i$;
+        \item[(2)]$R_{\lambda_i}(\phi) = \bigcup_{k = 1}^{\infty} ker(\phi - \lambda_i id)^k$;
+        \item[(3)] \((\phi - \lambda_i \mathrm{id})|_{R_{\lambda_j}(\phi)}\), \(\lambda_i \neq \lambda_j\)是可逆的；
+        \item[(4)]若 \(\phi\) 的最小多项式为 \(d(\lambda) = \prod_{i=1}^{s}(\lambda - \lambda_i)^{m_i}\)，则 \(R_{\lambda_i}(\phi) = \ker (\phi - \lambda_i \mathrm{id})^{m_i}\).
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    (1) 由 Hamilton-Cayley 定理，\(f(\phi)=0\)，即 \(\prod_{i=1}^s (\phi-\lambda_i \mathrm{id})^{n_i}=0\)。由于 \((\phi-\lambda_i \mathrm{id})^{n_i}\) 是幂零的，且不同 \(i\) 的 \((\phi-\lambda_i \mathrm{id})^{n_i}\) 互相交换，故
+    \[
+    V = \bigoplus_{i=1}^s R_{\lambda_i}(\phi).
+    \]
+    因此 \(n = \dim V = \sum_{i=1}^s \dim R_{\lambda_i}(\phi)\)。又因为 \(R_{\lambda_i}(\phi) = \ker (\phi-\lambda_i \mathrm{id})^{n_i}\)，而特征多项式与极小多项式有相同的根，且 \(f\) 的每个因子次数不小于 \(d\) 中对应因子的次数，所以 \(R_{\lambda_i}(\phi)\) 的维数不小于 \(n_i\)。因此 \(\dim R_{\lambda_i}(\phi) = n_i\)。
+
+    (2)  \( A \overset{\text{def}}{=} \phi-\lambda_i I_V |_{R_{\lambda_i}} \) 则 \( \ker A \subset \ker A^2 \subset \cdots \subset \ker A^{n_i} \subset \cdots \)
+
+    故 \( \dim \ker A \leq \cdots \leq \dim \ker A^{n_i} \leq \dim \ker A^{n_i+1} \leq \cdots \)
+    
+    则 \( r(A) \geq r(A^2) \geq \cdots \geq r(A^{n_i}) \geq r(A^{n_i+1}) \geq \cdots \)
+    
+    下证：\( \forall k \geq n_i, \quad r(A^k) = r(A^{k+1}) \)
+    
+    \[n_i \geq r(I_V|_{R_{\lambda_i(\phi)}}) \geq r(A^2) \geq r(A^{n_i+1}) \geq \cdots \geq r(A^{n_i}) \geq 0\]
+    
+    上面为 \( n_i+2 \) 个在 \( [0,n_i]\) 中的整数。故 \( \exists k_0 < n_i, s.t. \)
+    
+    \[r(A^{k_0}) = r(A^{k_0+1}), \quad \forall k \geq k_0\]
+    
+    \[r(A^{k_0+1}) = r(A^{k_0+1}, A^{n_i}) \geq r(A^{k_0}) + r(A^{n_i+1}) - r(A^{n_i})\]
+    
+    \[\Rightarrow r(A^{k_0+1}) \geq r(A^{k_0}) \quad \text{而显然} \quad r(A^{k_0}) \leq r(A^{k_0+1}), \quad \text{故} \quad \forall k \geq n_i, \quad r(A^{k_0}) = r(A^{k_0+1})\]
+    
+    \[\Rightarrow \dim \ker d^{k_0} = \dim \ker d^{k_0+1}, \quad \forall k \geq n_i\]
+    
+    从而
+    
+    \[\bigcup_{k=1}^{\infty} \ker(\phi-\lambda_i I_V)^{i}|_{R_{\lambda_i}} = \ker(\phi-\lambda_i I_V)^{n_i}|_{R_{\lambda_i}} = \ker(\phi-\lambda_i I_V)|_{R_{\lambda_i}}^{n_i}  = R_{\lambda_i}(\phi)\]
+
+    (3)  \((\phi-\lambda_i I_v)_{R_{\lambda_j}}\) 的特征值为 \(\lambda_i - \lambda_j \neq 0\)。故可逆。
+
+    (4) 易知 \( d(\phi) =  \prod_{i= 1}^s (\phi - \lambda_i I_V)^{m_i} \)，令 \( g(x) = \frac{d(x)}{(x-\lambda_k)^{m_k}} \)，易知$m_k \leq n_k$
+
+    \( \forall d \in V, \quad g_k(\phi)(\alpha) \in \ker (\phi - \lambda_i I_V)^{m_i} \)，因为 \((\phi - \lambda_i I_V)^{m_i} g_k(e)\alpha = 0\cdot a = 0\)
+    
+    \((g_1, g_2, \cdots, g_s) = 1\)，故 \(\exists u_1, \cdots, u_s \in \mathbb{C}[x]\)，\( s.t. \quad u_1(x) g_1(x) + \cdots + u_s(x) g_s(x) = 1\)
+    
+    即 \( u_1(\phi)g_1(\phi) + \cdots + u_s(\phi)g_s(\phi) = I_V \)
+    
+    故 \( \forall \alpha \in V, \quad \alpha = u_1(\phi)g_1(\phi)(\alpha) + \cdots + u_s(\phi)g_s(\phi)(\alpha) \)，故 \( V = \ker(\varphi - \lambda_1 I_V)^{m_1} + \cdots + \ker(\varphi - \lambda_s I_V)^{m_s} \)
+    
+    再证：  
+    \[ V = \ker(\varphi - \lambda_1 I_V)^{m_1} + \cdots + \ker(\varphi - \lambda_s I_V)^{m_s} \] 是直和  
+    
+    \[\forall \beta \in \sum_{k\neq j} \ker(\varphi - \lambda_k I_V)^{m_k} \cap \ker(\varphi - \lambda_j I_V)^{m_j} \]
+    
+    \[\beta = \beta_j = \sum_{k \neq j} \beta_k, \quad \beta = \beta \cdot I_V = \sum_{k\neq j} u_k(\phi)g_k(\phi)(\beta) + u_j(\phi) g_j(\phi)(\beta_j) = 0\]
+    
+    \[\Rightarrow \beta = 0, \quad \text{故} \quad V = \bigoplus_{k=1}^s (\varphi - \lambda_k I_V)^{m_k} = \bigoplus_{k=1}^s (\varphi - \lambda_k I_V)^{n_k}, \quad m_k \leq n_k\]
+    
+    而 \(\ker(\varphi - \lambda_k I_V)^{m_k} \subset \ker(\varphi - \lambda_k I_V)^{n_k}\), 故 \(R_{\lambda_i}(\varphi) = \ker(\varphi - \lambda_k I_V)^{n_k} = \ker(\varphi - \lambda_k I_V)^{m_k}\)
+\end{proof}
+
+\begin{example}
+    设 \(V\) 是数域 \(P\) 上有限维线性空间，\(\phi \in \operatorname{End}V\)，\(f(\lambda)\) 是 \(\phi\) 的特征多项式。证明：\(f(\lambda)\) 在 \(P\) 上可约当且仅当 \(\phi\) 有非平凡的不变子空间。
+\end{example}
+
+\begin{proof}
+    “\(\Leftarrow\)”：若 \(\phi\) 有非平凡的不变子空间 \(U\)，取 \(U\) 的一组基扩充为 \(V\) 的基，则 \(\phi\) 在此基下的矩阵为分块上三角阵：
+    \[
+    \begin{pmatrix} A & B \\ 0 & C \end{pmatrix},
+    \]
+    其特征多项式 \(f(\lambda)=\det(\lambda I-A)\cdot\det(\lambda I-C)\) 为两个次数均小于 \(\dim V\) 的多项式之积，故 \(f\) 可约。
+    
+    “\(\Rightarrow\)”：设 \(f(\lambda)=g(\lambda)h(\lambda)\)，其中 \(\deg g,\deg h\ge 1\)。由 Hamilton-Cayley 定理，\(f(\phi)=0\)，故 \(g(\phi)h(\phi)=0\)。若 \(g(\phi)\) 可逆，则 \(h(\phi)=0\)，从而极小多项式整除 \(h\)，但特征多项式与极小多项式有相同的根，且 \(f=gh\)，若 \(g(\phi)\) 可逆则 \(g\) 与 \(f\) 互素？更直接：因为 \(g(\phi)h(\phi)=0\)，若 \(g(\phi)\) 和 \(h(\phi)\) 均非零，则至少有一个是奇异的（否则两边左乘逆得 \(h(\phi)=0\) 或 \(g(\phi)=0\)）。不妨设 \(g(\phi)\) 奇异，则存在非零 \(\alpha\in \ker g(\phi)\)。考虑由 \(\alpha\) 生成的循环子空间 \(C(\alpha,\phi)=\operatorname{span}\{\alpha,\phi(\alpha),\dots,\phi^{r-1}(\alpha)\}\)，其中 \(r=\deg g\)。由于 \(g(\phi)\alpha=0\)，该子空间维数不超过 \(r\)，且显然非零。若它等于整个 \(V\)，则 \(\dim V\le r\)，但 \(\deg f=n\)，\(f=gh\)，\(r\le n\)，若 \(r=n\) 则 \(h\) 为常数，\(f\) 不可约，矛盾。故该子空间为非平凡的不变子空间。
+\end{proof}
+
+\begin{example}
+    设 \(V\) 是数域 \(P\) 上 \(n\) 维线性空间，\(\phi \in \operatorname{End}V\)，称 \(V\) 是 \(\phi\) 的循环空间，如果存在 \(\alpha \in V\)，使 \(\alpha, \phi\alpha, \ldots, \phi^{n-1}\alpha\) 是 \(V\) 的一组基。证明：\(V\) 是 \(\phi\) 的循环空间当且仅当 \(\phi\) 的特征多项式等于 \(\phi\) 的最小多项式。
+\end{example}
+
+\begin{proof}
+    “\(\Rightarrow\)”：设 \(V\) 是循环空间，取基 \(\alpha,\phi\alpha,\dots,\phi^{n-1}\alpha\)，则 \(\phi\) 在此基下的矩阵为 Frobenius 块：
+    \[
+    \begin{pmatrix}
+    0 & 0 & \cdots & 0 & -a_0 \\
+    1 & 0 & \cdots & 0 & -a_1 \\
+    0 & 1 & \cdots & 0 & -a_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & \cdots & 1 & -a_{n-1}
+    \end{pmatrix},
+    \]
+    其特征多项式为 \(\lambda^n + a_{n-1}\lambda^{n-1}+\cdots+a_0\)，且该矩阵的最小多项式等于特征多项式（因为有理标准形中只有一个块）。故 \(\phi\) 的特征多项式等于最小多项式。
+    
+    “\(\Leftarrow\)”：若特征多项式 \(f(\lambda)\) 等于最小多项式，则 \(\phi\) 的有理标准形只有一个 Frobenius 块，即存在一组基 \(e_1,\dots,e_n\) 使得
+    \[
+    \phi(e_1)=e_2,\ \phi(e_2)=e_3,\ \dots,\ \phi(e_{n-1})=e_n,\ \phi(e_n)=-a_0e_1-a_1e_2-\cdots-a_{n-1}e_n.
+    \]
+    于是 \(e_k = \phi^{k-1}(e_1)\)，从而 \(e_1,\phi(e_1),\dots,\phi^{n-1}(e_1)\) 构成一组基，故 \(V\) 是循环空间。
+\end{proof}
+\section{习题讲解}
+\begin{example}
+    
+\end{example}
+
+\begin{proof}
+    
+\end{proof}
 
 % \nocite{*}
 % \printbibliography[heading=bibintoc, title=\ebibname]
