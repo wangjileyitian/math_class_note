@@ -855,7 +855,7 @@ a_{ji} & a_{jj}
     \[
     r(\lambda I_n +1 A) = 2, \ker(\lambda I_n + A) = 1 
     \]
-    对应1个2阶jordan块 从而有
+    对应1个2阶Jordan块 从而有
     \[
     A = PJP^{-1},\quad J = \begin{pmatrix}-1 & 1 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 3\end{pmatrix},\quad
     \]
@@ -924,7 +924,7 @@ a_{ji} & a_{jj}
         \begin{solution}
             取 \(\dim V = 2\)，设 \(\{e_1, e_2\}\) 为 \(V\) 的一组基。
     
-            \textbf{(a)}  \(\phi(e_1,e_2) = \begin{pmatrix}
+            \textbf{(a)}  \(\phi(e_1,e_2) = (e_1,e_2)\begin{pmatrix}
                 0 & 1 \\
                 0 &  0\\
                 \end{pmatrix}\) 即
@@ -933,7 +933,7 @@ a_{ji} & a_{jj}
             \]
             则 \(\operatorname{Im} \phi = Span(e_1)\)，\(ker \phi = Span(e_1)\)，故 \(ker \phi = \operatorname{Im} \phi\)。
     
-            \textbf{(b)}  \(\phi(e_1,e_2) = \begin{pmatrix}
+            \textbf{(b)}  \(\phi(e_1,e_2) = (e_1,e_2) \begin{pmatrix}
                 1 & 0 \\
                 0 &  0\\
                 \end{pmatrix}\) 即
@@ -1244,7 +1244,7 @@ b & c & -3
 \begin{example}
     设$\phi$是$n$维复线性空间$V$上的线性变换，$\phi$的特征多项式为$$f(\lambda) = \prod_{i = 1}^s(\lambda - \lambda_i)^{n_i},\;\lambda_i \neq \lambda_j ,1 \leq i \neq j \leq s $$
     我们知道有$V$关于$\phi$的根子空间分解$V = \bigoplus_{i=1}^s (\phi-\lambda_i id)^{n_i}$ \\
-    称$R_{\lambda_i}(\phi) := ker(\phi-\lambda_i id)^{n_i} = \{\alpha \in V \mid (\phi - \lambda_i \mathrm{id})^{n_i}\alpha = 0\}.$为$phi$的属于$\lambda_i$的根子空间，其中$id$是$V$上的恒等变换.\\
+    称$R_{\lambda_i}(\phi) := ker(\phi-\lambda_i id)^{n_i} = \{\alpha \in V \mid (\phi - \lambda_i \mathrm{id})^{n_i}\alpha = 0\}.$为$\phi$的属于$\lambda_i$的根子空间，其中$id$是$V$上的恒等变换.\\
     证明：
     \begin{enumerate}
         \item[(1)]$dimR_{\lambda_i}(\phi) = n_i$;
@@ -1255,7 +1255,7 @@ b & c & -3
 \end{example}
 
 \begin{proof}
-    (1) 由 Hamilton-Cayley 定理，\(f(\phi)=0\)，即 \(\prod_{i=1}^s (\phi-\lambda_i \mathrm{id})^{n_i}=0\)。由于 \((\phi-\lambda_i \mathrm{id})^{n_i}\) 是幂零的，且不同 \(i\) 的 \((\phi-\lambda_i \mathrm{id})^{n_i}\) 互相交换，故
+    (1)
     \[
     V = \bigoplus_{i=1}^s R_{\lambda_i}(\phi).
     \]
@@ -1279,7 +1279,7 @@ b & c & -3
     
     \[\Rightarrow r(A^{k_0+1}) \geq r(A^{k_0}) \quad \text{而显然} \quad r(A^{k_0}) \leq r(A^{k_0+1}), \quad \text{故} \quad \forall k \geq n_i, \quad r(A^{k_0}) = r(A^{k_0+1})\]
     
-    \[\Rightarrow \dim \ker d^{k_0} = \dim \ker d^{k_0+1}, \quad \forall k \geq n_i\]
+    \[\Rightarrow \dim \ker A^{k_0} = \dim \ker A^{k_0+1}, \quad \forall k \geq n_i\]
     
     从而
     
@@ -1320,7 +1320,7 @@ b & c & -3
     \]
     其特征多项式 \(f(\lambda)=\det(\lambda I-A)\cdot\det(\lambda I-C)\) 为两个次数均小于 \(\dim V\) 的多项式之积，故 \(f\) 可约。
     
-    “\(\Rightarrow\)”：设 \(f(\lambda)=g(\lambda)h(\lambda)\)，其中 \(\deg g,\deg h\ge 1\)。由 Hamilton-Cayley 定理，\(f(\phi)=0\)，故 \(g(\phi)h(\phi)=0\)。若 \(g(\phi)\) 可逆，则 \(h(\phi)=0\)，从而极小多项式整除 \(h\)，但特征多项式与极小多项式有相同的根，且 \(f=gh\)，若 \(g(\phi)\) 可逆则 \(g\) 与 \(f\) 互素？更直接：因为 \(g(\phi)h(\phi)=0\)，若 \(g(\phi)\) 和 \(h(\phi)\) 均非零，则至少有一个是奇异的（否则两边左乘逆得 \(h(\phi)=0\) 或 \(g(\phi)=0\)）。不妨设 \(g(\phi)\) 奇异，则存在非零 \(\alpha\in \ker g(\phi)\)。考虑由 \(\alpha\) 生成的循环子空间 \(C(\alpha,\phi)=\operatorname{span}\{\alpha,\phi(\alpha),\dots,\phi^{r-1}(\alpha)\}\)，其中 \(r=\deg g\)。由于 \(g(\phi)\alpha=0\)，该子空间维数不超过 \(r\)，且显然非零。若它等于整个 \(V\)，则 \(\dim V\le r\)，但 \(\deg f=n\)，\(f=gh\)，\(r\le n\)，若 \(r=n\) 则 \(h\) 为常数，\(f\) 不可约，矛盾。故该子空间为非平凡的不变子空间。
+    “\(\Rightarrow\)”：设 \(f(\lambda)=g(\lambda)h(\lambda)\)，其中 \(\deg g,\deg h\ge 1\)。由 Hamilton-Cayley 定理，\(f(\phi)=0\)，故 \(g(\phi)h(\phi)=0\)。因为 \(g(\phi)h(\phi)=0\)，若 \(g(\phi)\) 和 \(h(\phi)\) 均非零，则至少有一个是奇异的（否则两边左乘逆得 \(h(\phi)=0\) 或 \(g(\phi)=0\)）。不妨设 \(g(\phi)\) 奇异，则存在非零 \(\alpha\in \ker g(\phi)\)。考虑由 \(\alpha\) 生成的循环子空间 \(C(\alpha,\phi)=\operatorname{span}\{\alpha,\phi(\alpha),\dots,\phi^{r-1}(\alpha)\}\)，其中 \(r=\deg g\)。由于 \(g(\phi)\alpha=0\)，该子空间维数不超过 \(r\)，且显然非零。若它等于整个 \(V\)，则 \(\dim V\le r\)，但 \(\deg f=n\)，\(f=gh\)，\(r\le n\)，若 \(r=n\) 则 \(h\) 为常数，\(f\) 不可约，矛盾。故该子空间为非平凡的不变子空间。
 \end{proof}
 
 \begin{example}
