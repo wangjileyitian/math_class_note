@@ -1196,8 +1196,8 @@ b & c & -3
 
 \begin{solution}
     由条件，\(f\) 是相似不变量。\(\forall i\neq j\)，有 \(E_{ii} \sim E_{jj}\)，故 \(f(E_{ii}) = f(E_{jj}) \triangleq a\)。\\
-    取 \(A = E_{ij}\)，$P = I_n + E_{ij}$，则$P^{-1} = I_n - E_{ij}$ 
-    $$f(E_{ii}) = f(A) = f(P^{-1} AP) = f(E_{ii}+ E_{jj} ) = f(E_{ii}) + f(E_{ij})$$
+    取 \(A = E_{ii}\)，$P = I_n + E_{ij}$，则$P^{-1} = I_n - E_{ij}$ 
+    $$f(E_{ii}) = f(A) = f(P^{-1} AP) = f(E_{ii}+ E_{ij} ) = f(E_{ii}) + f(E_{ij})$$
     $$
     \Rightarrow f(E_{ij}) = 0  = a \cdot tr(E_{ij})
     $$
@@ -1232,9 +1232,9 @@ b & c & -3
         \]
         则 \(U\) 是 \(\phi\)-不变子空间。若 \(U=V\)，则在这组基下 \(\phi\) 的表示矩阵即为 Jordan 块 \(J_k(0)\)，结论成立。
         
-        若 \(U\neq V\)，设 \(W\) 是满足 \(W\cap U=0\) 的维数最大的 \(\phi\)-不变子空间（这样的 \(W\) 存在，例如取零子空间）。下证 \(V=U\oplus W\)。若不然，存在 \(\beta\in V\) 且 \(\beta\notin U\oplus W\)。由于 \(\phi^k=0\)，可设 \(\phi^t(\beta)\notin U\oplus W\) 而 \(\phi^{t+1}(\beta)\in U\oplus W\)（取最小的 \(t\)）。令 \(\gamma = \phi^t(\beta)\)，则 \(\phi(\gamma)\in U\oplus W\)。设 \(\phi(\gamma)=u+w\)，其中 \(u\in U,\ w\in W\)。由 \(\phi^k(\gamma)=0\) 得 \(\phi^{k-1}(u+w)=0\)，即 \(\phi^{k-1}(u)+\phi^{k-1}(w)=0\)。因为 \(\phi^{k-1}(w)\in W\)（\(W\) 不变）且 \(\phi^{k-1}(u)\in U\)，而 \(U\cap W=0\)，故 \(\phi^{k-1}(u)=0\) 且 \(\phi^{k-1}(w)=0\)。由 \(u\in U\) 可设 \(u = c_1\phi(\alpha)+\cdots+c_{k-1}\phi^{k-1}(\alpha)\)，则 \(u=\phi(x)\) 其中 \(x=c_1\alpha+\cdots+c_{k-1}\phi^{k-2}(\alpha)\in U\)。于是 \(w = \phi(\gamma)-u = \phi(\gamma-x)\)。由于 \(\gamma\notin U\oplus W\) 而 \(x\in U\)，故 \(\gamma-x\notin U\oplus W\)。令 \(W' = W \oplus \operatorname{span}(\gamma-x)\)，则 \(W'\) 仍是 \(\phi\)-不变子空间（因为 \(\phi(\gamma-x)=w\in W\)），且 \(\dim W'>\dim W\)，与 \(W\) 的极大性矛盾。因此 \(V=U\oplus W\)。由归纳假设 \(W\) 可分解为 \(\phi\)-循环子空间直和，从而 \(V\) 可分解为循环子空间直和，每个循环子空间对应一个 Jordan 块。
+        若 \(U\neq V\)，设 \(W\) 是满足 \(W\cap U=0\) 的维数最大的 \(\phi\)-不变子空间（这样的 \(W\) 存在，例如取零子空间）。下证 \(V=U\oplus W\)。若不然，存在 \(\beta\in V\) 且 \(\beta\notin U\oplus W\)。由于 \(\phi^k=0\)，可设 \(\phi^t(\beta)\notin U\oplus W\) 而 \(\phi^{t+1}(\beta)\in U\oplus W\)（取最小的 \(t\)）。令 \(\gamma = \phi^t(\beta)\)，则 \(\phi(\gamma)\in U\oplus W\)。设 \(\phi(\gamma)=u+w\)，其中 \(u\in U,\ w\in W\)。由 \(\phi^k(\gamma)=0\) 得 \(\phi^{k-1}(u+w)=0\)，即 \(\phi^{k-1}(u)+\phi^{k-1}(w)=0\)。因为 \(\phi^{k-1}(w)\in W\)（\(W\) 不变）且 \(\phi^{k-1}(u)\in U\)，而 \(U\cap W=0\)，故 \(\phi^{k-1}(u)=0\) 且 \(\phi^{k-1}(w)=0\)。由 \(u\in U\) 可设 \(u = c_0 \alpha +  c_1\phi(\alpha)+\cdots+c_{k-1}\phi^{k-1}(\alpha)\)(两边作$\phi^{k-1}$变换，由于$\phi^{k-1}(u)= 0$ 可得$c_0 = 0$)，则 \(u=\phi(x)\) 其中 \(x=c_1\alpha+\cdots+c_{k-1}\phi^{k-2}(\alpha)\in U\)。于是 \(w = \phi(\gamma)-u = \phi(\gamma-x)\)。由于 \(\gamma\notin U\oplus W\) 而 \(x\in U\)，故 \(\gamma-x\notin U\oplus W\)。令 \(W' = W \oplus \operatorname{span}(\gamma-x)\)，则 \(W'\) 仍是 \(\phi\)-不变子空间（因为 \(\phi(\gamma-x)=w\in W\)），且 \(\dim W'>\dim W\)，与 \(W\) 的极大性矛盾。因此 \(V=U\oplus W\)。由归纳假设 \(W\) 可分解为 \(\phi\)-循环子空间直和，从而 \(V\) 可分解为循环子空间直和，每个循环子空间对应一个 Jordan 块。
         
-        对一般线性变换 \(\phi\)，设其特征值全在基域中（否则在代数闭包中考虑）。对每个特征值 \(\lambda\)，考虑根子空间 \(R_\lambda(\phi)=\ker(\phi-\lambda I)^n\)，则 \(V=\bigoplus R_\lambda(\phi)\)。在 \(R_\lambda(\phi)\) 上，\(\phi-\lambda I\) 是幂零的，故存在一组基使该限制的矩阵为 Jordan 形（对角元为 \(\lambda\)）。从而 \(\phi\) 的 Jordan 标准形存在。唯一性由根子空间的维数和每个 Jordan 块的大小（由 \(\dim\ker(\phi-\lambda I)^k\) 的跳跃决定）唯一确定。
+        对一般复数域上的线性变换 \(\phi\)，设其特征值全在数域中。对每个特征值 \(\lambda\)，考虑根子空间 \(R_\lambda(\phi)=\ker(\phi-\lambda I)^n\)，则 \(V=\bigoplus R_\lambda(\phi)\)。在 \(R_\lambda(\phi)\) 上，\(\phi-\lambda I\) 是幂零的，故存在一组基使该限制的矩阵为 Jordan 形（对角元为 \(\lambda\)）。从而 \(\phi\) 的 Jordan 标准形存在。唯一性由根子空间的维数和每个 Jordan 块的大小（由 \(\dim\ker(\phi-\lambda I)^k\) 的跳跃决定）唯一确定。
 
     (2) 属于$\lambda_0$的Jordan块数：$n - r(\lambda_0I_V - \phi)$\\
         属于$\lambda_0$的$k$阶Jordan块数：$r(\lambda_0I_V - \phi)^{k+1} + r(\lambda_0I_V - \phi)^{k-1}- 2r(\lambda_0I_V - \phi)^k$\\
@@ -1259,9 +1259,11 @@ b & c & -3
     \[
     V = \bigoplus_{i=1}^s R_{\lambda_i}(\phi).
     \]
-    因此 \(n = \dim V = \sum_{i=1}^s \dim R_{\lambda_i}(\phi)\)。又因为 \(R_{\lambda_i}(\phi) = \ker (\phi-\lambda_i \mathrm{id})^{n_i}\)，而特征多项式与极小多项式有相同的根，且 \(f\) 的每个因子次数不小于 \(d\) 中对应因子的次数，所以 \(R_{\lambda_i}(\phi)\) 的维数不小于 \(n_i\)。因此 \(\dim R_{\lambda_i}(\phi) = n_i\)。
+    $\phi$的特征多项式$f(\lambda)$是$\phi$限制在各根子空间上的特征多项式之积，分别为$(\lambda - \lambda_i)^{dim R_{\lambda_i}}$ \\
+    从而有$$f(\lambda) = \prod_{i = 1}^s(\lambda - \lambda_i)^{n_i} = \prod_{i = 1}^s(\lambda - \lambda_i)^{dim R_{\lambda_i}} $$
+    由于各因式之间互素，故$dimR_{\lambda_i}(\phi) = n_i$
 
-    (2)  \( A \overset{\text{def}}{=} \phi-\lambda_i I_V |_{R_{\lambda_i}} \) 则 \( \ker A \subset \ker A^2 \subset \cdots \subset \ker A^{n_i} \subset \cdots \)
+    (2)  \( A \overset{\text{def}}{=} (\phi-\lambda_i I_V )|_{R_{\lambda_i}} \) 则 \( \ker A \subset \ker A^2 \subset \cdots \subset \ker A^{n_i} \subset \cdots \)
 
     故 \( \dim \ker A \leq \cdots \leq \dim \ker A^{n_i} \leq \dim \ker A^{n_i+1} \leq \cdots \)
     
@@ -1269,20 +1271,29 @@ b & c & -3
     
     下证：\( \forall k \geq n_i, \quad r(A^k) = r(A^{k+1}) \)
     
-    \[n_i \geq r(I_V|_{R_{\lambda_i(\phi)}}) \geq r(A^2) \geq r(A^{n_i+1}) \geq \cdots \geq r(A^{n_i}) \geq 0\]
+    \[n_i \geq r(I_V|_{R_{\lambda_i(\phi)}}) \geq r(A) \geq r(A^{2}) \geq \cdots \geq r(A^{n_i}) \geq r(A^{n_{i}+1}) \geq 0\]
     
     上面为 \( n_i+2 \) 个在 \( [0,n_i]\) 中的整数。故 \( \exists k_0 < n_i, s.t. \)
     
     \[r(A^{k_0}) = r(A^{k_0+1}), \quad \forall k \geq k_0\]
     
-    \[r(A^{k_0+1}) = r(A^{k_0+1}, A^{n_i}) \geq r(A^{k_0}) + r(A^{n_i+1}) - r(A^{n_i})\]
+    \[r(A^{k+1}) = r(A^{k - k_0}A^{k_0}A) \geq r(A^{k-k_0}A^{k_0}) + r(A^{k_0}A) - r(A^{k_0})\]
     
-    \[\Rightarrow r(A^{k_0+1}) \geq r(A^{k_0}) \quad \text{而显然} \quad r(A^{k_0}) \leq r(A^{k_0+1}), \quad \text{故} \quad \forall k \geq n_i, \quad r(A^{k_0}) = r(A^{k_0+1})\]
+    \[\Rightarrow r(A^{k+1}) \geq r(A^{k}) \quad \text{而显然} \quad r(A^{k+1}) \leq r(A^{k}), \quad \text{故} \quad \forall k \geq k_0, \quad r(A^{k+1}) = r(A^{k}) \]  
+
+    \[
+        \text{即}  \forall k \geq n_i, \quad r(A^{k+1}) = r(A^{k})
+    \]
     
-    \[\Rightarrow \dim \ker A^{k_0} = \dim \ker A^{k_0+1}, \quad \forall k \geq n_i\]
+    \[\Rightarrow \dim \ker A^{k+1} = \dim \ker A^{k}, \quad \forall k \geq n_i\]
     
     从而
-    
+
+    \[
+    \ker A^{k+1} = \ker A^{k} \quad \forall k \geq n_i
+    \]
+
+    所以
     \[\bigcup_{k=1}^{\infty} \ker(\phi-\lambda_i I_V)^{i}|_{R_{\lambda_i}} = \ker(\phi-\lambda_i I_V)^{n_i}|_{R_{\lambda_i}} = \ker(\phi-\lambda_i I_V)|_{R_{\lambda_i}}^{n_i}  = R_{\lambda_i}(\phi)\]
 
     (3)  \((\phi-\lambda_i I_v)_{R_{\lambda_j}}\) 的特征值为 \(\lambda_i - \lambda_j \neq 0\)。故可逆。
@@ -1320,7 +1331,7 @@ b & c & -3
     \]
     其特征多项式 \(f(\lambda)=\det(\lambda I-A)\cdot\det(\lambda I-C)\) 为两个次数均小于 \(\dim V\) 的多项式之积，故 \(f\) 可约。
     
-    “\(\Rightarrow\)”：设 \(f(\lambda)=g(\lambda)h(\lambda)\)，其中 \(\deg g,\deg h\ge 1\)。由 Hamilton-Cayley 定理，\(f(\phi)=0\)，故 \(g(\phi)h(\phi)=0\)。因为 \(g(\phi)h(\phi)=0\)，若 \(g(\phi)\) 和 \(h(\phi)\) 均非零，则至少有一个是奇异的（否则两边左乘逆得 \(h(\phi)=0\) 或 \(g(\phi)=0\)）。不妨设 \(g(\phi)\) 奇异，则存在非零 \(\alpha\in \ker g(\phi)\)。考虑由 \(\alpha\) 生成的循环子空间 \(C(\alpha,\phi)=\operatorname{span}\{\alpha,\phi(\alpha),\dots,\phi^{r-1}(\alpha)\}\)，其中 \(r=\deg g\)。由于 \(g(\phi)\alpha=0\)，该子空间维数不超过 \(r\)，且显然非零。若它等于整个 \(V\)，则 \(\dim V\le r\)，但 \(\deg f=n\)，\(f=gh\)，\(r\le n\)，若 \(r=n\) 则 \(h\) 为常数，\(f\) 不可约，矛盾。故该子空间为非平凡的不变子空间。
+    “\(\Rightarrow\)”：设 \(f(\lambda)=g(\lambda)h(\lambda)\)，其中 \(\deg g,\deg h\ge 1\)。由 Hamilton-Cayley 定理，\(f(\phi)=0\)，故 \(g(\phi)h(\phi)=0\)。因为 \(g(\phi)h(\phi)=0\)，若 \(g(\phi)\) 和 \(h(\phi)\) 均非零，则至少有一个是奇异的（否则两边左乘逆得 \(h(\phi)=0\) 或 \(g(\phi)=0\)）。不妨设 \(g(\phi)\) 奇异，则存在非零 \(\alpha\in \ker g(\phi)\)。考虑由 \(\alpha\) 生成的循环子空间 \(C(\alpha,\phi)=\operatorname{span}\{\alpha,\phi(\alpha),\dots,\phi^{r-1}(\alpha)\}\)，其中 \(r=\deg g\)。由于 \(g(\phi)\alpha=0\)，该子空间维数不超过 \(r\)(利用多项式的带余除法实现)，且显然非零。若它等于整个 \(V\)，则 \(\dim V\le r\)，但 \(\deg f=n\)，\(f=gh\)，\(r\le n\)，若 \(r=n\) 则 \(h\) 为常数，\(f\) 不可约，矛盾。故该子空间为非平凡的不变子空间。
 \end{proof}
 
 \begin{example}
