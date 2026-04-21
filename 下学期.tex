@@ -1409,7 +1409,7 @@ m_i = \inf\{f(x) \mid x \in [x_{i-1}, x_i]\},
     \begin{enumerate}
     \item  对任意划分P，当$||P|| = \max_{1 \leq i \leq n}(\Delta x_i) \to 0$时，Darboux 大和 $S$ 与 Darboux 小和$s$的极限相等
     \item  $\lim_{\|p\| \to 0} = \sum_{i=1}^n \omega_i \Delta x_i = 0$
-    \item $ \forall \varepsilon > 0 $存在$[a,b]$的一个划分$p$使成立 $ \sum_{k=1}^n \omega_i \Delta x_i  < \varepsilon $
+    \item $ \forall \varepsilon > 0 $存在$[a,b]$的一个划分$p$使成立 $ \sum_{i=1}^n \omega_i \Delta x_i  < \varepsilon $
     \item  $\forall \varepsilon, \eta  > 0 $存在$[a,b]$的一个划分$p$使振幅不小于$\eta$的子区间的长度之和小于$\varepsilon$
 \end{enumerate}
 \end{theorem}
@@ -1422,7 +1422,7 @@ m_i = \inf\{f(x) \mid x \in [x_{i-1}, x_i]\},
     必要性由极限定义和第一充要条件可得\\
     下证充分性。$\forall \varepsilon > 0$, 存在 $[a, b]$ 的某个分割 $P$, 使得
     \[
-    S(P) - s(P) < \varepsilon.
+    \sum_{i=1}^n \omega_i \Delta x_i  = S(P) - s(P) < \varepsilon.
     \]
     由
     \[
@@ -1672,7 +1672,7 @@ x_n \in \left(x_0 - \delta,\ x_0 +  \delta\right),
 上的划分 \(P_0\)，使得 \(\displaystyle \sum_{P_0} \omega_i \Delta x_i < \frac{\varepsilon}{2}\)。由 \(P_0\) 的分点构成 \([a,b]\) 的划分 \(P\)，则有
 \[
 \begin{aligned}
-\sum_T \omega_i \Delta x_i &= \sum_{T_0} \omega_i \Delta x_i 
+\sum_P \omega_i \Delta x_i &= \sum_{P_0} \omega_i \Delta x_i 
 \quad + \left[ \sup_{x \in \left[x_0 - \delta,\ x_0 + \delta\right]} f(x) - \inf_{x \in \left[x_0 + \delta,\ x_0 +  \delta\right]} f(x) \right] \cdot \frac{2\varepsilon}{8M} \\
 &< \frac{\varepsilon}{2} + 2M \cdot \frac{2\varepsilon}{8M} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
 \end{aligned}
