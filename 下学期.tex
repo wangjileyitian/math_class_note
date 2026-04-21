@@ -1420,7 +1420,7 @@ m_i = \inf\{f(x) \mid x \in [x_{i-1}, x_i]\},
     证明第二可积充要条件(教材P243 习题4)
 
     必要性由极限定义和第一充要条件可得\\
-    下证充分性。$\forall \varepsilon > 0$, 由 (3), 存在 $[a, b]$ 的某个分割 $P$, 使得
+    下证充分性。$\forall \varepsilon > 0$, 存在 $[a, b]$ 的某个分割 $P$, 使得
     \[
     S(P) - s(P) < \varepsilon.
     \]
@@ -1576,7 +1576,7 @@ A_i \subset \bigcup_{j} I_{j}^i,\quad \text{且}\quad \sum_{j} |I_{j}^i| < \frac
     根据可积的第三充分必要条件，可知 \( f \) 在 \([a, b]\) 上可积。
 
     必要性证明：
-    设 \( f \in R[a, b] \)，则从积分的第三充分必要条件可知，对于 \( \varepsilon, \eta > 0 \)，存在分划 \( P \)，使得其中振幅不小于 \( \eta \) 的子区间的长度之和小于 \( \varepsilon \)。利用函数在一点的振幅概念（见 5.1.1 小节的第 5 点），可见 \( f \) 的振幅超过 \( \eta \) 的不连续点或者落在振幅超过 \( \eta \) 的子区间内（而所有这类子区间的总长度小于 \( \varepsilon \)），或者是分划 \( P \) 的某些分点。再增加几个长度充分小的开区间来覆盖这些分点，就可以用总长度小于 \( \varepsilon \) 的有限个开区间将所有振幅超过 \( \eta \) 的不连续点全部覆盖住。
+    设 \( f \in R[a, b] \)，则从积分的第三充分必要条件可知，对于 \( \varepsilon, \eta > 0 \)，存在分划 \( P \)，使得其中振幅不小于 \( \eta \) 的子区间的长度之和小于 \( \varepsilon \)。利用函数在一点的振幅概念，可见 \( f \) 的振幅超过 \( \eta \) 的不连续点或者落在振幅超过 \( \eta \) 的子区间内（而所有这类子区间的总长度小于 \( \varepsilon \)），或者是分划 \( P \) 的某些分点。再增加几个长度充分小的开区间来覆盖这些分点，就可以用总长度小于 \( \varepsilon \) 的有限个开区间将所有振幅超过 \( \eta \) 的不连续点全部覆盖住。
 
     现在取 \( \eta_n = 1/2^n, \varepsilon_n = \varepsilon/2^n \)，并对每个 \( n \) 重复以上过程，就可用总长度不超过 \( \varepsilon \) 的至多可列个开区间覆盖 \( f \) 的所有不连续点。由于这对每个 \( \varepsilon > 0 \) 都能做到，因此 \( f \) 在 \([a, b]\) 上几乎处处连续。
 \end{proof}
@@ -1719,7 +1719,7 @@ x_n \in \left(x_0 - \delta,\ x_0 +  \delta\right),
 \end{proof}
 
 \begin{remark}
-    如果$f,g$都为Riemann可积函数，则$g\circ f$不一定RIemann可积; \\
+    如果$f,g$都为Riemann可积函数，则$g\circ f$不一定Riemann可积; \\
     如果$g$Riemann可积，$f$连续，则$g\circ f$也不一定Riemann可积.
 \end{remark}
 
