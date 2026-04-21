@@ -1357,14 +1357,373 @@ b & c & -3
     \]
     于是 \(e_k = \phi^{k-1}(e_1)\)，从而 \(e_1,\phi(e_1),\dots,\phi^{n-1}(e_1)\) 构成一组基，故 \(V\) 是循环空间。
 \end{proof}
-\section{习题讲解}
+
+\chapter{第四次习题课}
+\section{可积条件}
+
+\begin{definition}[Riemann 可积]
+    设 \( I \) 为实数，且有
+\[
+\lim_{\|P\| \to 0} \sum_{i=1}^n f(\xi_i) \Delta x_i = I,
+\]
+即 \(\forall \varepsilon > 0,\ \exists \delta > 0\)，对 \(\|P\|  = \max_{1 \leq i \leq n} \{\Delta x_i\}< \delta\) 的每个分划 \(P\)，以及对从属于$P$的每个介点集(对每个子区间$[x_{i-1},x_i]$任取$\xi_i \in [x_{i-1},x_i]$，记$\mathbf{\xi} = \{\xi_i|i = 1,2,\cdots,n\}$为从属于$P$的一个介点集)，成立
+\[
+\left| \sum_{i=1}^n f(\xi_i) \Delta x_i - I \right| < \varepsilon,
+\]
+则称函数 \( f \) 在区间 \([a, b]\) 上 \textbf{Riemann 可积} 或简称可积，记为
+\[
+f \in R[a, b],
+\]
+并称 \( I \) 为 \( f \) 在区间 \([a, b]\) 上的 Riemann 积分或定积分，简称积分，记为
+\[
+\int_a^b f(x) \, dx = I,
+\]
+\end{definition}
+
+
+\begin{theorem}[Riemann可积的必要条件]
+    设$f \in R[a,b]$，则$f$在$[a,b]$上有界.
+\end{theorem}
+
+\begin{proof}
+    若记 \(\displaystyle \int_a^b f(x) \, dx = I\)，则从可积定义知道，对于 \(\varepsilon = 1\)，存在一个分划 \(P\)，使得对于从属于这个 \(P\) 的任何介点集 \(\xi\)，均成立不等式
+\[
+\left| \sum_{i=1}^n f(\xi_i) \Delta x_i - I \right| < 1. \tag{10.1}
+\]
+以下只要证明 \(f\) 在每个 \(I_i = [x_{i-1}, x_i]\) 上有界即可。对于确定的子区间 \(I_i\)，固定所有 \(\xi_k\ (k \neq i)\)，就可以从不等式 (10.1) 出发对于 \(f(\xi_i)\) 作出估计如下：
+\[
+\frac{1}{\Delta x_i} \Bigl( I - 1 - \sum_{k \neq i} f(\xi_k) \Delta x_k \Bigr) < f(\xi_i) < \frac{1}{\Delta x_i} \Bigl( I + 1 - \sum_{k \neq i} f(\xi_k) \Delta x_k \Bigr).
+\]
+由于 \(\xi_i \in I_i = [x_{i-1}, x_i]\) 的任意性，可见 \(f\) 在 \(I_i\) 上有界。从而 \(f(x)\) 在 \([a, b]\) 上有界。
+\end{proof}
+
+为叙述Riemann可积的充分必要条件，需要引入以下概念。设函数 \(f\) 在区间 \([a, b]\) 上有界，\(P = \{x_0, x_1, \dots, x_{n-1}, x_n\}\) 为 \([a, b]\) 的一个分划，对 \(i = 1, \dots, n\)，记
+\[
+M_i = \sup\{f(x) \mid x \in [x_{i-1}, x_i]\},\quad
+m_i = \inf\{f(x) \mid x \in [x_{i-1}, x_i]\},
+\]
+称 \(\omega_i = M_i - m_i\) 为 \(f\) 在 \([x_{i-1}, x_i]\) 上的振幅，\(\displaystyle \sum_{i=1}^n \omega_i \Delta x_i\) 为 \(f\) 的振幅面积。
+
+\begin{theorem}[Riemann可积的充要条件]
+    有界函数$f \in R[a,b] $等价于
+    \begin{enumerate}
+    \item  对任意划分P，当$||P|| = \max_{1 \leq i \leq n}(\Delta x_i) \to 0$时，Darboux 大和 $S$ 与 Darboux 小和$s$的极限相等
+    \item  $\lim_{\|p\| \to 0} = \sum_{i=1}^n \omega_i \Delta x_i = 0$
+    \item $ \forall \varepsilon > 0 $存在$[a,b]$的一个划分$p$使成立 $ \sum_{k=1}^n \omega_i \Delta x_i  < \varepsilon $
+    \item  $\forall \varepsilon, \eta  > 0 $存在$[a,b]$的一个划分$p$使振幅不小于$\eta$的子区间的长度之和小于$\varepsilon$
+\end{enumerate}
+\end{theorem}
+
+第一个充要条件和第二个充要条件可以归结为第一充要条件
+
+\begin{proof}
+    证明第二可积充要条件(教材P243 习题3)
+
+    必要性由极限定义和第一充要条件可得\\
+    下证充分性。$\forall \varepsilon > 0$, 由 (3), 存在 $[a, b]$ 的某个分割 $P$, 使得
+    \[
+    S(P) - s(P) < \varepsilon.
+    \]
+    由
+    \[
+    s(P) \leq \sup_P s(P) \leq \inf_P S(P) \leq S(P)
+    \]
+
+    得到
+    \[
+    0 \leq \inf_P S(P)  - \sup_P s(P) \leq S(P) - s(P) < \varepsilon.
+    \]
+    令 $\varepsilon \to 0^+$ 有
+    \[
+    0 \leq \inf_P S(P) - \sup_P s(P) \leq 0,
+    \]
+    即
+    \[
+    \inf_P S(P) = \sup_P s(P).
+    \]
+    设 $I = \inf_P S(P) = \sup_P s(P)$. 由 Darboux 定理得
+    \[
+    \lim_{\|P\| \to 0} S(P) = \lim_{\|P\| \to 0} s(P) = I.
+    \]
+
+    由第一充要条件可得 $f \in R[a, b]$.\\
+
+
+    证明第三可积充要条件(教材P243 习题8)
+
+    设在 \([a,b]\) 上有 \( m \leq f(x) \leq M \)。
+
+先证充分性。对于 \(\varepsilon > 0\)，取
+\[
+\varepsilon' = \frac{\varepsilon}{2(M - m)}, \quad \eta = \frac{\varepsilon}{2(b - a)}.
+\]
+根据条件，存在 \([a,b]\) 的分划 \( P \)，使振幅不小于 \(\eta\) 的子区间的长度之和小于 \(\varepsilon'\)（见图 10.1）。对 \( P \)，用 \(\sum'\) 和 \(\sum''\) 分别表示在积分和式中对振幅不小于 \(\eta\) 的子区间和对振幅小于 \(\eta\) 的子区间求和。我们有
+\[
+\sum' \omega_i \Delta x_i \leq (M - m) \sum' \Delta x_i \leq (M - m)\varepsilon',
+\]
+\[
+\sum'' \omega_i \Delta x_i < \eta \sum'' \Delta x_i \leq \eta(b - a).
+\]
+合并得到
+\[
+\sum \omega_i \Delta x_i \leq (M - m)\varepsilon' + \eta(b - a) < \varepsilon.
+\]
+由可积的第二充分必要条件可见 \( f \) 在 \([a,b]\) 上 Riemann 可积。
+
+再证必要性。设 \( f \) 在 \([a,b]\) 上 Riemann 可积，则由可积的第二充分必要条件，对给定的 \(\varepsilon, \eta > 0\)，存在 \([a,b]\) 的分划 \( P \)，使 \(\sum_{P} \omega_i \Delta x_i < \varepsilon\eta\)。用 \(\sum'\) 表示对振幅不小于 \(\eta\) 的子区间求和，则
+\[
+\eta \sum' \Delta x_i \leq \sum' \omega_i \Delta x_i \leq \eta \sum' \Delta x_i < \varepsilon\eta.
+\]
+因此 \(\sum' \Delta x_i < \varepsilon\)，即振幅不小于 \(\eta\) 的子区间的长度之和小于 \(\varepsilon\)。
+\end{proof}
+
+% \begin{definition}
+%     Lebesgue 可测集
+% \end{definition}
+
+\begin{definition}[Lebesgue 零测集]
+    设$A \subset \mathbb{R} \quad \forall \varepsilon >0 \quad \exists $至多可数(有限或可数个)开区间$\{I_i|i = 1,2,\cdots\}$
+    \[
+    s.t. \quad A \subset  \bigcup_i I_i \quad \text{且} \quad \sum_i|I_i| < \varepsilon
+    \]
+\end{definition}
+用大白话讲就是：如果一个点集可以用总长度任意小的至多可数个开区间覆盖，就称这个点集为零测度集。
+
+那么哪些集合是Lebesgue零测集呢？
+\begin{lemma}
+    \begin{enumerate}
+        \item[(1)] 有限集为零测集；
+        \item[(2)] 至多可数集为零测集；
+        \item[(3)] 零测集 \( A \) 的任何子集 \( B \) 为零测集；
+        \item[(4)] 至多可数个零测集 \( A_i \ (i = 1, 2, \dots) \) 的并集仍为零测集。
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    (1) 设有限集 \( A = \{a_1, a_2, \dots, a_k\} \)，对 \( \forall \varepsilon > 0 \)，令
+\[
+I_i = \left(a_i - \frac{\varepsilon}{4k},\ a_i + \frac{\varepsilon}{4k}\right),\quad i = 1, 2, \dots, k,
+\]
+则
+\[
+A = \bigcup_{i=1}^k \{a_i\} \subset \bigcup_{i=1}^k \left(a_i - \frac{\varepsilon}{4k},\ a_i + \frac{\varepsilon}{4k}\right),
+\]
+且
+\[
+\sum_{i=1}^k |I_i| = \sum_{i=1}^k \left[\left(a_i + \frac{\varepsilon}{4k}\right) - \left(a_i - \frac{\varepsilon}{4k}\right)\right]
+= \sum_{i=1}^k \frac{\varepsilon}{2k} = \frac{\varepsilon}{2} < \varepsilon.
+\]
+因此，\( A \) 为零测集。
+
+(2) 设可数集 \( A = \{a_1, a_2, \dots, a_k, \dots\} \)，对 \( \forall \varepsilon > 0 \)，令
+\[
+I_i = \left(a_i - \frac{\varepsilon}{2^{i+2}},\ a_i + \frac{\varepsilon}{2^{i+2}}\right),\quad i = 1, 2, \dots,
+\]
+则
+\[
+A = \bigcup_{i=1}^\infty \{a_i\} \subset \bigcup_{i=1}^\infty \left(a_i - \frac{\varepsilon}{2^{i+2}},\ a_i + \frac{\varepsilon}{2^{i+2}}\right),
+\]
+且
+\[
+\sum_{i=1}^\infty |I_i| = \sum_{i=1}^\infty \left[\left(a_i + \frac{\varepsilon}{2^{i+2}}\right) - \left(a_i - \frac{\varepsilon}{2^{i+2}}\right)\right]
+= \sum_{i=1}^\infty \frac{\varepsilon}{2^{i+1}} = \frac{\varepsilon}{2} < \varepsilon.
+\]
+因此，\( A \) 为零测集。
+
+(3) 因为 \( A \) 为零测集，故对任何 \( \varepsilon > 0 \)，存在开区间 \( I_i\ (i = 1, 2, \dots) \)，使得
+\[
+A \subset \bigcup_i I_i,\quad \sum_i |I_i| < \varepsilon.
+\]
+因此，
+\[
+B \subset A \subset \bigcup_i I_i,\quad \sum_i |I_i| < \varepsilon.
+\]
+由此知，\( B \) 为零测集。
+
+(4) 因为每个 \( A_i \) 为零测集，则存在开区间 \( I_{j}^i\ (j = 1, 2, \dots) \)，使得
+\[
+A_i \subseteq \bigcup_{j} I_{j}^i,\quad \text{且}\quad \sum_{j} |I_{j}^i| < \frac{\varepsilon}{2^i},\quad i = 1, 2, \dots.
+\]
+于是，\(\{I_{j}^i \mid i = 1, 2, \dots;\ j = 1, 2, \dots\}\) 为可数个开区间（依 \( i+j \) 从小到大排列为 \( I_{1}^1, I_{2}^1, I_{1}^2, I_{3}^1,I_{1}^3,I_{2}^2 ,\dots \)），使得
+\[
+\bigcup_i A_i \subset \bigcup_i \;(\bigcup_j I_{j}^i) =   \bigcup_{i,j} I_{j}^i,
+\]
+且
+\[
+\sum_{i,j} |I_{j}^i| = \sum_{i} \left( \sum_{j}|I_{j}^i| \right) < \sum_{i} \frac{\varepsilon}{2^i} \leq \varepsilon.
+\]
+所以，\(\bigcup_i A_i\) 为零测集。
+\end{proof}
+
+\begin{definition}[几乎处处]
+    命题P是一个与集合$E$的点$x$有关的命题，如果存在$E$的子集$M$，满足$M$是一零测集，使得P在$E$去掉子集$M$后的集合上恒成立，称P在E上几乎处处成立，记作P a.e. 于E
+\end{definition}
+对此我们给出有界函数Riemann可积的又一个充要条件
+\begin{theorem}[Lebesgue定理]
+    若函数$f$在$[a,b]$上有界，则$f \in R[a,b]$的充分必要条件是$f$在$[a,b]$上几乎处处连续.(即所有不连续点的集合是零测集)
+\end{theorem}
+
+\begin{proof}
+    充分性证明：
+    对于给定的 \( \varepsilon, \eta > 0 \)，先用总长度小于 \( \varepsilon \) 的有限个或可列个开区间覆盖 \( f \) 的所有不连续点。然后对于每个连续点，设为 \( x_0 \)，用一个邻域 \( O(x_0) \) 覆盖，且要求 \( f \) 在这个邻域上的振幅小于 \( \eta \)。由于 \( f \) 在点 \( x_0 \) 的连续性，这是能够满足的。
+
+    对于每个连续点都取这样的邻域，于是所有这些邻域和覆盖不连续点的开区间一起就构成区间 \([a, b]\) 的一个开覆盖，记为 \(\{O_\alpha\}\)。
+
+    利用加强形式的覆盖定理，存在 Lebesgue 数 \( \delta \)，使得在区间 \([a, b]\) 中的相距不超过 \( \delta \) 的任何两点可以用开覆盖 \(\{O_\alpha\}\) 中的某一个开区间同时覆盖。
+
+    对于区间 \([a, b]\) 取细度不超过 \( \delta \) 的等距分划 \( P \)。这时每个子区间被开覆盖中的一个开区间所覆盖。如果子区间是由原来覆盖不连续点的开区间所覆盖，则这类子区间的总长度必小于 \( \varepsilon \)。而覆盖所有其他子区间的开区间都是原先用于覆盖连续点的邻域，因此 \( f \) 在每一个这类子区间上的振幅小于 \( \eta \)。
+
+    根据可积的第三充分必要条件，可知 \( f \) 在 \([a, b]\) 上可积。
+
+    必要性证明：
+    设 \( f \in R[a, b] \)，则从积分的第三充分必要条件可知，对于 \( \varepsilon, \eta > 0 \)，存在分划 \( P \)，使得其中振幅不小于 \( \eta \) 的子区间的长度之和小于 \( \varepsilon \)。利用函数在一点的振幅概念（见 5.1.1 小节的第 5 点），可见 \( f \) 的振幅超过 \( \eta \) 的不连续点或者落在振幅超过 \( \eta \) 的子区间内（而所有这类子区间的总长度小于 \( \varepsilon \)），或者是分划 \( P \) 的某些分点。再增加几个长度充分小的开区间来覆盖这些分点，就可以用总长度小于 \( \varepsilon \) 的有限个开区间将所有振幅超过 \( \eta \) 的不连续点全部覆盖住。
+
+    现在取 \( \eta_n = 1/2^n, \varepsilon_n = \varepsilon/2^n \)，并对每个 \( n \) 重复以上过程，就可用总长度不超过 \( \varepsilon \) 的至多可列个开区间覆盖 \( f \) 的所有不连续点。由于这对每个 \( \varepsilon > 0 \) 都能做到，因此 \( f \) 在 \([a, b]\) 上几乎处处连续。
+\end{proof}
+
 \begin{example}
+    Riemann 函数
+    \[
+    R(x) = 
+    \begin{cases}
+        \frac{1}{q} \quad &[0,1] \bigcap \mathbb{Q} \quad x = \frac{p}{q} \quad (p,q) = 1\\
+        1 \quad &x = 0,1 \\
+        0 \quad & x \in (\mathbb{R} /\mathbb{Q} ) \bigcap  [0,1]
+    \end{cases}
+    \]
+\end{example}
+Proof：我们知道全体有理数是可数的，因而Riemann函数的所有不连续点的集合$M = \mathbb{Q} \bigcap [0,1]$ 即$[0,1]$上的全体有理数，可数集必是零测集，故Riemann函数Riemann可积.
+
+由可积充要条件我们可以得到以下几类函数是Riemann可积的
+\begin{conclusion}
+\begin{enumerate}
+    \item 设$f \in C[a,b]$，则$f \in R[a,b]$
+    \item 设$f$在$[a,b]$上有界且只有有限个间断点(不连续点)，则$f \in R[a,b]$
+    \item 设$f $在$[a,b]$上单调，则$f \in R[a,b]$
+\end{enumerate}
+\end{conclusion}
+
+\section{习题讲解}
+
+\begin{example}
+    证明函数
+    \[
+    f(x) = 
+    \begin{cases} 
+    \dfrac{1}{x} - \left\lfloor \dfrac{1}{x} \right\rfloor, & x \in (0, 1], \\ 
+    0, & x = 0 
+    \end{cases}
+    \]
+    在 \([0, 1]\) 上可积。
+    \end{example}
     
+    \textbf{分析：} 虽然 \( f \) 在 \([0, 1]\) 内有无限个间断点，然而由于这些间断点可以看成为收敛于 0 的数列，因此可用总长度任意小的有限区间把所有间断点覆盖住，这就是下列证明的要点。
+    
+    \begin{proof}
+    对给定的 \(\varepsilon, \eta > 0\)，取 \( n \) 充分大，使得
+    \[
+    \delta = \frac{1}{n + \frac{1}{2}} < \frac{\varepsilon}{2}.
+    \]
+    将区间 \([0, 1]\) 分成 \([0, \delta)\) 和 \([\delta, 1]\)。\( f \) 在 \([\delta, 1]\) 内的所有间断点是 \(\{1/i \mid i = 2, \dots, n\}\)。用包含于 \((\delta, 1]\) 中的 \( n-1 \) 个互不相交的开区间覆盖这些间断点，并要求这些开区间的总长度小于 \(\varepsilon/2\)（见图 10.2）。从 \([0, 1]\) 中挖掉这些子区间与 \([0, \delta)\)，剩余的部分是 \( n \) 个闭子区间。因为 \( f \) 在这些闭子区间上一致连续，因此我们能够将这些子区间细分为更小的子区间，使 \( f \) 在每个子区间上的振幅都小于 \(\eta\)。上面所有子区间的端点构成 \([0, 1]\) 的一个分划。其中振幅不小于 \(\eta\) 的子区间的长度之和小于 \(\varepsilon\)，由可积的第三充分必要条件可知 \( f \in R[a, b] \)。
+    \end{proof}
+
+\begin{example}
+    设$f(x)$在$[a,b]$上可积，且在$[a,b]$上满足$|f(x)| \geq m >0(m\text{为常数})$，证明$\frac{1}{f(x)}$在$[a,b]$上也可积.
 \end{example}
 
 \begin{proof}
-    
+    任取 \([a, b]\) 的一个划分：\(a = x_0 < x_1 < \cdots < x_{n-1} < x_n = b\)，则
+    \[
+    \omega_i\!\left(\frac{1}{f}\right) = \sup_{x_{i-1} \le x', x'' \le x_i} \left( \frac{1}{f(x')} - \frac{1}{f(x'')} \right) 
+    \le \frac{1}{m^2} \sup_{x_{i-1} \le x', x'' \le x_i} \bigl( f(x') - f(x'') \bigr) = \frac{1}{m^2} \omega_i(f).
+    \]
+    由于 \(f(x)\) 在 \([a, b]\) 上可积，\(\forall \varepsilon > 0, \exists \delta > 0\)，当 \(\lambda = \max\limits_{1 \le i \le n} (\Delta x_i) < \delta\) 时，
+    \[
+    \sum_{i=1}^n \omega_i(f) \Delta x_i < m^2 \varepsilon,
+    \]
+    从而
+    \[
+    \sum_{i=1}^n \omega_i\!\left(\frac{1}{f}\right) \Delta x_i  = \frac{1}{m^2}\sum_{i=1}^n \omega_i(f) \Delta x_i <  \varepsilon,
+    \]
+    所以 \(\frac{1}{f(x)}\) 在 \([a, b]\) 上可积。
 \end{proof}
+
+\begin{example}
+    设有界函数$f(x)$在$[a,b]$上的不连续点为$\{x_n\}_{n = 1}^\infty $，且$\lim_{n \to \infty} x_n$存在，证明$f(x)$在$[a,b]$上可积.
+\end{example}
+
+\begin{proof}
+    设 \(\lim_{n \to +\infty} x_n = x_0\)，有界函数\(|f(x)| \leq M\)，我们不妨设$x_0 \in (a,b)$，$x_0=a$或$x_0 = b$的情况可以类似讨论，故 \(\forall \varepsilon > 0, \text{取}\delta = \min\{\frac{\varepsilon}{8M},b-c,c-a\},\exists N \in \mathbb{N}\)，当 \(n > N\) 时，
+\[
+x_n \in \left(x_0 - \delta,\ x_0 +  \delta\right),
+\]
+由于在
+\[
+[a,b] \setminus \left(x_0 -  \delta,\ x_0 +  \delta\right)
+\]
+上，\(f\) 只有有限个不连续点，故\(f\) 在
+\[
+[a,b] \setminus \left(x_0 -  \delta,\ x_0 +  \delta\right)
+\]
+上可积。由第三充分必要条件，必有在
+\[
+[a,b] \setminus \left(x_0 -  \delta,\ x_0 +  \delta\right)
+\]
+上的划分 \(P_0\)，使得 \(\displaystyle \sum_{P_0} \omega_i \Delta x_i < \frac{\varepsilon}{2}\)。由 \(P_0\) 的分点构成 \([a,b]\) 的划分 \(P\)，则有
+\[
+\begin{aligned}
+\sum_T \omega_i \Delta x_i &= \sum_{T_0} \omega_i \Delta x_i 
+\quad + \left[ \sup_{x \in \left[x_0 - \delta,\ x_0 + \delta\right]} f(x) - \inf_{x \in \left[x_0 + \delta,\ x_0 +  \delta\right]} f(x) \right] \cdot \frac{2\varepsilon}{8M} \\
+&< \frac{\varepsilon}{2} + 2M \cdot \frac{2\varepsilon}{8M} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+\end{aligned}
+\]
+再由第三充分必要条件可得，\(f\) 在 \([a,b]\) 上可积.
+\end{proof}
+
+\begin{example}
+    设$f(x)$在$[a,b]$上可积，$A \leq f(x)\leq B$，$g(u)$在$[A,B]$上连续，证明复合函数$g \circ  f$在$[a,b]$上可积.
+\end{example}
+
+\begin{proof}
+证法 1
+
+因为 \(g\) 在 \([A,B]\) 上连续，所以它在 \([A,B]\) 上一致连续。于是，\(\forall \varepsilon > 0, \exists \delta > 0\)，当  
+\(u', u'' \in [A,B], |u' -u''| < \delta\) 时，有 \(|g(u') - g(u'')| < \frac{\varepsilon}{2(b - a)}\)。对 \([a, b]\) 上 Riemann 可积的函数 \(f\) 应用第三充分必要条件，存在 \([a, b]\) 的某个分割 \(T: a= x_0 < x_1 < \cdots < x_m = b\)，有  
+\[
+\sum_{\omega_i^f \geq \delta} \Delta x_i < \frac{\varepsilon}{4M + 1},
+\]
+其中 \(M = \max_{u \in [A,B]} |g(u)|\)。于是  
+\[
+\begin{aligned}
+\sum_{i=1}^m \omega_i^{g\circ f} \Delta x_i 
+&= \sum_{\omega_i^f \geq \delta} \omega_i^{g\circ f} \Delta x_i + \sum_{\omega_i^f < \delta} \omega_i^{g\circ  f} \Delta x_i \\
+&\leq 2M \sum_{\omega_i^f \geq \delta} \Delta x_i + \frac{\varepsilon}{2(b - a)} \sum_{\omega_i^f < \delta} \Delta x_i \\
+&\leq 2M \cdot \frac{\varepsilon}{4M + 1} + \frac{\varepsilon}{2(b - a)} (b - a) < \varepsilon.
+\end{aligned}
+\]
+根据第三充分必要条件，\(g \circ  f\) 在 \([a, b]\) 上 Riemann 可积。
+
+证法 2
+
+\(\forall \varepsilon > 0, \forall \eta > 0\)，由于 \(g\) 在 \([A,B]\) 上一致连续，因此对上述的 \(\eta, \exists \delta > 0\)，当 \(u', u'' \in [A,B]\) 且 \(|u' - u''| < \delta\) 时，\(|g(u') - g(u'')| < \eta\)。  
+
+再由 \(f\) 在 \([a, b]\) 上 Riemann 可积，根据第三充分必要条件，存在某个分割 \(T\)，使得  
+\[
+\sum_{\omega_i^f \geq \delta} \Delta x_i < \varepsilon.
+\]
+而在其余 \(\omega_i^f < \delta\) 的小区间上必有 \(\omega_i^{g \circ f} < \eta\)。因此，  
+\[
+\sum_{\omega_i^{g\circ  f} \geq \eta} \Delta x_i \leq \sum_{\omega_i^f \geq \delta} \Delta x_i < \varepsilon.
+\]
+再根据第三充分必要条件 得到 \(g\circ  f\) 在 \([a, b]\) 上 Riemann 可积。
+\end{proof}
+
+\begin{remark}
+    如果$f,g$都为Riemann可积函数，则$g\circ f$不一定RIemann可积; \\
+    如果$g$Riemann可积，$f$连续，则$g\circ f$也不一定Riemann可积.
+\end{remark}
+
+
 
 % \nocite{*}
 % \printbibliography[heading=bibintoc, title=\ebibname]
