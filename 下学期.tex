@@ -1472,7 +1472,7 @@ m_i = \inf\{f(x) \mid x \in [x_{i-1}, x_i]\},
 
 再证必要性。设 \( f \) 在 \([a,b]\) 上 Riemann 可积，则由可积的第二充分必要条件，对给定的 \(\varepsilon, \eta > 0\)，存在 \([a,b]\) 的分划 \( P \)，使 \(\sum_{P} \omega_i \Delta x_i < \varepsilon\eta\)。用 \(\sum'\) 表示对振幅不小于 \(\eta\) 的子区间求和，则
 \[
-\eta \sum' \Delta x_i \leq \sum' \omega_i \Delta x_i \leq \eta \sum' \Delta x_i < \varepsilon\eta.
+\eta \sum' \Delta x_i \leq \sum' \omega_i \Delta x_i \leq  \sum_{P} \omega_i \Delta x_i < \varepsilon\eta.
 \]
 因此 \(\sum' \Delta x_i < \varepsilon\)，即振幅不小于 \(\eta\) 的子区间的长度之和小于 \(\varepsilon\)。
 \end{proof}
@@ -1665,7 +1665,7 @@ x_n \in \left(x_0 - \delta,\ x_0 +  \delta\right),
 \[
 [a,b] \setminus \left(x_0 -  \delta,\ x_0 +  \delta\right)
 \]
-上可积。由第三充分必要条件，必有在
+上可积。由第二充分必要条件，必有在
 \[
 [a,b] \setminus \left(x_0 -  \delta,\ x_0 +  \delta\right)
 \]
