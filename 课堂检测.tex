@@ -1,0 +1,115 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[UTF8]{ctex} % 支持中文
+\usepackage{amsmath, amssymb, amsfonts} % 数学公式宏包
+\usepackage{geometry} % 页面边距设置
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+
+\title{\bfseries 数学分析课堂测验 \\ \large （积分学阶段测试）}
+\date{}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+\noindent {\bfseries 考试说明：} 
+\begin{enumerate}
+    \item 本次测验满分 100 分，建议用时 {\bfseries 70 分钟}。
+    \item 答题时请写出必要的文字说明、证明步骤或计算过程。
+\end{enumerate}
+
+\section*{一、 计算题（每题 10 分，共 30 分）}
+
+\begin{enumerate}
+    \item 计算不定积分：
+    \[ I = \int \frac{x e^x}{(1+x)^2} \, dx \]
+    
+    \vspace{2em} % 留出答题空间
+    
+    \item 求极限：
+    \[ \lim_{x \to 0} \frac{\int_0^x (x-t)\sin t \, dt}{x^3} \]
+    
+    \vspace{2em}
+    
+    \item 计算定积分：
+    \[ J = \int_0^\pi \frac{x \sin x}{1+\cos^2 x} \, dx \]
+\end{enumerate}
+
+\vspace{2em}
+
+\section*{二、 讨论题（每题 10 分，共 20 分）}
+
+\begin{enumerate}
+    \item[4.] 讨论反常积分 
+    \[ \int_1^{+\infty} \frac{\sin x}{x^p} \, dx \quad (p > 0) \]
+    的绝对收敛性与条件收敛性。
+
+    \vspace{2em}
+    \item[5.] 讨论反常积分 $$\displaystyle \int_{0}^{+\infty} \frac{\ln(1+x)}{x^p} \, dx  $$ 的敛散性.
+\end{enumerate}
+
+\vspace{2em}
+
+\section*{三、 证明题（每题 10 分，共 50 分）}
+
+\begin{enumerate}
+    \item[6.] 设函数 $f(x)$ 在闭区间 $[a, b]$ 上连续，且已知 $\int_a^b f(x) \, dx = 0$。\\
+    证明：至少存在一点 $\xi \in (a, b)$，使得：
+    \[ \int_a^\xi f(x) \, dx = f(\xi) \]
+    
+    \vspace{2em}
+    
+    \item[7.]设 $f \in C^1[a,b]$, 且 $f(a) = 0$, 证明:
+    \[
+    \int_{a}^{b} f^2(x) \, dx \le \frac{(b-a)^2}{2} \int_{a}^{b} (f'(x))^2 \, dx.
+    \]
+
+    \vspace{2em}
+
+     \item[8.] 设 $f \in C[0,2\pi]$, 证明:
+    \[
+    \lim_{n\to\infty} \int_{0}^{2\pi} f(x)|\sin nx| \, dx = \frac{2}{\pi} \int_{0}^{2\pi} f(x) \, dx. 
+    \]
+
+    \vspace{2em}
+
+    \item[9.]设 $f$ 在区间 $[0,1]$ 上可微, 且 $f' \in R[0,1]$, 对正整数 $n$ 定义
+    \[
+    A_n = \int_{0}^{1} f(x) \, dx - \frac{1}{n} \sum_{k=1}^{n} f\left( \frac{k}{n} \right),
+    \]
+
+    证明:
+    \[
+    \lim_{n \to \infty} n A_n = \frac{1}{2} \left( f(0) - f(1) \right).
+    \]
+    
+
+    \vspace{2em}
+
+    \item[10.] 设函数 $f(x)$ 在闭区间 $[0, 1]$ 上可积，在 $x = 1$ 处左连续。\\
+    证明：
+    \[ \lim_{n \to \infty} (n+1) \int_0^1 x^n f(x) \, dx = f(1) \]
+\end{enumerate}
+
+\section*{四、拓展题（每题 10 分，共 20 分）}
+
+\begin{enumerate}
+    \item[11.] 求极限：
+    \[\lim\limits_{x \to 0} \dfrac{\int_{0}^{\sin^{2}x} \ln(1 + t) \, dt}{\left( \sqrt[3]{1 + x^{3}} - 1 \right) \sin x} \]
+
+    \vspace{2em}
+    
+    \item[12.] 设函数 $f(x),g(x)$ 在 $[a,b]$ 上连续可导且满足以下三个条件：
+    \begin{enumerate}
+        \item[(i)] $\displaystyle \int_{a}^{b} f(x) \mathrm{d}x = \int_{a}^{b} g(x) \mathrm{d}x = 0$；
+        \item[(ii)] $f'(x)g(x) - f(x)g'(x) > 0,\ x \in [a,b]$；
+        \item[(iii)] $g(x)$ 在 $(a,b)$ 上有唯一零点 $\xi$.
+    \end{enumerate}
+    证明：
+    \begin{enumerate}
+        \item[(1)] $\displaystyle \int_{a}^{b} f(x) \left( \int_{a}^{x} g(s) \mathrm{d}s \right) \mathrm{d}x = - \int_{a}^{b} g(x) \left( \int_{a}^{x} f(s) \mathrm{d}s \right) \mathrm{d}x$.
+        \item[(2)] $\displaystyle \int_{a}^{b} f(x) \left( \int_{a}^{x} g(s) \mathrm{d}s \right) \mathrm{d}x > 0$.
+    \end{enumerate}
+    \end{enumerate}
+
+\end{document}
